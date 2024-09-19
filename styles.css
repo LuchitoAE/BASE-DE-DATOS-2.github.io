@@ -25,6 +25,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
 }
 
 /* Estilo para la opción izquierda */
@@ -39,6 +40,7 @@ header .container {
 .right {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
 }
 
 .right a, .dropbtn {
@@ -121,4 +123,63 @@ header .container {
     font-size: 20px;
     line-height: 1.8;
     margin-top: 10px;
+}
+
+/* Media Queries para diseño responsivo */
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .left a {
+        font-size: 16px;
+    }
+
+    .right {
+        gap: 10px;
+    }
+
+    .right a, .dropbtn {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .welcome-section {
+        padding: 120px 10px;
+    }
+
+    .welcome-section h1 {
+        font-size: 30px;
+    }
+
+    .welcome-section p {
+        font-size: 18px;
+    }
+}
+
+/* Para pantallas extra pequeñas (móviles en modo vertical) */
+@media (max-width: 480px) {
+    .left a {
+        display: block;
+        padding: 5px 0;
+    }
+
+    .right {
+        flex-direction: column;
+    }
+
+    .right a, .dropbtn {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .welcome-section {
+        padding: 80px 5px;
+    }
+
+    .welcome-section h1 {
+        font-size: 24px;
+    }
+
+    .welcome-section p {
+        font-size: 16px;
+    }
 }
