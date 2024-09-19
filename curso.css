@@ -25,7 +25,6 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
 }
 
 .left a {
@@ -38,7 +37,6 @@ header .container {
 .right {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
 }
 
 .right a, .dropbtn {
@@ -80,7 +78,6 @@ header .container {
     background-color: #ddd;
 }
 
-/* Mostrar el contenido del menú desplegable al hacer hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -136,7 +133,6 @@ main {
     display: flex;
     align-items: center;
     gap: 20px;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
 }
 
 .instructor-info .profile-photo {
@@ -155,97 +151,4 @@ main {
 /* Fondo general de la página */
 body {
     background-color: #e9ecef;
-}
-
-/* Media Queries para diseño responsivo */
-
-/* Para pantallas pequeñas (móviles) */
-@media (max-width: 768px) {
-    .left a {
-        font-size: 16px;
-    }
-
-    .right {
-        gap: 10px;
-    }
-
-    .right a, .dropbtn {
-        font-size: 16px;
-        padding: 8px;
-    }
-
-    main {
-        padding: 20px;
-    }
-
-    .course-info h1 {
-        font-size: 24px;
-    }
-
-    .introduction p {
-        font-size: 16px;
-    }
-
-    .introduction ul li {
-        font-size: 16px;
-    }
-
-    .instructor-info h2 {
-        font-size: 20px;
-    }
-
-    .instructor-info .profile-photo {
-        width: 80px;
-        height: 80px;
-    }
-
-    .instructor-info p {
-        font-size: 16px;
-    }
-}
-
-/* Para pantallas extra pequeñas (móviles en modo vertical) */
-@media (max-width: 480px) {
-    .left a {
-        display: block;
-        padding: 5px 0;
-    }
-
-    .right {
-        flex-direction: column;
-    }
-
-    .right a, .dropbtn {
-        font-size: 14px;
-        padding: 5px;
-    }
-
-    main {
-        padding: 10px;
-    }
-
-    .course-info h1 {
-        font-size: 20px;
-    }
-
-    .introduction p {
-        font-size: 14px;
-    }
-
-    .introduction ul li {
-        font-size: 14px;
-    }
-
-    .instructor-info h2 {
-        font-size: 18px;
-    }
-
-    .instructor-info .profile-photo {
-        width: 60px;
-        height: 60px;
-    }
-
-    .instructor-info p {
-        font-size: 14px;
-    }
 }

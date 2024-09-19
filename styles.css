@@ -8,9 +8,9 @@ body {
 
 /* Contenedor que limita el ancho de la página */
 .page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px; /* Ancho máximo de la página */
+    margin: 0 auto; /* Centramos la página */
+    padding: 0 20px; /* Añadimos márgenes internos laterales */
 }
 
 /* Encabezado */
@@ -25,9 +25,9 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
 }
 
+/* Estilo para la opción izquierda */
 .left a {
     color: white;
     text-decoration: none;
@@ -35,10 +35,10 @@ header .container {
     padding: 10px;
 }
 
+/* Estilo para las opciones de la derecha */
 .right {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
 }
 
 .right a, .dropbtn {
@@ -55,6 +55,7 @@ header .container {
     background-color: #777;
 }
 
+/* Estilo para el botón desplegable */
 .dropdown {
     position: relative;
 }
@@ -66,7 +67,7 @@ header .container {
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 0;
+    right: 0; /* Alinear el desplegable a la derecha */
 }
 
 .dropdown-content a {
@@ -85,140 +86,39 @@ header .container {
     display: block;
 }
 
-/* Estilo para el contenido de la página "Mis Datos" */
-main {
-    margin: 40px 0;
-    background-color: #ffffff;
-    padding: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+.dropdown:hover .dropbtn {
+    background-color: #777;
+}
+
+/* Estilo para la sección de bienvenida */
+.welcome-section {
+    background-image: url('imagenes/imagen-inicio.png'); /* Cambia la ruta por la ruta de tu imagen */
+    background-size: cover;
+    background-position: center;
+    padding: 180px 20px;
     text-align: center;
+    color: white;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para la imagen */
+    border-radius: 8px;
+    margin-top: 20px;
 }
 
-/* Bloques de contenido */
-.photo-block {
-    margin-bottom: 20px;
+.welcome-content {
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
+    display: inline-block;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el contenido */
 }
 
-.photo-block img {
-    border-radius: 50%;
-    max-width: 150px; /* Ajusta el tamaño máximo de la foto */
-    height: auto;
-    display: block;
-    margin: 0 auto;
+.welcome-section h1 {
+    font-size: 40px;
+    margin: 0;
 }
 
-.logo-block {
-    margin: 40px 0;
-}
-
-.logo-block img {
-    max-width: 200px; /* Ajusta el tamaño máximo del logo */
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.social-icons {
-    margin: 40px 0;
-}
-
-.social-icons a {
-    margin: 0 10px;
-}
-
-.social-icons img {
-    width: 40px; /* Ajusta el tamaño de los iconos sociales */
-    height: auto;
-}
-
-/* Estilo del bloque de texto */
-.info-block p {
-    font-size: 18px;
+.welcome-section p {
+    font-size: 20px;
     line-height: 1.8;
-    color: #555;
-}
-
-.info-block p strong {
-    color: #000;
-}
-
-/* Fondo general de la página */
-body {
-    background-color: #e9ecef;
-}
-
-/* Media Queries para diseño responsivo */
-
-/* Para pantallas pequeñas (móviles) */
-@media (max-width: 768px) {
-    .left a {
-        font-size: 16px;
-    }
-
-    .right {
-        gap: 10px;
-    }
-
-    .right a, .dropbtn {
-        font-size: 16px;
-        padding: 8px;
-    }
-
-    main {
-        padding: 20px;
-    }
-
-    .photo-block img {
-        max-width: 120px;
-    }
-
-    .logo-block img {
-        max-width: 150px;
-    }
-
-    .social-icons img {
-        width: 30px;
-    }
-
-    .info-block p {
-        font-size: 16px;
-    }
-}
-
-/* Para pantallas extra pequeñas (móviles en modo vertical) */
-@media (max-width: 480px) {
-    .left a {
-        display: block;
-        padding: 5px 0;
-    }
-
-    .right {
-        flex-direction: column;
-    }
-
-    .right a, .dropbtn {
-        font-size: 14px;
-        padding: 5px;
-    }
-
-    main {
-        padding: 10px;
-    }
-
-    .photo-block img {
-        max-width: 100px;
-    }
-
-    .logo-block img {
-        max-width: 120px;
-    }
-
-    .social-icons img {
-        width: 25px;
-    }
-
-    .info-block p {
-        font-size: 14px;
-    }
+    margin-top: 10px;
 }
