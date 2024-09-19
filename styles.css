@@ -1,0 +1,91 @@
+/* Estilo general para todo el body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Contenedor que limita el ancho de la página */
+.page-container {
+    max-width: 1200px; /* Ancho máximo de la página */
+    margin: 0 auto; /* Centramos la página */
+    padding: 0 20px; /* Añadimos márgenes internos laterales */
+}
+
+/* Encabezado */
+header {
+    background-color: #333;
+    padding: 20px 0;
+    position: relative;
+}
+
+/* Contenedor dentro del encabezado */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo para la opción izquierda */
+.left a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+/* Estilo para las opciones de la derecha */
+.right {
+    display: flex;
+    gap: 20px;
+}
+
+.right a, .dropbtn {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #555;
+    border: none;
+    cursor: pointer;
+}
+
+.right a:hover, .dropbtn:hover {
+    background-color: #777;
+}
+
+/* Estilo para el botón desplegable */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0; /* Alinear el desplegable a la derecha */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Mostrar el contenido del menú desplegable al hacer hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #777;
+}
