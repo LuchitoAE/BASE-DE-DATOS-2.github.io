@@ -17,6 +17,8 @@ body {
 header {
     background-color: #333;
     padding: 20px 0;
+    padding-left: 10px;
+    padding-right: 30px;
     position: relative;
 }
 
@@ -92,7 +94,7 @@ header .container {
 
 /* Estilo para la sección de bienvenida */
 .welcome-section {
-    background-image: url('imagenes/imagen-inicio.png'); /* Cambia la ruta por la ruta de tu imagen */
+    background-image: url('https://atlantictech.io/wp-content/uploads/2022/08/2c4ea-basededatos2-1300x731.png'); /* Cambia la ruta por la ruta de tu imagen */
     background-size: cover;
     background-position: center;
     padding: 180px 20px;
