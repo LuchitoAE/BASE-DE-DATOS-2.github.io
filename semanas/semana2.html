@@ -37,31 +37,91 @@
         <main> <!-- Contenido principal de la semana -->
             <div class="content-section">
                 <div class="text-block">
+                    <h2>
+                        Enunciado 01: 
+                    </h2>
+                    <h3>
+                        Entidad - Atributo - Relaciones - Cardinalidad
+                    </h3>
                     <p>
                         <!-- Texto de ejemplo para la semana X -->
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
+                        Un concesionario de automóviles de la ciudad de Huancayo desea informatizar su gestión de ventas de vehículos. En particular, se quiere tener almacenada la información referente a los clientes que compran en el concesionario, los vehículos vendidos, así como los vendedores que realizan las distintas ventas. Para ello se tendrá en cuenta que: 
+                    </p>
+                    <p>
+                        ●	Existen diferentes MARCAS de automóviles, para cada marca se almacena un identificador único y un nombre. Por ejemplo, pueden existir las marcas Audi, BMW, Volkswagen, etc. 
+                    </p>
+                    <p>
+                        ●	Una marca puede tener muchos modelos diferentes pero un modelo sólo puede pertenecer a una marca. De cada MODELO se almacena un identificador único y un nombre. Por ejemplo, para la marca Audi, podemos tener los modelos A1, A3, A4, etc. 
+                    </p>
+                    <p>
+                        ●	Para cada modelo pueden existir diferentes versiones. De cada VERSIÓN se almacena un identificador único, un nombre de versión, la potencia, un precio base y el tipo de combustible que puede ser Gasolina o Diesel. Por ejemplo, para la marca Audi, modelo A3, pueden existir las versiones AUDI A3 1.0 TFSI 85kW (116CV), AUDI A3 1.6 TDI 85kW (116CV), etc.
+                    </p>
+                    <p>
+                        ●	Cada una de las versiones dispondrá de unos EXTRAS adicionales (aire acondicionado, pintura metalizada, etc). Los extras vienen definidos por un identificador, nombre y una descripción. Hay que tener en cuenta que un extra puede ser común para varias versiones variando sólo el precio en cada caso. 
+                    </p>
+                    <p>
+                        ●	En cuanto a los CLIENTES, la información de interés es el nombre, apellidos, NIF, dirección y teléfono, lo mismo que para los VENDEDORES. 
+                    </p>
+                    <p>
+                        ●	Los clientes pueden ceder su coche usado al comprar un vehículo nuevo. El COCHE USADO vendrá definido por su marca, modelo, matrícula y precio de tasación. Es importante conocer la fecha en la que el cliente realiza esta cesión.
+                    </p>
+                    <p>
+                        ●	Se desea saber qué vendedor ha vendido qué modelo a qué cliente. También la fecha de la venta y la matrícula del nuevo vehículo.
                     </p>
                 </div>
                 
                 <div class="image-block">
-                    <img src="../imagenes/Pregunta 1.png" alt="Descripción de la imagen de la semana X">
+                    <img src="../imagenes/Enunciado 1.png" alt="Descripción de la imagen de la semana X">
                 </div>
             </div>
 
             <!-- Repite más bloques de texto e imagen si es necesario -->
             <div class="content-section">
                 <div class="text-block">
+                    <h2>
+                        Enunciado 02: 
+                    </h2>
+                    <h3>
+                        Entidad - Atributo - Relaciones - Cardinalidad
+                    </h3>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
+                        <!-- Texto de ejemplo para la semana X -->
+                        La Empresa “Andaluz” es una empresa que alquila viviendas, necesita una base de datos para gestionar los alquileres de las viviendas de particulares. Los requisitos de esta base de datos son los que se detallan a continuación.
+                    </p>
+                    <p>
+                        ●	Es necesario almacenar información sobre la duración de cada uno de los alquileres de una vivienda con el fin de conocer el histórico de alquileres.
+                    </p>
+                    <p>
+                        ●	La información que se guarda de cada ALQUILER es un identificador único de alquiler, fecha de inicio, fecha de fin, importe mensual, fianza y fecha de la firma.
+                    </p>
+                    <p>
+                        ●	Se quiere almacenar información sobre la renovación de un alquiler de una vivienda. Es necesario saber si un alquiler es una renovación de otro alquiler anterior o no, con el fin de poder seguir fácilmente la secuencia de alquileres de una vivienda con la misma persona.
+                    </p>
+                    <p>
+                        ●	Un alquiler es realizado por un inquilino y de cada INQUILINO se almacena un identificador único, DNI, nombre, apellidos, fecha de nacimiento y teléfono de contacto.
+                    </p>
+                    <p>
+                        ●	Es necesario almacenar información sobre las agencias inmobiliarias que gestionan los alquileres de las viviendas. 
+                    </p>
+                    <p>
+                        ●	De cada AGENCIA INMOBILIARIA se almacena un identificador de agencia, RUC, dirección y teléfono.
+                    </p>
+                    <p>
+                        ●	Una vivienda sólo se oferta en una única agencia inmobiliaria. Una agencia sólo puede gestionar los alquileres de las viviendas ofertadas por ella.
+                    </p>
+                    <p>
+                        ●	De cada VIVIENDA se almacena un identificador de vivienda, calle, número, piso, código postal, población y una descripción.
+                    </p>
+                    <p>
+                        ●	Una vivienda pertenece a un único propietario y un propietario puede tener muchas viviendas.
+                    </p>
+                    <p>
+                        ●	De cada PROPIETARIO se almacena un identificador único, DNI, nombre, apellidos, teléfono, dirección y email.
                     </p>
                 </div>
                 
                 <div class="image-block">
-                    <img src="../imagenes/Pregunta 2.png" alt="Descripción de la segunda imagen de la semana X">
+                    <img src="../imagenes/Enunciado 1.png" alt="Descripción de la imagen de la semana X">
                 </div>
             </div>
         </main>

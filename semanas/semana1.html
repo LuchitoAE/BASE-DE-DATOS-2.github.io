@@ -37,11 +37,21 @@
         <main> <!-- Contenido principal de la semana -->
             <div class="content-section">
                 <div class="text-block">
+                    <h2>
+                        Pregunta 01:
+                    </h2>
+                    <h3>
+                        Entidad - Atributo - Relaciones - Cardinalidad
+                    </h3>
                     <p>
                         <!-- Texto de ejemplo para la semana X -->
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
+                        Se desea diseñar la base de datos de un Universidad. En la base de datos se desea guardar los datos de los PROFESORES de la Universidad (DNI, nombre, dirección y teléfono). Los profesores imparten MÓDULOS, y cada módulo tiene un código y un nombre.
+                    </p>
+                    <p>
+                        Cada ALUMNO está matriculado en uno o varios módulos. De cada alumno se desea guardar el nº de expediente, nombre, apellidos y fecha de nacimiento. 
+                    </p>
+                    <p>
+                        Los profesores pueden impartir varios módulos, pero un módulo sólo puede ser impartido por un profesor. Cada curso tiene un grupo de alumnos, uno de los cuales es el DELEGADO del grupo.
                     </p>
                 </div>
                 
@@ -53,15 +63,57 @@
             <!-- Repite más bloques de texto e imagen si es necesario -->
             <div class="content-section">
                 <div class="text-block">
+                    <h2>
+                        Pregunta 02:
+                    </h2>
+                    <h3>
+                        Entidad - Atributo - Relaciones - Cardinalidad
+                    </h3>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
+                        <!-- Texto de ejemplo para la semana X -->
+                        Se desea informatizar la gestión de una tienda informática. La tienda dispone de una serie de productos que se pueden vender a los clientes.
+                    </p>
+                    <p>
+                        De cada PRODUCTO informático se desea guardar el código, descripción, precio y número de existencias. De cada CLIENTE se desea guardar el código, nombre, apellidos, dirección y número de teléfono. 
+                    </p>
+                    <p>
+                        Un cliente puede comprar varios productos en la tienda y un mismo producto puede ser comprado por varios clientes. Cada vez que se compre un artículo quedará registrada la compra en la base de datos junto con la fecha en la que se ha comprado el artículo. 
+                    </p>
+                    <p>
+                        La tienda tiene contactos con varios proveedores que son los que suministran los productos. Un mismo producto puede ser suministrado por varios proveedores. De cada PROVEEDOR se desea guardar el código, nombre, apellidos, dirección, provincia y número de teléfono.
                     </p>
                 </div>
                 
                 <div class="image-block">
                     <img src="../imagenes/Pregunta 2.png" alt="Descripción de la segunda imagen de la semana X">
+                </div>
+            </div>
+            
+            <div class="content-section"></div>
+                <div class="text-block">
+                    <h2>
+                        Pregunta 03:
+                    </h2>
+                    <h3>
+                        Entidad - Atributo - Relaciones - Cardinalidad
+                    </h3>
+                    <p>
+                        <!-- Texto de ejemplo para la semana X -->
+                        En la biblioteca del centro se manejan fichas de autores y libros. En la FICHA DE cada AUTOR se tiene el código de autor y el nombre. De cada LIBRO se guarda el código, título, ISBN, editorial y número de página.
+                    </p>
+                    <p>
+                        Un autor puede escribir varios libros, y un libro puede ser escrito por varios autores. Un libro está formado por ejemplares. Cada EJEMPLAR tiene un código y una localización. Un libro tiene muchos ejemplares y un ejemplar pertenece sólo a un libro.
+                    </p>
+                    <p>
+                        Los usuarios de la biblioteca del centro también disponen de ficha en la biblioteca y sacan ejemplares de ella. De cada USUARIO se guarda el código, nombre, dirección y teléfono. Los ejemplares son prestados a los usuarios.
+                    </p>
+                    <p>
+                        Un usuario puede tomar prestados varios ejemplares, y un ejemplar puede ser prestado a varios usuarios. De cada PRÉSTAMOS interesa guardar la fecha de préstamo y la fecha de devolución.
+                    </p>
+                </div>
+                
+                <div class="image-block">
+                    <img src="../imagenes/Pregunta 3.png" alt="Descripción de la segunda imagen de la semana X">
                 </div>
             </div>
         </main>

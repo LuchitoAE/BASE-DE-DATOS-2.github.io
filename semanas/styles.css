@@ -85,22 +85,45 @@ header .container {
 /* Estilo para el contenido de las semanas */
 main {
     margin: 40px 0;
+    background-color: #ffffff; /* Fondo blanco para el contenido principal */
+    padding: 20px 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para elevar un poco el contenido */
+    border-radius: 8px; /* Bordes redondeados */
 }
 
+/* Bloques de contenido */
 .content-section {
     margin-bottom: 40px;
+    text-align: center; /* Centramos el texto y la imagen horizontalmente */
 }
 
+/* Estilo del bloque de texto */
 .text-block {
     margin-bottom: 20px;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 18px;
+    line-height: 1.8;
     color: #333;
+    text-align: justify; /* Justifica el texto */
+    width: 100%;
 }
 
+/* Estilo del bloque de imagen */
 .image-block img {
     max-width: 100%; /* La imagen ocupará todo el ancho posible dentro de su contenedor */
     height: auto;
     display: block;
-    margin: 0 auto; /* Centra la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+/* Centrado vertical */
+.content-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Fondo general de la página */
+body {
+    background-color: #e9ecef; /* Fondo claro para todo el body */
 }
