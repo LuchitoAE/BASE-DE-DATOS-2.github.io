@@ -129,34 +129,23 @@ main {
     color: #333;
 }
 
-.instructor-info form {
-    display: grid;
-    gap: 15px;
+.instructor-info .profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.instructor-info label {
+.instructor-info .profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instructor-info p {
     font-size: 18px;
-    color: #333;
-}
-
-.instructor-info input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.instructor-info button {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.instructor-info button:hover {
-    background-color: #555;
+    color: #555;
 }
 
 /* Fondo general de la página */
