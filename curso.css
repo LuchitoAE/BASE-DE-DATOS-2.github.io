@@ -1,3 +1,8 @@
+/* Mantener el fondo general */
+body {
+    background-color: #e9ecef;
+}
+
 /* Estilo general para todo el body */
 body {
     font-family: Arial, sans-serif;
@@ -120,37 +125,60 @@ main {
     color: #555;
 }
 
-/* Información del docente */
-.instructor-info {
-    margin-top: 40px;
+/* Alineación de .introduction y .instructor-info lado a lado */
+.course-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 
+.introduction, .instructor-info {
+    flex: 1; /* Hace que ambas cajas ocupen el mismo ancho */
+    border: 2px solid #ddd;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Información del docente */
 .instructor-info h2 {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
+    text-align: center;
 }
 
 .instructor-info .profile {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
+    text-align: center;
 }
 
 .instructor-info .profile-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 40%;
     object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 16px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.instructor-info .profile-photo:hover {
+    transform: translateY(-5px); /* Simula que la imagen está flotando */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 6px 12px rgba(0, 0, 0, 0.2); /* Incrementa la sombra para un efecto más flotante */
+}
+
 
 .instructor-info p {
     font-size: 18px;
     color: #555;
 }
 
-/* Fondo general de la página */
-body {
-    background-color: #e9ecef;
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .course-info {
+        flex-direction: column; /* En pantallas pequeñas, se apilan las cajas */
+    }
 }

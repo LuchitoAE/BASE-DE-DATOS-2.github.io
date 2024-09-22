@@ -95,40 +95,59 @@ main {
 }
 
 /* Bloques de contenido */
+.info-block {
+    width: 80%; /* Ajusta el ancho al 80% del contenedor padre, puedes reducirlo si lo deseas */
+    max-width: 600px; /* Limita el ancho máximo */
+    border: 2px solid #ddd;
+    padding: 15px; /* Reduce el padding para hacer el bloque más compacto */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 40px auto; /* Centra el bloque horizontalmente y ajusta el margen inferior */
+    background-color: #fff;
+}
+
+
+/* Bloque de la foto */
 .photo-block {
     margin-bottom: 20px;
 }
 
 .photo-block img {
     border-radius: 50%;
-    max-width: 150px; /* Ajusta el tamaño máximo de la foto */
+    max-width: 150px;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
+/* Logo Universidad */
 .logo-block {
-    margin: 40px 0;
-}
-
-.logo-block img {
-    max-width: 200px; /* Ajusta el tamaño máximo del logo */
+    max-width: 200px;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
 }
 
+/* Iconos de redes sociales */
 .social-icons {
     margin: 40px 0;
 }
 
 .social-icons a {
     margin: 0 10px;
+    display: inline-block;
+    border-radius: 10%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .social-icons img {
-    width: 40px; /* Ajusta el tamaño de los iconos sociales */
-    height: auto;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* Estilo del bloque de texto */
