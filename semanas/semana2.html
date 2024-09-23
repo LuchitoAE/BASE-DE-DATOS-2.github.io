@@ -17,7 +17,7 @@
                     <a href="../misdatos.html">Mis datos</a>
                     <a href="../curso.html">Curso</a>
                     <div class="dropdown">
-                        <button class="dropbtn">Opción Desplegable</button>
+                        <button class="dropbtn">Semanas</button>
                         <div class="dropdown-content">
                             <a href="../semanas/semana1.html">Semana 1</a>
                             <a href="../semanas/semana2.html">Semana 2</a>
@@ -89,39 +89,40 @@
                     <ul>
                         <!-- Texto de ejemplo para la semana X -->
                         La Empresa “Andaluz” es una empresa que alquila viviendas, necesita una base de datos para gestionar los alquileres de las viviendas de particulares. Los requisitos de esta base de datos son los que se detallan a continuación.
+                        <ul><br>
+                            <li>
+                                Es necesario almacenar información sobre la duración de cada uno de los alquileres de una vivienda con el fin de conocer el histórico de alquileres.
+                            </li>
+                            <li>
+                                La información que se guarda de cada ALQUILER es un identificador único de alquiler, fecha de inicio, fecha de fin, importe mensual, fianza y fecha de la firma.
+                            </li>
+                            <li>
+                                Se quiere almacenar información sobre la renovación de un alquiler de una vivienda. Es necesario saber si un alquiler es una renovación de otro alquiler anterior o no, con el fin de poder seguir fácilmente la secuencia de alquileres de una vivienda con la misma persona.
+                            </li>
+                            <li>
+                                Un alquiler es realizado por un inquilino y de cada INQUILINO se almacena un identificador único, DNI, nombre, apellidos, fecha de nacimiento y teléfono de contacto.
+                            </li>
+                            <li>
+                                Es necesario almacenar información sobre las agencias inmobiliarias que gestionan los alquileres de las viviendas. 
+                            </li>
+                            <li>
+                                De cada AGENCIA INMOBILIARIA se almacena un identificador de agencia, RUC, dirección y teléfono.
+                            </li>
+                            <li>
+                                Una vivienda sólo se oferta en una única agencia inmobiliaria. Una agencia sólo puede gestionar los alquileres de las viviendas ofertadas por ella.
+                            </li>
+                            <li>
+                                De cada VIVIENDA se almacena un identificador de vivienda, calle, número, piso, código postal, población y una descripción.
+                            </li>
+                            <li>
+                                Una vivienda pertenece a un único propietario y un propietario puede tener muchas viviendas.
+                            </li>
+                            <li>
+                                De cada PROPIETARIO se almacena un identificador único, DNI, nombre, apellidos, teléfono, dirección y email.
+                            </li>
+                        </ul>
                     </ul>
-                    <p>
-                        ●	Es necesario almacenar información sobre la duración de cada uno de los alquileres de una vivienda con el fin de conocer el histórico de alquileres.
-                    </p>
-                    <p>
-                        ●	La información que se guarda de cada ALQUILER es un identificador único de alquiler, fecha de inicio, fecha de fin, importe mensual, fianza y fecha de la firma.
-                    </p>
-                    <p>
-                        ●	Se quiere almacenar información sobre la renovación de un alquiler de una vivienda. Es necesario saber si un alquiler es una renovación de otro alquiler anterior o no, con el fin de poder seguir fácilmente la secuencia de alquileres de una vivienda con la misma persona.
-                    </p>
-                    <p>
-                        ●	Un alquiler es realizado por un inquilino y de cada INQUILINO se almacena un identificador único, DNI, nombre, apellidos, fecha de nacimiento y teléfono de contacto.
-                    </p>
-                    <p>
-                        ●	Es necesario almacenar información sobre las agencias inmobiliarias que gestionan los alquileres de las viviendas. 
-                    </p>
-                    <p>
-                        ●	De cada AGENCIA INMOBILIARIA se almacena un identificador de agencia, RUC, dirección y teléfono.
-                    </p>
-                    <p>
-                        ●	Una vivienda sólo se oferta en una única agencia inmobiliaria. Una agencia sólo puede gestionar los alquileres de las viviendas ofertadas por ella.
-                    </p>
-                    <p>
-                        ●	De cada VIVIENDA se almacena un identificador de vivienda, calle, número, piso, código postal, población y una descripción.
-                    </p>
-                    <p>
-                        ●	Una vivienda pertenece a un único propietario y un propietario puede tener muchas viviendas.
-                    </p>
-                    <p>
-                        ●	De cada PROPIETARIO se almacena un identificador único, DNI, nombre, apellidos, teléfono, dirección y email.
-                    </p>
                 </div>
-                
                 <div class="image-block">
                     <img src="../imagenes/Enunciado 1.png" alt="Descripción de la imagen de la semana X">
                 </div>
