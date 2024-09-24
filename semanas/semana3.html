@@ -37,33 +37,111 @@
         <main> <!-- Contenido principal de la semana -->
             <div class="content-section">
                 <div class="text-block">
-                    <p>
-                        <!-- Texto de ejemplo para la semana X -->
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
+                    <h2>
+                        Pregunta 01:
+                    </h2>
+                    <ul>
+                        <li><strong>Entidades:</strong>
+                            <ul>
+                                <li><strong>Profesor:</strong> DNI (clave primaria), Nombre, Dirección, Teléfono</li>
+                                <li><strong>Módulo:</strong> Código (clave primaria), Nombre, DNI_Profesor (clave foránea)</li>
+                                <li><strong>Alumno:</strong> Nº de expediente (clave primaria), Nombre, Apellidos, Fecha de nacimiento</li>
+                                <li><strong>Curso:</strong> Código del curso (clave primaria), Año, Semestre, Nº de expediente del delegado (FK)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><strong>Relaciones y Cardinalidades:</strong>
+                            <ul>
+                                <li><strong>Profesor - Módulo:</strong> Un profesor imparte uno o varios módulos, pero un módulo es impartido solo por un profesor. <br> Cardinalidad: Profesor (1) ----> Módulo (N)</li>
+                                <li><strong>Alumno - Módulo:</strong> Un alumno puede estar matriculado en uno o varios módulos, y un módulo puede tener uno o varios alumnos. <br> Cardinalidad: Alumno (N) ----> Módulo (N)</li>
+                                <li><strong>Curso - Alumno:</strong> Un curso tiene varios alumnos, y uno de ellos es el delegado. <br> Cardinalidad: Curso (1) ----> Alumno (N)</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
                 
                 <div class="image-block">
-                    <img src="../imagenes/Pregunta 1.png" alt="Descripción de la imagen de la semana X">
+                    <img src="../imagenes/Pregunta 1- ER Diagrama.png" alt="Descripción de la imagen de la semana X">
                 </div>
             </div>
+            
 
             <!-- Repite más bloques de texto e imagen si es necesario -->
             <div class="content-section">
                 <div class="text-block">
+                    <h2>
+                        Pregunta 02:
+                    </h2>
+                    <h3>
+                        Entidad - Atributo - Relaciones - Cardinalidad
+                    </h3>
+                    <ul>
+                        <li><strong>Entidades:</strong>
+                            <ul>
+                                <li><strong>Producto:</strong> Código (clave primaria), Descripción, Precio, Número de existencias</li>
+                                <li><strong>Cliente:</strong> Código (clave primaria), Nombre, Apellidos, Dirección, Número de teléfono</li>
+                                <li><strong>Proveedor:</strong> Código (clave primaria), Nombre, Apellidos, Dirección, Provincia, Número de teléfono</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><strong>Relaciones y Cardinalidades:</strong>
+                            <ul>
+                                <li><strong>Cliente - Producto:</strong> Un cliente puede comprar varios productos en la tienda y un mismo producto puede ser comprado por varios clientes. <br> Cardinalidad: Cliente (N) ----> Producto (N)</li>
+                                <li><strong>Producto - Proveedor:</strong> Un mismo producto puede ser suministrado por varios proveedores. <br> Cardinalidad: Producto (N) ----> Proveedor (N)</li>
+                            </ul>
+                        </li>
+                    </ul>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
+                        Se desea informatizar la gestión de una tienda informática. La tienda dispone de una serie de productos que se pueden vender a los clientes. Cada vez que se compre un artículo quedará registrada la compra en la base de datos junto con la fecha en la que se ha comprado el artículo.
                     </p>
                 </div>
                 
                 <div class="image-block">
-                    <img src="../imagenes/Pregunta 2.png" alt="Descripción de la segunda imagen de la semana X">
+                    <img src="../imagenes/Pregunta 2- ER Diagrama.png" alt="Descripción de la segunda imagen de la semana X">
                 </div>
             </div>
+            
+            
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>
+                        Pregunta 03:
+                    </h2>
+                    <h3>
+                        Entidad - Atributo - Relaciones - Cardinalidad
+                    </h3>
+                    <ul>
+                        <li><strong>Entidades:</strong>
+                            <ul>
+                                <li><strong>Autor:</strong> Código de autor (clave primaria), Nombre</li>
+                                <li><strong>Libro:</strong> Código (clave primaria), Título, ISBN, Editorial, Número de páginas</li>
+                                <li><strong>Ejemplar:</strong> Código (clave primaria), Localización</li>
+                                <li><strong>Usuario:</strong> Código (clave primaria), Nombre, Dirección, Teléfono</li>
+                                <li><strong>Préstamo:</strong> Fecha de préstamo, Fecha de devolución</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><strong>Relaciones y Cardinalidades:</strong>
+                            <ul>
+                                <li><strong>Autor - Libro:</strong> Un autor puede escribir varios libros y un libro puede ser escrito por varios autores. <br> Cardinalidad: Autor (N) ----> Libro (N)</li>
+                                <li><strong>Libro - Ejemplar:</strong> Un libro tiene muchos ejemplares y un ejemplar pertenece solo a un libro. <br> Cardinalidad: Libro (1) ----> Ejemplar (N)</li>
+                                <li><strong>Usuario - Ejemplar:</strong> Un usuario puede tomar prestados varios ejemplares, y un ejemplar puede ser prestado a varios usuarios. <br> Cardinalidad: Usuario (N) ----> Ejemplar (N)</li>
+                                <li><strong>Préstamo - Ejemplar:</strong> Los ejemplares son prestados a los usuarios. <br> Cardinalidad: Préstamo (1) ----> Ejemplar (1)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>
+                        En la biblioteca del centro se manejan fichas de autores y libros. En la FICHA de cada AUTOR se tiene el código de autor y el nombre. De cada LIBRO se guarda el código, título, ISBN, editorial y número de página.
+                    </p>
+                </div>
+                
+                <div class="image-block">
+                    <img src="../imagenes/Pregunta 3- ER Diagrama.png" alt="Descripción de la segunda imagen de la semana X">
+                </div>
+            </div>            
         </main>
     </div> <!-- Fin del contenedor general -->
 </body>

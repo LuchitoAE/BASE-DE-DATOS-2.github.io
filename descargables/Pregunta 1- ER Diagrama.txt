@@ -1,0 +1,33 @@
+CREATE TABLE [Grupo] (
+  [ID_grupo PK] INT,
+  [Delegado FK] INT
+);
+
+CREATE TABLE [Alumno] (
+  [Numero_expediente PK] INT,
+  [Nombre] VARCHAR(100),
+  [Apellidos] VARCHAR(100),
+  [Fecha_nacimiento] DATE,
+  [ID_Grupo FK] INT
+);
+
+CREATE TABLE [Alumno_Modulo] (
+  [Numero_expediente FK] INT,
+  [Codigo_Modulo FK] VARCHAR(10),
+  [Fecha_matricula] DATE,
+  [DECIMAL(5] <type>
+);
+
+CREATE TABLE [Modulo] (
+  [Codigo PK] VARCHAR(10),
+  [Nombre] VARCHAR(100),
+  [DNI_Profesor FK] VARCHAR(10)
+);
+
+CREATE TABLE [Profesor] (
+  [DNI PK] VARCHAR(10),
+  [Nombre] VARCHAR(100),
+  [Dirección] VARCHAR(200),
+  [Teléfono] VARCHAR(15)
+);
+
