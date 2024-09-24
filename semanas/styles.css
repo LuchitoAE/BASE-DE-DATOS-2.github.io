@@ -151,3 +151,26 @@ main {
 body {
     background-color: #e9ecef; /* Fondo claro para todo el body */
 }
+
+/* Estilo para el bloque de botones de descarga/visualización */
+.descargar-o-ver {
+    margin-top: 20px;
+    display: flex; /* Usar flexbox para alinear los botones en fila */
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.descargar-o-ver a {
+    display: inline-block; /* Hace que el enlace se comporte como un botón */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    color: white; /* Color del texto */
+    background-color: #007bff; /* Color de fondo */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s ease; /* Transición suave para el hover */
+}
+
+.descargar-o-ver a:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
