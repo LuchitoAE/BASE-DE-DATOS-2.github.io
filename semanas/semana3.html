@@ -43,121 +43,43 @@
                     <ul>
                         <li><strong>Entidades:</strong>
                             <ul>
-                                <li><strong>Profesor:</strong> DNI (clave primaria), Nombre, Dirección, Teléfono</li>
-                                <li><strong>Módulo:</strong> Código (clave primaria), Nombre, DNI_Profesor (clave foránea)</li>
-                                <li><strong>Alumno:</strong> Nº de expediente (clave primaria), Nombre, Apellidos, Fecha de nacimiento</li>
-                                <li><strong>Curso:</strong> Código del curso (clave primaria), Año, Semestre, Nº de expediente del delegado (FK)</li>
+                                <li><strong>Marca:</strong> Identificador (clave primaria), Nombre</li>
+                                <li><strong>Modelo:</strong> Identificador (clave primaria), Nombre, Marca_ID (clave foránea)</li>
+                                <li><strong>Versión:</strong> Identificador (clave primaria), Nombre de versión, Potencia, Precio base, Tipo de combustible, Modelo_ID (clave foránea)</li>
+                                <li><strong>Extra:</strong> Identificador (clave primaria), Nombre, Descripción</li>
+                                <li><strong>Cliente:</strong> NIF (clave primaria), Nombre, Apellidos, Dirección, Teléfono</li>
+                                <li><strong>Vendedor:</strong> NIF (clave primaria), Nombre, Apellidos, Dirección, Teléfono</li>
+                                <li><strong>Coche Usado:</strong> Matrícula (clave primaria), Marca, Modelo, Precio de tasación, Fecha de cesión, Cliente_NIF (clave foránea)</li>
+                                <li><strong>Venta:</strong> ID de venta (clave primaria), Fecha de venta, Matrícula del nuevo vehículo, Cliente_NIF (clave foránea), Vendedor_NIF (clave foránea), Modelo_ID (clave foránea)</li>
                             </ul>
                         </li>
                     </ul>
                     <ul>
                         <li><strong>Relaciones y Cardinalidades:</strong>
                             <ul>
-                                <li><strong>Profesor - Módulo:</strong> Un profesor imparte uno o varios módulos, pero un módulo es impartido solo por un profesor. <br> Cardinalidad: Profesor (1) ----> Módulo (N)</li>
-                                <li><strong>Alumno - Módulo:</strong> Un alumno puede estar matriculado en uno o varios módulos, y un módulo puede tener uno o varios alumnos. <br> Cardinalidad: Alumno (N) ----> Módulo (N)</li>
-                                <li><strong>Curso - Alumno:</strong> Un curso tiene varios alumnos, y uno de ellos es el delegado. <br> Cardinalidad: Curso (1) ----> Alumno (N)</li>
+                                <li><strong>Marca - Modelo:</strong> Una marca puede tener muchos modelos, pero un modelo solo puede pertenecer a una marca. <br> Cardinalidad: Marca (1) ----> Modelo (N)</li>
+                                <li><strong>Modelo - Versión:</strong> Un modelo puede tener muchas versiones, pero una versión solo puede pertenecer a un modelo. <br> Cardinalidad: Modelo (1) ----> Versión (N)</li>
+                                <li><strong>Versión - Extra:</strong> Una versión puede tener varios extras, y un extra puede ser utilizado en varias versiones. <br> Cardinalidad: Versión (N) ----> Extra (N)</li>
+                                <li><strong>Cliente - Coche Usado:</strong> Un cliente puede ceder muchos coches usados, pero un coche usado solo puede ser cedido por un cliente. <br> Cardinalidad: Cliente (1) ----> Coche Usado (N)</li>
+                                <li><strong>Cliente - Venta:</strong> Un cliente puede tener muchas ventas, pero cada venta corresponde a un solo cliente. <br> Cardinalidad: Cliente (1) ----> Venta (N)</li>
+                                <li><strong>Vendedor - Venta:</strong> Un vendedor puede realizar muchas ventas, pero cada venta corresponde a un solo vendedor. <br> Cardinalidad: Vendedor (1) ----> Venta (N)</li>
+                                <li><strong>Modelo - Venta:</strong> Un modelo puede ser vendido en muchas ventas, pero cada venta corresponde a un solo modelo. <br> Cardinalidad: Modelo (1) ----> Venta (N)</li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                
+        
                 <div class="image-block">
-                    <img src="../imagenes/Pregunta 1- ER Diagrama.png" alt="Descripción de la imagen de la semana X">
+                    <img src="../imagenes/Enunciado 2-diagramaER.png" alt="Descripción de la imagen de la semana X">
                 </div>
                 <div class="descargar-o-ver">
-                    <a href="../descargables/Pregunta 1- ER Diagrama.txt" download="archivo.txt">Descargar archivo .txt</a>
+                    <a href="../descargables/Enunciado 2 - ER.sql" download="archivo.sql">Descargar archivo .sql</a>
                     <br>
-                    <a href="../descargables/Pregunta 1- ER Diagrama.txt" target="_blank">Ver archivo .txt</a>
+                    <a href="../descargables/Enunciado 2 - ER.txt" target="_blank">Ver archivo .sql</a>
                 </div>
             </div>
-            
-
-            <!-- Repite más bloques de texto e imagen si es necesario -->
-            <div class="content-section">
-                <div class="text-block">
-                    <h2>
-                        Pregunta 02:
-                    </h2>
-                    <h3>
-                        Entidad - Atributo - Relaciones - Cardinalidad
-                    </h3>
-                    <ul>
-                        <li><strong>Entidades:</strong>
-                            <ul>
-                                <li><strong>Producto:</strong> Código (clave primaria), Descripción, Precio, Número de existencias</li>
-                                <li><strong>Cliente:</strong> Código (clave primaria), Nombre, Apellidos, Dirección, Número de teléfono</li>
-                                <li><strong>Proveedor:</strong> Código (clave primaria), Nombre, Apellidos, Dirección, Provincia, Número de teléfono</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li><strong>Relaciones y Cardinalidades:</strong>
-                            <ul>
-                                <li><strong>Cliente - Producto:</strong> Un cliente puede comprar varios productos en la tienda y un mismo producto puede ser comprado por varios clientes. <br> Cardinalidad: Cliente (N) ----> Producto (N)</li>
-                                <li><strong>Producto - Proveedor:</strong> Un mismo producto puede ser suministrado por varios proveedores. <br> Cardinalidad: Producto (N) ----> Proveedor (N)</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <p>
-                        Se desea informatizar la gestión de una tienda informática. La tienda dispone de una serie de productos que se pueden vender a los clientes. Cada vez que se compre un artículo quedará registrada la compra en la base de datos junto con la fecha en la que se ha comprado el artículo.
-                    </p>
-                </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 2- ER Diagrama.png" alt="Descripción de la segunda imagen de la semana X">
-                </div>
-                <div class="descargar-o-ver">
-                    <a href="../descargables/Pregunta 2- ER Diagrama.txt" download="archivo.txt">Descargar archivo .txt</a>
-                    <br>
-                    <a href="../descargables/Pregunta 2- ER Diagrama.txt" target="_blank">Ver archivo .txt</a>
-                </div>
-            </div>
-            
-            
-            <div class="content-section">
-                <div class="text-block">
-                    <h2>
-                        Pregunta 03:
-                    </h2>
-                    <h3>
-                        Entidad - Atributo - Relaciones - Cardinalidad
-                    </h3>
-                    <ul>
-                        <li><strong>Entidades:</strong>
-                            <ul>
-                                <li><strong>Autor:</strong> Código de autor (clave primaria), Nombre</li>
-                                <li><strong>Libro:</strong> Código (clave primaria), Título, ISBN, Editorial, Número de páginas</li>
-                                <li><strong>Ejemplar:</strong> Código (clave primaria), Localización</li>
-                                <li><strong>Usuario:</strong> Código (clave primaria), Nombre, Dirección, Teléfono</li>
-                                <li><strong>Préstamo:</strong> Fecha de préstamo, Fecha de devolución</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li><strong>Relaciones y Cardinalidades:</strong>
-                            <ul>
-                                <li><strong>Autor - Libro:</strong> Un autor puede escribir varios libros y un libro puede ser escrito por varios autores. <br> Cardinalidad: Autor (N) ----> Libro (N)</li>
-                                <li><strong>Libro - Ejemplar:</strong> Un libro tiene muchos ejemplares y un ejemplar pertenece solo a un libro. <br> Cardinalidad: Libro (1) ----> Ejemplar (N)</li>
-                                <li><strong>Usuario - Ejemplar:</strong> Un usuario puede tomar prestados varios ejemplares, y un ejemplar puede ser prestado a varios usuarios. <br> Cardinalidad: Usuario (N) ----> Ejemplar (N)</li>
-                                <li><strong>Préstamo - Ejemplar:</strong> Los ejemplares son prestados a los usuarios. <br> Cardinalidad: Préstamo (1) ----> Ejemplar (1)</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <p>
-                        En la biblioteca del centro se manejan fichas de autores y libros. En la FICHA de cada AUTOR se tiene el código de autor y el nombre. De cada LIBRO se guarda el código, título, ISBN, editorial y número de página.
-                    </p>
-                </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 3- ER Diagrama.png" alt="Descripción de la segunda imagen de la semana X">
-                </div>
-                <div class="descargar-o-ver">
-                    <a href="../descargables/Pregunta 3- ER Diagrama.txt" download="archivo.txt">Descargar archivo .txt</a>
-                    <br>
-                    <a href="../descargables/Pregunta 3- ER Diagrama.txt" target="_blank">Ver archivo .txt</a>
-                </div>
-            </div>            
         </main>
+        
     </div> <!-- Fin del contenedor general -->
 </body>
 </html>

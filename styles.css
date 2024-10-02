@@ -3,9 +3,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #2c3e50, #4ca1af, #fbc2eb); /* Degradado de gris azulado a azul claro, luego a rosa suave */
-    background-attachment: fixed; /* Para que el fondo se quede fijo al hacer scroll */
-    background-size: cover; /* Para que cubra toda la página */
+    background: linear-gradient(135deg, #2c3e50, #4ca1af, #fbc2eb); /* Degradado de colores */
+    background-attachment: fixed; /* Fondo fijo al hacer scroll */
+    background-size: cover; /* Cubre toda la pantalla */
 }
 
 /* Contenedor que limita el ancho de la página */
@@ -15,7 +15,7 @@ body {
     padding: 0 20px;
 }
 
-/* Encabezado */
+/* Encabezado con fondo oscuro */
 header {
     background-color: #333;
     padding: 20px 0;
@@ -24,11 +24,11 @@ header {
     position: relative;
 }
 
-/* Contenedor dentro del encabezado */
+/* Contenedor flex para alinear los elementos */
 header .container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Espacio entre elementos de la izquierda y derecha */
+    align-items: center; /* Alineación vertical centrada */
 }
 
 /* Estilo para la opción izquierda */
@@ -42,9 +42,10 @@ header .container {
 /* Estilo para las opciones de la derecha */
 .right {
     display: flex;
-    gap: 20px;
+    gap: 20px; /* Espacio entre los enlaces de la derecha */
 }
 
+/* Estilo para los enlaces de la derecha y el botón desplegable */
 .right a, .dropbtn {
     color: white;
     text-decoration: none;
@@ -55,27 +56,30 @@ header .container {
     cursor: pointer;
 }
 
+/* Cambia el fondo al hacer hover */
 .right a:hover, .dropbtn:hover {
     background-color: #777;
 }
 
-/* Estilo para el botón desplegable */
+/* Menú desplegable */
 .dropdown {
     position: relative;
 }
 
+/* Contenido del menú desplegable, oculto por defecto */
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    max-height: 200px; /* Limita la altura del dropdown */
-    overflow-y: auto; /* Agrega un scroll vertical */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    max-height: 200px; /* Limita la altura */
+    overflow-y: auto; /* Desplazamiento vertical si el contenido es mayor */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra debajo del menú */
     z-index: 1;
-    right: 0; /* Alinear el desplegable a la derecha */
+    right: 0; /* Alinear a la derecha */
 }
 
+/* Estilo de los enlaces dentro del menú desplegable */
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -83,11 +87,12 @@ header .container {
     display: block;
 }
 
+/* Cambia el fondo de los enlaces al hacer hover */
 .dropdown-content a:hover {
     background-color: #ddd;
 }
 
-/* Mostrar el contenido del menú desplegable al hacer hover */
+/* Mostrar el menú desplegable al hacer hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -96,7 +101,7 @@ header .container {
     background-color: #777;
 }
 
-/* Estilo para la sección de bienvenida */
+/* Sección de bienvenida con imagen de fondo */
 .welcome-section {
     background-image: url('https://atlantictech.io/wp-content/uploads/2022/08/2c4ea-basededatos2-1300x731.png');
     background-size: cover;
@@ -105,24 +110,27 @@ header .container {
     text-align: center;
     color: white;
     position: relative;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra interior */
     border-radius: 8px;
     margin-top: 20px;
 }
 
+/* Fondo semitransparente para el contenido */
 .welcome-content {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
     display: inline-block;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Título principal */
 .welcome-section h1 {
     font-size: 40px;
     margin: 0;
 }
 
+/* Párrafo dentro de la sección de bienvenida */
 .welcome-section p {
     font-size: 20px;
     line-height: 1.8;

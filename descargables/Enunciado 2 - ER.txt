@@ -1,0 +1,102 @@
+CREATE TABLE [marcas] (
+  [id] BIGINT PRIMARY KEY IDENTITY(1, 1),
+  [nombre] NVARCHAR(MAX) NOT NULL
+)
+GO
+
+CREATE TABLE [modelos] (
+  [id] BIGINT PRIMARY KEY IDENTITY(1, 1),
+  [nombre] NVARCHAR(MAX) NOT NULL,
+  [marca_id] BIGINT NOT NULL
+)
+GO
+
+CREATE TABLE [versiones] (
+  [id] BIGINT PRIMARY KEY IDENTITY(1, 1),
+  [nombre] NVARCHAR(MAX) NOT NULL,
+  [potencia] NVARCHAR(MAX) NOT NULL,
+  [precio_base] DECIMAL(18,2) NOT NULL,
+  [tipo_combustible] nvarchar(255) NOT NULL CHECK ([tipo_combustible] IN ('Gasolina', 'Diesel')),
+  [modelo_id] BIGINT NOT NULL
+)
+GO
+
+CREATE TABLE [extras] (
+  [id] BIGINT PRIMARY KEY IDENTITY(1, 1),
+  [nombre] NVARCHAR(MAX) NOT NULL,
+  [descripcion] NVARCHAR(MAX)
+)
+GO
+
+CREATE TABLE [versiones_extras] (
+  [version_id] BIGINT NOT NULL,
+  [extra_id] BIGINT NOT NULL,
+  [precio] DECIMAL(18,2) NOT NULL,
+  PRIMARY KEY ([version_id], [extra_id])
+)
+GO
+
+CREATE TABLE [clientes] (
+  [id] BIGINT PRIMARY KEY IDENTITY(1, 1),
+  [nombre] NVARCHAR(MAX) NOT NULL,
+  [apellidos] NVARCHAR(MAX) NOT NULL,
+  [nif] NVARCHAR(50) UNIQUE NOT NULL,
+  [direccion] NVARCHAR(MAX),
+  [telefono] NVARCHAR(50)
+)
+GO
+
+CREATE TABLE [vendedores] (
+  [id] BIGINT PRIMARY KEY IDENTITY(1, 1),
+  [nombre] NVARCHAR(MAX) NOT NULL,
+  [apellidos] NVARCHAR(MAX) NOT NULL,
+  [nif] NVARCHAR(50) UNIQUE NOT NULL,
+  [direccion] NVARCHAR(MAX),
+  [telefono] NVARCHAR(50)
+)
+GO
+
+CREATE TABLE [coches_usados] (
+  [id] BIGINT PRIMARY KEY IDENTITY(1, 1),
+  [marca] NVARCHAR(MAX) NOT NULL,
+  [modelo] NVARCHAR(MAX) NOT NULL,
+  [matricula] NVARCHAR(50) UNIQUE NOT NULL,
+  [precio_tasacion] DECIMAL(18,2) NOT NULL,
+  [fecha_cesion] DATE NOT NULL,
+  [cliente_id] BIGINT NOT NULL
+)
+GO
+
+CREATE TABLE [ventas] (
+  [id] BIGINT PRIMARY KEY IDENTITY(1, 1),
+  [fecha_venta] DATE NOT NULL,
+  [matricula_nuevo] NVARCHAR(50) UNIQUE NOT NULL,
+  [cliente_id] BIGINT NOT NULL,
+  [vendedor_id] BIGINT NOT NULL,
+  [version_id] BIGINT NOT NULL
+)
+GO
+
+ALTER TABLE [modelos] ADD FOREIGN KEY ([marca_id]) REFERENCES [marcas] ([id])
+GO
+
+ALTER TABLE [versiones] ADD FOREIGN KEY ([modelo_id]) REFERENCES [modelos] ([id])
+GO
+
+ALTER TABLE [versiones_extras] ADD FOREIGN KEY ([version_id]) REFERENCES [versiones] ([id])
+GO
+
+ALTER TABLE [versiones_extras] ADD FOREIGN KEY ([extra_id]) REFERENCES [extras] ([id])
+GO
+
+ALTER TABLE [coches_usados] ADD FOREIGN KEY ([cliente_id]) REFERENCES [clientes] ([id])
+GO
+
+ALTER TABLE [ventas] ADD FOREIGN KEY ([cliente_id]) REFERENCES [clientes] ([id])
+GO
+
+ALTER TABLE [ventas] ADD FOREIGN KEY ([vendedor_id]) REFERENCES [vendedores] ([id])
+GO
+
+ALTER TABLE [ventas] ADD FOREIGN KEY ([version_id]) REFERENCES [versiones] ([id])
+GO
