@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="page-container"> <!-- Contenedor que centrará el contenido -->
+        
         <header>
             <div class="container"> <!-- Contenedor de flexbox para los elementos del encabezado -->
                 <div class="left">
@@ -34,14 +35,106 @@
             </div>
         </header>
 
-        <main>
-            <section class="welcome-section"> <!-- Sección principal con imagen de fondo -->
-                <div class="welcome-content"> <!-- Contenido dentro de la sección -->
-                    <h1>Bienvenido a la Página de Inicio</h1> <!-- Título principal -->
-                    <p>Esta es la página principal de nuestro sitio. Aquí puedes encontrar enlaces a nuestras secciones importantes, incluyendo información sobre el curso y tus datos personales. Explora las opciones del menú para acceder a las diferentes secciones.</p> <!-- Descripción -->
+        <main class="guide-container">
+            <div class="step">
+                <h1>Guía para crear repositorio en GitHub</h1>
+            </div>
+        
+            <div class="step" id="step1">
+                <h2>Paso 1: registro e inicio de sesión</h2>
+                <div class="instruction">
+                    <ul>
+                        <li>Click en "Registrarse" (Sign Up) en GitHub.</li>
+                        <li>Completar todos los campos y hacer click en "continuar".</li>
+                        <img src="../imagenes/Guia Github/1.png" alt="Paso 1b">
+                        <li>Verificar su correo (recibirán un código de verificación en el correo con el cual se registraron).</li>
+                        <img src="../imagenes/Guia Github/2.png" alt="Paso 1c">
+                        <li>Iniciar sesión con sus credenciales.</li>
+                        <img src="../imagenes/Guia Github/3.png" alt="Paso 1d">
+                    </ul>
                 </div>
-            </section>
+            </div>
+        
+            <div class="step" id="step2">
+                <h2>Paso 2: creación de repositorio</h2>
+                <div class="instruction">
+                    <ul>
+                        <li>Una vez completado tu primer inicio de sesión, dirígete hacia tus repositorios.</li>
+                        <img src="../imagenes/Guia Github/4.png" alt="Paso 2a">
+                        <li>Click derecho en "nuevo" (new).</li>
+                        <li>Escribir el nombre de tu repositorio, agregar al final “github.io” (esto es clave para publicar tu repositorio como página web). Puedes agregar una descripción (opcional).</li>
+                        <img src="../imagenes/Guia Github/5.png" alt="Paso 2c">
+                        <li>Asegurarse que esté en público, y click en "crear repositorio" (Create repository).</li>
+                        <img src="../imagenes/Guia Github/6.png" alt="Paso 2d">
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="step" id="step3">
+                <h2>Paso 3: configuración</h2>
+                <div class="instruction">
+                    <ul>
+                        <li>
+                            Opción 1: Descargar el GitHub Desktop para vincular al Visual Studio y trabajar tu repositorio desde allí.
+                            <br>Opción 2: Crear un nuevo archivo para el repositorio.
+                            <br>Opción 3: Subir un archivo.
+                        </li>
+                        <img src="../imagenes/Guia Github/7.png" alt="Paso 3a">
+                        <li>En esta ocasión creamos un nuevo archivo donde:</li>
+                        <ul>
+                            <li>Ingresamos el nombre del archivo “index.html”.</li>
+                            <li>Escribimos un código sencillo para probar.</li>
+                            <li>Confirmamos cambios (commit changes).</li>
+                        </ul>
+                        <img src="../imagenes/Guia Github/8.png" alt="Paso 3b">
+                        <li>Aquí puedes agregar una descripción y título del cambio realizado (opcional), después click en confirmar cambios.</li>
+                        <img src="../imagenes/Guia Github/9.png" alt="Paso 3c">
+                        <li>Click en configuración (Settings) del apartado del menú:</li>
+                        <img src="../imagenes/Guia Github/10.png" alt="Paso 3d">
+                        <li>Opción páginas (Pages).</li>
+                        <img src="../imagenes/Guia Github/11.png" alt="Paso 3e">
+                        <li>
+                            1. Click en "ninguno" (None).
+                            <br>2. Escoger la opción "principal" (Main).
+                            <br>3. Guardar (Save).
+                        </li>
+                        <img src="../imagenes/Guia Github/12.png" alt="Paso 3f">
+                        <li>Esperar unos minutos hasta que cargue y, cuando logre visualizar el cambio, click en "visitar sitio" (Visit site).</li>
+                        <img src="../imagenes/Guia Github/13.png" alt="Paso 3g">
+                        <li>Y podrá visualizar tu página.</li>
+                        <img src="../imagenes/Guia Github/14.png" alt="Paso 3h">
+                        <li>
+                            Nos vamos al apartado "código" (Code) del menú.
+                            <ul>
+                                <li>Aquí podemos agregar archivos.</li>
+                                <li>Aquí podemos visualizar detalles del código.</li>
+                            </ul>
+                        </li>
+                        <img src="../imagenes/Guia Github/15.png" alt="Paso 3i">
+                        <li>
+                            En "agregar archivos" podemos subir arrastrando el archivo dentro del recuadro. En este caso se agregará “styles.css”. No te olvides modificar el archivo “index.html” con el vínculo correspondiente al CSS.
+                        </li>
+                        <img src="../imagenes/Guia Github/16.png" alt="Paso 3j">
+                        <li>Puedes agregar título y descripción de los cambios, luego click en "confirmar cambios" (Commit changes).</li>
+                        <img src="../imagenes/Guia Github/17.png" alt="Paso 3k">
+                        <li>
+                            Volvemos al "código" (Code) del menú, podemos clickear el punto naranja para ver el estado y detalle de los cambios. Una vez cargado, podemos volver a la página para visualizar los cambios; puede que no se actualice al instante.
+                        </li>
+                        <img src="../imagenes/Guia Github/18.png" alt="Paso 3l">
+                        <img src="../imagenes/Guia Github/19.png" alt="Paso final">
+                    </ul>
+                </div>
+            </div>
         </main>
+        
+        
+        <footer> <!-- Pie de página -->
+            <div class="footer-container">
+                <p>&copy; 2024 Luis Walter Aquino Espinoza. Todos los derechos reservados.</p>
+                <p>Política de Privacidad  | Términos de Servicio</p>
+            </div>
+        </footer>
+
     </div> <!-- Fin del contenedor global -->
 </body>
 </html>
