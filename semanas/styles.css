@@ -174,3 +174,13 @@ body {
 .descargar-o-ver a:hover {
     background-color: #0056b3; /* Color de fondo al pasar el mouse */
 }
+
+pre {
+    white-space: pre-wrap; /* Permite que las líneas largas se ajusten al ancho del contenedor */
+    word-wrap: break-word; /* Rompe las palabras largas si es necesario */
+    overflow-x: auto; /* Añade una barra de desplazamiento horizontal si es necesario */
+    padding: 10px;
+    background-color: #f5f5f5; /* Fondo claro para diferenciar el bloque de código */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

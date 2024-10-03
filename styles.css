@@ -138,8 +138,10 @@ header .container {
     max-height: 350px; /* Ancho máximo */
     height: auto; /* Mantiene la relación de aspecto */
     border: 2px solid #333; /* Borde alrededor de la imagen */
-    padding: 10px; /* Espaciado interno para el borde */
+    padding: 3px; /* Espaciado interno para el borde */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para las imágenes */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* Estilo para el pie de página */
