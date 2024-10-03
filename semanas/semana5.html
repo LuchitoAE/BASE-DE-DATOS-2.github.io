@@ -35,35 +35,206 @@
         </header>
         
         <main> <!-- Contenido principal de la semana -->
-            <div class="content-section">
+            <section class="content-section">
                 <div class="text-block">
-                    <p>
-                        <!-- Texto de ejemplo para la semana X -->
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
+                    <h2>Consulta 1: Mostrar todos los datos de todas las personas</h2>
+                    <pre><code>SELECT * FROM Persona;</code></pre>
                 </div>
-                
                 <div class="image-block">
-                    <img src="../imagenes/Pregunta 1.png" alt="Descripción de la imagen de la semana X">
+                    <img src="../imagenes/semana 05 - consultas/consulta 1.png" alt="Imagen de resultado de Consulta 1">
                 </div>
-            </div>
+            </section>
 
-            <!-- Repite más bloques de texto e imagen si es necesario -->
-            <div class="content-section">
+            <section class="content-section">
                 <div class="text-block">
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
+                    <h2>Consulta 2: DNI, apellidos y función de todas las personas</h2>
+                    <pre><code>SELECT dni, apellidos, funcion FROM Persona;</code></pre>
                 </div>
-                
                 <div class="image-block">
-                    <img src="../imagenes/Pregunta 2.png" alt="Descripción de la segunda imagen de la semana X">
+                    <img src="../imagenes/semana 05 - consultas/consulta 2.png" alt="Imagen de resultado de Consulta 2">
                 </div>
-            </div>
+            </section>
+
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 3: Apellidos de las personas que vivan en Lima</h2>
+                    <pre><code>SELECT apellidos FROM Persona WHERE localidad = 'Lima';</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 4.png" alt="Imagen de resultado de Consulta 3">
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 4: Mostrar los apellidos de las personas que vivan en Lima o Huancayo.</h2>
+                    <pre><code>SELECT apellidos FROM Persona WHERE localidad IN ('Lima', 'Huancayo');</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 9.png" alt="Imagen de resultado de Consulta 3">
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 5: Seleccionar los datos de aquellas personas que vivan en Lima y tengan un salario superior a los 1500 soles.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE localidad = 'Lima' AND salario > 1500;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 5.png" alt="Imagen de resultado de Consulta 3">
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 6: Mostrar los datos de las personas que vivan en Huancayo, tengan un salario superior a los 1500 euros y sean directores.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE localidad = 'Huancayo' AND salario > 1500 AND funcion = 'director';</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 6.png" alt="Imagen de resultado de Consulta 3">
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 7: Mostrar los datos de las personas cuya función sea Médico ordenados por apellidos descendentemente.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE funcion = 'Medico' ORDER BY apellidos DESC;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 7.png" alt="Imagen de resultado de Consulta 3">
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 8: Mostrar los datos de todas las localidades que hay en la tabla personas sin repeticiones.</h2>
+                    <pre><code>SELECT DISTINCT localidad FROM Persona;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 8.png" alt="Imagen de resultado de Consulta 3">
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 9: Mostrar los datos de las personas que tengan un salario superior a 1500 soles y sean médicos. Ordenar la salida por salario descendentemente.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE salario > 1500 AND funcion = 'Medico' ORDER BY salario DESC;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 9.png" alt="Imagen de resultado de Consulta 3">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 10: Seleccionar aquellas personas cuyo apellido comience por M.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE apellidos LIKE 'M%';</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 10.png" alt="Imagen de resultado de Consulta 3">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 11: Mostrar los datos de las personas que tengan una M en el apellido y cuya función sea Conserje.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE apellidos LIKE '%M%' AND funcion = 'Conserje';</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 11.png" alt="Imagen de resultado de Consulta 11">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 12: Mostrar aquellas personas que tengan un salario entre 1500 y 2000 soles.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE salario BETWEEN 1500 AND 2000;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 12.png" alt="Imagen de resultado de Consulta 12">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 13: Seleccionar los datos de aquellas personas cuya función sea Médico o Director.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE funcion IN ('Medico', 'director');</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 13.png" alt="Imagen de resultado de Consulta 13">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 14: Obtener los datos de aquellas personas cuya función no sea Conserje y tengan un salario superior a los 1500 soles, ordenados por apellido descendentemente.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE funcion NOT IN ('Conserje') AND salario > 1500 ORDER BY apellidos DESC;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 14.png" alt="Imagen de resultado de Consulta 14">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 15: Mostrar los datos de las personas que sean de Lima o Huancayo y que pertenezcan al hospital número 1.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE localidad IN ('Lima', 'Huancayo') AND CodigoHospital = 1;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 15.png" alt="Imagen de resultado de Consulta 15">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 16: Obtener los apellidos en mayúsculas de las personas que trabajen en el hospital número 1.</h2>
+                    <pre><code>SELECT UPPER(apellidos) FROM Persona WHERE CodigoHospital = 1;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 16.png" alt="Imagen de resultado de Consulta 16">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 17: Al lado debe aparecer la longitud de cada apellido.</h2>
+                    <pre><code>SELECT apellidos, LEN(apellidos) AS longitud FROM Persona;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 17.png" alt="Imagen de resultado de Consulta 17">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 18: Obtener los apellidos y localidad en minúscula de todas aquellas personas que no trabajen en el hospital número 1.</h2>
+                    <pre><code>SELECT LOWER(apellidos) AS apellidos, LOWER(localidad) AS localidad FROM Persona WHERE CodigoHospital <> 1;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 18.png" alt="Imagen de resultado de Consulta 18">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 19: Obtener los datos de las personas que trabajen en los hospitales 1 ó 2 y tengan un salario superior a 1500 soles.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE CodigoHospital IN (1, 2) AND salario > 1500;</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 19.png" alt="Imagen de resultado de Consulta 19">
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>Consulta 20: Visualizar los datos de aquellas personas que no trabajen en el hospital número 2 y que sean de Lima.</h2>
+                    <pre><code>SELECT * FROM Persona WHERE CodigoHospital <> 2 AND localidad = 'Lima';</code></pre>
+                </div>
+                <div class="image-block">
+                    <img src="../imagenes/semana 05 - consultas/consulta 20.png" alt="Imagen de resultado de Consulta 20">
+                </div>
+            </section>
+            
         </main>
     </div> <!-- Fin del contenedor general -->
 </body>
