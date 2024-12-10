@@ -38,36 +38,475 @@
             </div>
         </header>
         
-        <main> <!-- Contenido principal de la semana -->
-            <div class="content-section">
+        <main> <!-- Contenido principal de la administración de base de datos -->
+            <section class="content-section">
                 <div class="text-block">
-                    <p>
-                        <!-- Texto de ejemplo para la semana X -->
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
+                    <h1>Administración de Base de Datos</h1>
+                    <h2>Enunciado 01:</h2>
+                    <p>De acuerdo con la base de datos implementada (mínimo 100 registros), utilice los DBMS Microsoft SQL Server/MySQL, o un servidor de la nube como Microsoft Azure o Google FireBase. Explique qué problema soluciona su base de datos y responda las siguientes preguntas:</p>
                 </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 1.png" alt="Descripción de la imagen de la semana X">
-                </div>
-            </div>
-
-            <!-- Repite más bloques de texto e imagen si es necesario -->
-            <div class="content-section">
+            </section>
+        
+            <section class="content-section">
                 <div class="text-block">
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
+                    <h2>1) Crear una vista utilizando tres tablas</h2>
+                    <pre><code>CREATE VIEW VistaVentasProductosClientes1 AS
+        SELECT 
+            v.VentaID, 
+            c.Nombre AS Cliente, 
+            p.Nombre AS Producto, 
+            p.Precio, 
+            v.Fecha, 
+            v.Total
+        FROM 
+            Ventas v
+        JOIN 
+            Clientes c ON v.ClienteID = c.ClienteID
+        JOIN 
+            Productos p ON v.VentaID % p.ProductoID = 0; -- Simulación de relación
+        GO</code></pre>
+                    <p>Se combina datos de las tablas Ventas, Clientes y Productos para tener una vista detallada de las ventas.</p>
                 </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 2.png" alt="Descripción de la segunda imagen de la semana X">
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>2) Procedimiento almacenado para insertar datos</h2>
+                    <pre><code>CREATE PROCEDURE InsertarVenta
+            @ClienteID INT,
+            @ProductoID INT,
+            @Cantidad INT,
+            @Precio DECIMAL(10, 2)
+        AS
+        BEGIN
+            DECLARE @Total DECIMAL(10, 2);
+            SET @Total = @Cantidad * @Precio;
+        
+            INSERT INTO Ventas (ClienteID, Fecha, Total)
+            VALUES (@ClienteID, GETDATE(), @Total);
+        
+            UPDATE Productos
+            SET Stock = Stock - @Cantidad
+            WHERE ProductoID = @ProductoID;
+        END
+        GO</code></pre>
+                    <p>Inserta una venta y actualiza el stock del producto vendido.</p>
                 </div>
-            </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>3) Procedimiento almacenado para eliminar datos</h2>
+                    <pre><code>CREATE PROCEDURE EliminarCliente
+            @ClienteID INT
+        AS
+        BEGIN
+            DELETE FROM Ventas WHERE ClienteID = @ClienteID;
+            DELETE FROM Clientes WHERE ClienteID = @ClienteID;
+        END
+        GO</code></pre>
+                    <p>Elimina un cliente y todas sus ventas asociadas.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>4) Procedimiento almacenado para actualizar datos</h2>
+                    <pre><code>CREATE PROCEDURE ActualizarProducto
+            @ProductoID INT,
+            @NuevoPrecio DECIMAL(10, 2),
+            @NuevoStock INT
+        AS
+        BEGIN
+            UPDATE Productos
+            SET Precio = @NuevoPrecio, Stock = @NuevoStock
+            WHERE ProductoID = @ProductoID;
+        END
+        GO</code></pre>
+                    <p>Actualiza el precio y stock de un producto.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>5) Procedimiento almacenado para cálculos matemáticos</h2>
+                    <pre><code>CREATE PROCEDURE CalcularVentasTotales
+        AS
+        BEGIN
+            SELECT SUM(Total) AS TotalVentas FROM Ventas;
+        END
+        GO</code></pre>
+                    <p>Calcula el total de todas las ventas.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>6) Disparador para ingresar un registro automáticamente</h2>
+                    <pre><code>CREATE TRIGGER InsertarProducto
+        ON Productos
+        AFTER INSERT
+        AS
+        BEGIN
+            DECLARE @ProductoID INT, @Nombre NVARCHAR(100);
+            SELECT @ProductoID = ProductoID, @Nombre = Nombre FROM inserted;
+            PRINT 'Producto agregado: ' + @Nombre + ' con ID ' + CAST(@ProductoID AS NVARCHAR);
+        END
+        GO</code></pre>
+                    <p>Imprime un mensaje cuando se agrega un nuevo producto.</p>
+                </div>
+            </section>
+            
+        <section class="content-section">
+                <div class="text-block">
+                    <h2>7) Disparador para eliminar un registro automáticamente</h2>
+                    <pre><code>CREATE TRIGGER EliminarCliente
+        ON Clientes
+        AFTER DELETE
+        AS
+        BEGIN
+            DELETE FROM Ventas WHERE ClienteID IN (SELECT ClienteID FROM deleted);
+        END
+        GO</code></pre>
+                    <p>Elimina automáticamente las ventas asociadas a un cliente eliminado.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>8) Disparador para actualizar un registro automáticamente</h2>
+                    <pre><code>CREATE TRIGGER ActualizarStock
+        ON Ventas
+        AFTER INSERT
+        AS
+        BEGIN
+            DECLARE @VentaID INT, @ProductoID INT, @Cantidad INT;
+            SELECT @VentaID = VentaID FROM inserted;
+        
+            UPDATE p
+            SET p.Stock = p.Stock - dv.Cantidad
+            FROM Productos p
+            INNER JOIN DetalleVentas dv ON p.ProductoID = dv.ProductoID
+            WHERE dv.VentaID = @VentaID;
+        END
+        GO</code></pre>
+                    <p>Se actualiza el stock en la tabla Productos restando la cantidad vendida que se encuentra en la tabla DetalleVentas.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>9) Disparador para verificar el control de datos</h2>
+                    <pre><code>CREATE TRIGGER TriggerControlDatos
+        ON Ventas
+        AFTER INSERT
+        AS
+        BEGIN
+            DECLARE @Total DECIMAL(10, 2);
+            SELECT @Total = Total FROM inserted;
+        
+            IF @Total <= 0
+            BEGIN
+                ROLLBACK TRANSACTION;
+                PRINT 'Error: El total de la venta debe ser un valor positivo.';
+            END
+        END
+        GO</code></pre>
+                    <p>Este disparador asegura que si un registro con un total negativo o cero se inserta en la tabla Ventas, la inserción será deshecha automáticamente.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>10) Crear usuarios</h2>
+                    <pre><code>CREATE LOGIN brayan WITH PASSWORD = 'brayan';
+        CREATE LOGIN jhon WITH PASSWORD = 'jhon';
+        CREATE LOGIN ivan WITH PASSWORD = 'ivan';
+        CREATE LOGIN luis WITH PASSWORD = 'luis';</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>11) Copiar la base de datos y compartir con usuarios</h2>
+                    <pre><code>EXEC sp_adduser 'jhon';
+        EXEC sp_adduser 'ivan';
+        EXEC sp_adduser 'brayan';
+        EXEC sp_adduser 'luis';</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>12) Generar copia de seguridad de la base de datos</h2>
+                    <pre><code>BACKUP DATABASE ventas 
+        TO DISK = 'C:\Backup\ventas_backup.bak'
+        WITH FORMAT, NAME = 'Copia de Seguridad de la base de datos ventas';</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>13) Encriptar una de las tablas</h2>
+                    <pre><code>CREATE MASTER KEY ENCRYPTION BY PASSWORD = '12345';
+        CREATE CERTIFICATE CertificadoEncriptacion
+        WITH SUBJECT = 'Certificado para encriptar columnas';
+        CREATE SYMMETRIC KEY ClaveSimetricaClientes
+        WITH ALGORITHM = AES_256
+        ENCRYPTION BY CERTIFICATE CertificadoEncriptacion;
+        OPEN SYMMETRIC KEY ClaveSimetricaClientes
+        DECRYPTION BY CERTIFICATE CertificadoEncriptacion;
+        UPDATE Clientes
+        SET Nombre = EncryptByKey(Key_GUID('ClaveSimetricaClientes'), CAST(Nombre AS NVARCHAR(100))),
+            Telefono = EncryptByKey(Key_GUID('ClaveSimetricaClientes'), CAST(Telefono AS NVARCHAR(15))),
+            Correo = EncryptByKey(Key_GUID('ClaveSimetricaClientes'), CAST(Correo AS NVARCHAR(100)));
+        CLOSE SYMMETRIC KEY ClaveSimetricaClientes;</code></pre>
+                    <p>En SQL Server no se puede encriptar tablas, se puede encriptar columnas, o toda la base de datos, para encriptar toda la tabla se encriptara todas las columnas para así cumplir con el punto número 13.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>14) Seguridad a nivel de columna</h2>
+                    <pre><code>CREATE ROLE RoleLimitado;
+        DENY SELECT ON Clientes(ClienteID) TO RoleLimitado;
+        ALTER ROLE RoleLimitado ADD MEMBER luis;</code></pre>
+                    <p>Se crea un rol con permisos limitados y se restringe el acceso a la columna ClienteID.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>15) Restringir acceso a una columna de una tabla</h2>
+                    <pre><code>DENY SELECT ON Productos(Precio) TO RoleLimitado;</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>16) Cifrado transparente de datos (TDE)</h2>
+                    <pre><code>CREATE DATABASE ENCRYPTION KEY
+        WITH ALGORITHM = AES_256
+        ENCRYPTION BY SERVER CERTIFICATE CertificadoVentas;
+        ALTER DATABASE ventas SET ENCRYPTION ON;</code></pre>
+                    <p>No se puede aplicar el TDE en SQL Server Edición Express, las versiones que permiten usar TDE son las Enterprise y Developer.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>17) Configurar permisos de usuario</h2>
+                    <pre><code>GRANT SELECT, INSERT, UPDATE, DELETE ON Clientes TO luis;
+        GRANT SELECT, INSERT, UPDATE, DELETE ON Productos TO luis;
+        GRANT SELECT, INSERT, UPDATE, DELETE ON Ventas TO luis;
+        GRANT SELECT, INSERT, UPDATE, DELETE ON DetalleVentas TO luis;</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>18) Validación y filtración de entradas del usuario</h2>
+                    <pre><code>CREATE PROCEDURE sp_ValidarEntrada
+            @input NVARCHAR(MAX)
+        AS
+        BEGIN
+            IF @input LIKE '%--%' OR @input LIKE '%;%' OR @input LIKE '%''%'
+            BEGIN
+                RAISERROR('Entrada no válida: contiene caracteres maliciosos.', 16, 1);
+                RETURN;
+            END
+            PRINT 'Entrada válida';
+        END;</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>19) Verificación de formatos esperados</h2>
+                    <pre><code>CREATE PROCEDURE sp_ValidarFormato
+            @input NVARCHAR(MAX)
+        AS
+        BEGIN
+            IF ISNUMERIC(@input) = 0
+            BEGIN
+                RAISERROR('El valor debe ser numérico.', 16, 1);
+                RETURN;
+            END
+            IF LEN(@input) > 10
+            BEGIN
+                RAISERROR('La longitud excede el máximo permitido.', 16, 1);
+                RETURN;
+            END
+            PRINT 'Entrada válida';
+        END;</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>20) Configurar auditoría</h2>
+                    <pre><code>CREATE SERVER AUDIT AuditVentas
+        TO FILE (FILEPATH = 'C:\Auditoria\');
+        ALTER SERVER AUDIT AuditVentas WITH (STATE = ON);
+        USE ventas;
+        CREATE DATABASE AUDIT SPECIFICATION AuditDBVentas
+        FOR SERVER AUDIT AuditVentas
+        ADD (INSERT, UPDATE, DELETE ON DATABASE::ventas BY [PUBLIC]);
+        ALTER DATABASE AUDIT SPECIFICATION AuditDBVentas WITH (STATE = ON);</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>21) Configuración de memoria y disco duro</h2>
+                    <pre><code>EXEC sp_configure 'show advanced options', 1;
+        RECONFIGURE;
+        EXEC sp_configure 'max server memory', 2048; -- 2GB
+        EXEC sp_configure 'min server memory', 512;  -- 512MB
+        RECONFIGURE;
+        ALTER DATABASE ventas
+        MODIFY FILE (NAME = ventas, SIZE = 10MB, MAXSIZE = 1GB, FILEGROWTH = 10MB);</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>22) Generar copia de seguridad de la base de datos</h2>
+                    <pre><code>BACKUP DATABASE ventas
+        TO DISK = 'C:\Backup\ventas02.bak'
+        WITH FORMAT, NAME = 'ventasBackup02';</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>23) Programar backups automatizados de la base de datos</h2>
+                    <pre><code>USE msdb;
+        EXEC sp_add_job @job_name = 'BackupAutomatizadoVentas';
+        EXEC sp_add_jobstep @job_name = 'BackupAutomatizadoVentas',
+            @step_name = 'Backup',
+            @subsystem = 'TSQL',
+            @command = 'BACKUP DATABASE ventas TO DISK = ''C:\Backups\ventas_auto.bak''',
+            @on_success_action = 1;
+        EXEC sp_add_jobschedule @job_name = 'BackupAutomatizadoVentas',
+            @name = 'Backup Diario',
+            @freq_type = 4, -- Diario
+            @freq_interval = 1, -- Cada día
+            @active_start_time = 220000; -- 22:00:00
+        EXEC sp_add_jobserver @job_name = 'BackupAutomatizadoVentas';</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>24) Restauración de la base de datos</h2>
+                    <pre><code>RESTORE DATABASE ventas
+        FROM DISK = 'C:\Backup\ventas02.bak'
+        WITH REPLACE;</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>25) Crear un espejo de la base de datos</h2>
+                    <pre><code>USE master;
+        ALTER DATABASE ventas SET RECOVERY FULL;
+        BACKUP DATABASE ventas TO DISK = 'C:\Backup\ventas02_full.bak';
+        BACKUP LOG ventas TO DISK = 'C:\Backup\ventas02_log.trn';
+        CREATE ENDPOINT MirroringEndpoint
+            STATE=STARTED
+            AS TCP (LISTENER_PORT = 5022)
+            FOR DATABASE_MIRRORING (ROLE = PARTNER);
+        RESTORE DATABASE ventas FROM DISK = 'C:\Backup\ventas02_full.bak'
+        WITH NORECOVERY;
+        RESTORE LOG ventas FROM DISK = 'C:\Backup\ventas02_log.trn'
+        WITH NORECOVERY;
+        CREATE ENDPOINT MirroringEndpoint
+            STATE=STARTED
+            AS TCP (LISTENER_PORT = 5022)
+            FOR DATABASE_MIRRORING (ROLE = PARTNER);
+        CREATE ENDPOINT WitnessEndpoint
+            STATE=STARTED
+            AS TCP (LISTENER_PORT = 5023)
+            FOR DATABASE_MIRRORING (ROLE = WITNESS);
+        ALTER DATABASE ventas
+        SET PARTNER = 'TCP://<ServidorEspejo>:5022';
+        ALTER DATABASE ventas
+        SET WITNESS = 'TCP://<ServidorTestigo>:5023';</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>26) Enviar datos a la base de datos espejo creada</h2>
+                    <pre><code>SELECT
+            database_id,
+            name AS DatabaseName,
+            mirroring_state_desc,
+            mirroring_role_desc,
+            mirroring_partner_name
+        FROM sys.database_mirroring
+        WHERE name = 'ventas';
+        USE ventas;
+        INSERT INTO Clientes (ClienteID, Nombre, Telefono, Correo)
+        VALUES (1, 'Luis', '932403242', 'luis@gmail.com');</code></pre>
+                    <p>Confirmar que el dato se replicó en el espejo ejecutando en el servidor espejo:</p>
+                    <pre><code>USE ventas;
+        SELECT * FROM Clientes;</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>27) Dar permiso a un usuario por un determinado tiempo</h2>
+                    <pre><code>GRANT SELECT ON Clientes TO luis;
+        WAITFOR DELAY '00:10:00'; -- 10 minutos
+        REVOKE SELECT ON Clientes FROM luis;</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>28) Realizar la replicación de bases de datos</h2>
+                    <pre><code>EXEC sp_replicationdboption
+            @dbname = 'ventas',
+            @optname = 'publish',
+            @value = 'true';
+        EXEC sp_adddistributiondb
+            @database = 'distribution',
+            @security_mode = 1;
+        USE ventas;
+        EXEC sp_addpublication
+            @publication = 'Ventas_Publicacion',
+            @publication_type = 'transactional',
+            @status = 'active',
+            @allow_push = 1,
+            @allow_pull = 1;
+        EXEC sp_addarticle
+            @publication = 'Ventas_Publicacion',
+            @article = 'Clientes',
+            @source_object = 'Clientes';
+        EXEC sp_addsubscription
+            @publication = 'Ventas_Publicacion',
+            @subscriber = '<NombreDelSuscriptor>',
+            @destination_db = 'ventas_suscriptor',
+            @subscription_type = 'push';</code></pre>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>29) Explicación de Always On Availability Groups</h2>
+                    <p>Es una solución que permite que múltiples réplicas de la base de datos estén disponibles en servidores secundarios para failover automático o manual.</p>
+                </div>
+            </section>
+        
+            <section class="content-section">
+                <div class="text-block">
+                    <h2>30) Explicación de Log Shipping</h2>
+                    <p>Es una técnica que copia registros de transacciones (logs) de una base de datos principal a una base secundaria para recuperación en caso de fallos.</p>
+                </div>
+            </section>
         </main>
     </div> <!-- Fin del contenedor general -->
 </body>

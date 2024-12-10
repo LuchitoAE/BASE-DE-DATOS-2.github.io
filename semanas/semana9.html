@@ -3,72 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semana 9</title> <!-- Cambia X por el número de la semana -->
-    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
+    <title>Juego de Memoria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            gap: 10px;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .card {
+            width: 100px;
+            height: 100px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 5px;
+            user-select: none;
+        }
+        .card.flipped {
+            background-color: #28A745;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <div class="page-container"> <!-- Contenedor general para centrar la página -->
-        <header>
-            <div class="container">
-                <div class="left">
-                    <a href="../index.html">INICIO</a>
-                </div>
-                <div class="right">
-                    <a href="../libro/modulo1.html">Libro SQL Server</a>
-                    <a href="../misdatos.html">Mis datos</a>
-                    <a href="../curso.html">Curso</a>
-                    <div class="dropdown">
-                        <button class="dropbtn">Semanas</button>
-                        <div class="dropdown-content">
-                            <a href="../semanas/semana1.html">Semana 1</a>
-                            <a href="../semanas/semana2.html">Semana 2</a>
-                            <a href="../semanas/semana3.html">Semana 3</a>
-                            <a href="../semanas/semana4.html">Semana 4</a>
-                            <a href="../semanas/semana5.html">Semana 5</a>
-                            <a href="../semanas/semana6.html">Semana 6</a>
-                            <a href="../semanas/semana7.html">Semana 7</a>
-                            <a href="../semanas/semana8.html">Semana 8</a>
-                            <a href="../semanas/semana9.html">Semana 9</a>
-                            <a href="../semanas/semana10.html">Semana 10</a>
-                            <a href="../semanas/semana11.html">Semana 11</a>
-                            <a href="../semanas/semana12.html">Semana 12</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        
-        <main> <!-- Contenido principal de la semana -->
-            <div class="content-section">
-                <div class="text-block">
-                    <p>
-                        <!-- Texto de ejemplo para la semana X -->
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
-                </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 1.png" alt="Descripción de la imagen de la semana X">
-                </div>
-            </div>
+    <h1>JUEGO DE MEMORIA</h1>
+    <div class="game-container" id="gameContainer"></div>
+    <div class="message" id="message"></div>
+    <button onclick="resetGame()">Reiniciar Juego</button>
 
-            <!-- Repite más bloques de texto e imagen si es necesario -->
-            <div class="content-section">
-                <div class="text-block">
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
-                </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 2.png" alt="Descripción de la segunda imagen de la semana X">
-                </div>
-            </div>
-        </main>
-    </div> <!-- Fin del contenedor general -->
+    <script>
+        const cardValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        let cards = [...cardValues, ...cardValues]; // Duplicar valores para pares
+        let firstCard = null;
+        let secondCard = null;
+        let lockBoard = false;
+        let matchedPairs = 0;
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createBoard() {
+            const gameContainer = document.getElementById('gameContainer');
+            gameContainer.innerHTML = '';
+            shuffle(cards).forEach(value => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.setAttribute('data-value', value);
+                card.addEventListener('click', flipCard);
+                gameContainer.appendChild(card);
+            });
+        }
+
+        function flipCard() {
+            if (lockBoard) return;
+            if (this.classList.contains('flipped')) return;
+
+            this.classList.add('flipped');
+            this.textContent = this.getAttribute('data-value');
+
+            if (!firstCard) {
+                firstCard = this;
+            } else {
+                secondCard = this;
+                lockBoard = true;
+
+                checkForMatch();
+            }
+        }
+
+        function checkForMatch() {
+            if (firstCard.getAttribute('data-value') === secondCard.getAttribute('data-value')) {
+                matchedPairs++;
+                resetTurn();
+                if (matchedPairs === cardValues.length) {
+                    document.getElementById('message').textContent = '¡Felicidades! Has encontrado todos los pares.';
+                }
+            } else {
+                setTimeout(() => {
+                    firstCard.classList.remove('flipped');
+                    firstCard.textContent = '';
+                    secondCard.classList.remove('flipped');
+                    secondCard.textContent = '';
+                    resetTurn();
+                }, 1000);
+            }
+        }
+
+        function resetTurn() {
+            [firstCard, secondCard] = [null, null];
+            lockBoard = false;
+        }
+
+        function resetGame() {
+            matchedPairs = 0;
+            firstCard = null;
+            secondCard = null;
+            lockBoard = false;
+            document.getElementById('message').textContent = '';
+            cards = [...cardValues, ...cardValues]; // Reiniciar cartas
+            createBoard();
+        }
+
+        // Iniciar el juego al cargar la página
+        resetGame();
+    </script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsar bordes */
+    margin: 20px 0; /* Margen superior e inferior */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+th, td {
+    padding: 12px; /* Espaciado interno */
+    text-align: left; /* Alinear texto a la izquierda */
+    border: 1px solid #dddddd; /* Bordes de las celdas */
+}
+
+th {
+    background-color: #4CAF50; /* Color de fondo para el encabezado */
+    color: white; /* Color del texto en el encabezado */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+tr:hover {
+    background-color: #ddd; /* Color de fondo al pasar el mouse */
+}
+
+@media (max-width: 600px) {
+    table {
+        font-size: 14px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+    }
+}
