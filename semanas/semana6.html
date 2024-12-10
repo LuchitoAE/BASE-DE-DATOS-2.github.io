@@ -15,6 +15,7 @@
                     <a href="../index.html">INICIO</a>
                 </div>
                 <div class="right">
+                    <a href="../libro/modulo1.html">Libro SQL Server</a>
                     <a href="../misdatos.html">Mis datos</a>
                     <a href="../curso.html">Curso</a>
                     <div class="dropdown">
@@ -29,6 +30,9 @@
                             <a href="../semanas/semana7.html">Semana 7</a>
                             <a href="../semanas/semana8.html">Semana 8</a>
                             <a href="../semanas/semana9.html">Semana 9</a>
+                            <a href="../semanas/semana10.html">Semana 10</a>
+                            <a href="../semanas/semana11.html">Semana 11</a>
+                            <a href="../semanas/semana12.html">Semana 12</a>
                         </div>
                     </div>
                 </div>
@@ -429,13 +433,25 @@
             
                 <div class="step">
                     <h3>11. Calcula el nombre del departamento y el número de empleados en departamentos que no tienen empleados asignados, ni departamentos asociados a empleados</h3>
-                    <pre><code>SELECT d.nombre, COUNT(e.codigo) AS total_empleados FROM departamento d LEFT JOIN empleado e ON d.codigo = e.codigo_departamento WHERE e.codigo IS NULL GROUP BY d.nombre;</code></pre>
+                    <pre><code>SELECT d.nombre,
+                        COUNT(e.codigo) AS total_empleados
+                        FROM departamento d
+                        LEFT JOIN empleado e ON d.codigo = e.codigo_departamento
+                        WHERE e.codigo IS NULL GROUP BY d.nombre;</code></pre>
                     <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/11.png" alt="pregunta 11">
                 </div>
             
                 <div class="step">
                     <h3>12. Calcula el número de empleados que trabajan en cada uno de los departamentos que tienen un presupuesto mayor a 200000 euros</h3>
-                    <pre><code>SELECT d.nombre AS Departamento, COUNT(e.codigo) AS NumeroEmpleados FROM departamento d JOIN empleado e ON d.codigo = e.codigo_departamento WHERE d.presupuesto > 200000 GROUP BY d.nombre;</code></pre>
+                    <pre><code>SELECT d.nombre
+                        AS Departamento,
+                        COUNT(e.codigo)
+                        AS NumeroEmpleados
+                        FROM departamento d
+                        JOIN empleado e
+                        ON d.codigo = e.codigo_departamento
+                        WHERE d.presupuesto > 200000 GROUP
+                        BY d.nombre;</code></pre>
                     <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/12.png" alt="pregunta 12">
                 </div>
             </div>
@@ -449,7 +465,11 @@
 
                 <div class="step">
                     <h3>1. Devuelve un listado con todos los empleados que tiene el departamento de Sistemas. (Sin utilizar INNER JOIN)</h3>
-                    <pre><code>SELECT CONCAT(e.nombre, ' ', e.apePaterno, ' ', e.apeMaterno) AS NombreCompleto FROM empleado e, departamento d WHERE e.codigo_departamento = d.codigo AND d.nombre = 'Sistemas';</code></pre>
+                    <pre><code>SELECT CONCAT(e.nombre, ' ', e.apePaterno, ' ', e.apeMaterno)
+                        AS NombreCompleto
+                        FROM empleado e, departamento d
+                        WHERE e.codigo_departamento = d.codigo
+                        AND d.nombre = 'Sistemas';</code></pre>
                     <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/1.png" alt="pregunta 1">
                 </div>
 

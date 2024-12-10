@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3: Iniciación a la Administración</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Módulo 3: Iniciación a la Administración</h1>
+
+    <h2>3.1 SQL Server Management Studio – Administrador corporativo</h2>
+    <p>SQL Server Management Studio (SSMS) es una herramienta integral para la administración de SQL Server. Permite a los administradores gestionar bases de datos, realizar consultas y configurar servidores.</p>
+
+    <h3>3.1.1 Propiedades de la conexión actual</h3>
+    <p>Las propiedades de la conexión actual se pueden visualizar en SSMS. Incluyen información como el nombre del servidor, la base de datos actual, el usuario conectado y el estado de la conexión.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nombre del Servidor</td>
+                <td>El nombre o dirección IP del servidor SQL Server al que está conectado.</td>
+            </tr>
+            <tr>
+                <td>Base de Datos Actual</td>
+                <td>La base de datos en la que se está trabajando actualmente.</td>
+            </tr>
+            <tr>
+                <td>Usuario Conectado</td>
+                <td>El nombre del usuario que ha iniciado sesión en el servidor.</td>
+            </tr>
+            <tr>
+                <td>Estado de Conexión</td>
+                <td>Indica si la conexión está activa o inactiva.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.1.2 Registrar un servidor SQL Server vía IP pública</h3>
+    <p>Para registrar un servidor SQL Server a través de una IP pública, se deben seguir los siguientes pasos:</p>
+    <ol>
+        <li>Abre SQL Server Management Studio.</li>
+        <li>Haz clic en "Conectar" y selecciona "Servidor de base de datos".</li>
+        <li>En el campo "Nombre del servidor", ingresa la dirección IP pública del servidor.</li>
+        <li>Selecciona el método de autenticación (Windows o SQL Server).</li>
+        <li>Haz clic en "Conectar".</li>
+    </ol>
+
+    <h2>3.2 Creación de una BD</h2>
+    <p>La creación de una base de datos en SQL Server es un proceso sencillo que se puede realizar a través de SSMS o mediante comandos SQL.</p>
+
+    <h3>3.2.1 BD del sistema</h3>
+    <p>SQL Server incluye varias bases de datos del sistema que son esenciales para su funcionamiento, tales como:</p>
+    <ul>
+        <li><strong>master:</strong> Contiene información sobre todas las demás bases de datos y la configuración del servidor.</li>
+        <li><strong>model:</strong> Sirve como plantilla para nuevas bases de datos.</li>
+        <li><strong>msdb:</strong> Utilizada para la programación de trabajos y la gestión de alertas.</li>
+        <li><strong>tempdb:</strong> Base de datos temporal utilizada para almacenar datos temporales y objetos temporales.</li>
+    </ul>
+
+    <h3>3.2.2 Creación de BD propias</h3>
+    <p>Para crear una base de datos propia, se puede utilizar el siguiente comando SQL:</p>
+    <pre><code>CREATE DATABASE NombreDeLaBaseDeDatos;</code></pre>
+    <p>También se puede crear una base de datos a través de SSMS siguiendo estos pasos:</p>
+<ol>
+    <li>Haz clic derecho en "Bases de datos" en el Explorador de objetos.</li>
+    <li>Selecciona "Nueva base de datos...".</li>
+    <li>Ingresa el nombre de la base de datos y configura las opciones según sea necesario.</li>
+    <li>Haz clic en "Aceptar" para crear la base de datos.</li>
+</ol>
+
+<h2>3.3 Crear un diagrama de base de datos</h2>
+<p>Los diagramas de base de datos son herramientas visuales que ayudan a representar la estructura de la base de datos. Para crear un diagrama en SSMS:</p>
+<ol>
+    <li>Haz clic derecho en "Diagramas de base de datos" en el Explorador de objetos.</li>
+    <li>Selecciona "Nuevo diagrama de base de datos...".</li>
+    <li>Agrega las tablas que deseas incluir en el diagrama.</li>
+    <li>Organiza las tablas y establece las relaciones entre ellas.</li>
+</ol>
+
+<h2>3.4 Adjuntar BDs</h2>
+<p>Para adjuntar una base de datos existente en SQL Server, se puede utilizar el siguiente comando SQL:</p>
+<pre><code>CREATE DATABASE NombreDeLaBaseDeDatos
+ON (FILENAME = 'Ruta\A\Tu\BaseDeDatos.mdf'),
+(FILENAME = 'Ruta\A\Tu\BaseDeDatos_log.ldf')
+FOR ATTACH;</code></pre>
+<p>También se puede hacer a través de SSMS seleccionando "Adjuntar..." en el menú contextual de "Bases de datos".</p>
+
+<h2>3.5 Separar</h2>
+<p>Separar una base de datos implica desconectarla del servidor. Esto se puede hacer utilizando el siguiente comando SQL:</p>
+<pre><code>ALTER DATABASE NombreDeLaBaseDeDatos SET OFFLINE;
+EXEC sp_detach_db 'NombreDeLaBaseDeDatos';</code></pre>
+<p>En SSMS, haz clic derecho en la base de datos y selecciona "Tareas" > "Desconectar" para separarla.</p>
+
+<h2>3.6 Copiar BD</h2>
+<p>Para copiar una base de datos, se puede utilizar el método de respaldo y restauración. Primero, realiza un respaldo de la base de datos original:</p>
+<pre><code>BACKUP DATABASE NombreDeLaBaseDeDatos TO DISK = 'Ruta\A\Tu\Respaldo.bak';</code></pre>
+<p>Luego, restaura el respaldo en una nueva base de datos:</p>
+<pre><code>RESTORE DATABASE NuevaBaseDeDatos FROM DISK = 'Ruta\A\Tu\Respaldo.bak';</code></pre>
+
+<h2>3.7 Importar / Exportar datos</h2>
+<p>SQL Server proporciona herramientas para importar y exportar datos entre diferentes fuentes. Esto se puede hacer a través del Asistente para Importación y Exportación de SQL Server.</p>
+
+<h3>3.7.1 Importación de una base de Access</h3>
+<p>Para importar datos desde una base de datos de Access, selecciona "Importar datos" en el menú contextual de la base de datos de destino y sigue las instrucciones del asistente.</p>
+
+<h3>3.7.2 Importar datos desde Oracle</h3>
+<p>De manera similar, para importar datos desde Oracle, utiliza el Asistente para Importación y selecciona Oracle como fuente de datos.</p>
+
+<h2>3.8 SQL Configuration Manager</h2>
+<p>SQL Server Configuration Manager es una herramienta que permite gestionar los servicios de SQL Server, configurar las propiedades de los servidores y administrar las conexiones de red.</p>
+
+<h2>3.9 SQLCMD</h2>
+<p>SQLCMD es una utilidad de línea de comandos que permite ejecutar comandos T-SQL y scripts SQL desde la línea de comandos. Se puede utilizar para automatizar tareas y ejecutar scripts en SQL Server.</p>
+
+<h2>3.10 SQL Server Management Studio</h2>
+<p>SSMS es la herramienta principal para la administración de SQL Server. Proporciona una interfaz gráfica para gestionar bases de datos, ejecutar consultas y realizar tareas administrativas.</p>
+
+<h3>3.10.1 Registro de servidores</h3>
+<p>El registro de servidores permite a los administradores gestionar múltiples instancias de SQL Server desde una única interfaz. Se puede agregar un nuevo servidor haciendo clic derecho en "Conectar" y seleccionando "Servidor de base de datos".</p>
+
+<h3>3.10.2 Explorador de objetos</h3>
+<p >El Explorador de objetos es una herramienta en SSMS que permite navegar por las bases de datos y sus objetos, como tablas, vistas, procedimientos almacenados y más. Proporciona una vista jerárquica de todos los elementos en el servidor SQL.</p>
+
+<h3>3.10.3 Explorador de plantillas</h3>
+<p>El Explorador de plantillas permite a los usuarios acceder a plantillas predefinidas para crear objetos de base de datos, como tablas y procedimientos almacenados. Esto facilita la creación de objetos siguiendo un formato estándar.</p>
+
+<h2>3.11 Instantáneas</h2>
+<p>Las instantáneas de base de datos son copias de solo lectura de una base de datos en un momento específico. Se utilizan para proporcionar acceso a datos históricos sin afectar el rendimiento de la base de datos original.</p>
+
+<h3>3.11.1 Asignar nombres a instantáneas de bases de datos</h3>
+<p>Al crear una instantánea, se puede asignar un nombre descriptivo que facilite su identificación. Esto se puede hacer utilizando el siguiente comando SQL:</p>
+<pre><code>CREATE DATABASE NombreDeLaInstantanea AS SNAPSHOT OF NombreDeLaBaseDeDatos;</code></pre>
+
+<h3>3.11.2 Conexiones de clientes con una instantánea de base de datos</h3>
+<p>Los clientes pueden conectarse a una instantánea de base de datos como lo harían con una base de datos normal. Sin embargo, es importante tener en cuenta que las instantáneas son de solo lectura y no se pueden modificar.</p>
+
+<h3>3.11.2.1 Restricciones a tener en cuenta sobre las instantáneas</h3>
+<p>Al trabajar con instantáneas, hay algunas restricciones que se deben considerar:</p>
+<ul>
+    <li>Las instantáneas no pueden ser utilizadas para realizar transacciones.</li>
+    <li>El espacio en disco utilizado por las instantáneas puede crecer rápidamente, dependiendo de la actividad en la base de datos original.</li>
+    <li>Las instantáneas no son una solución de respaldo; se deben realizar respaldos regulares de la base de datos original.</li>
+</ul>
+
+</body>
+</html>
