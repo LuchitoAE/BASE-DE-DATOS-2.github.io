@@ -4,106 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 4: SQL Server 2008. Tablas, Índices y Vistas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        pre {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
 </head>
 <body>
+    <div class="page-container">
+        <header>
+            <div class="container">
+                <div class="left">
+                    <a href="../index.html">INICIO</a>
+                </div>
+                <div class="right">
+                    <a href="../libro/modulo1.html">Libro SQL Server</a>
+                    <a href="../misdatos.html">Mis datos</a>
+                    <a href="../curso.html">Curso</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Semanas</button>
+                        <div class="dropdown-content">
+                            <a href="../semanas/semana1.html">Semana 1</a>
+                            <a href="../semanas/semana2.html">Semana 2</a>
+                            <a href="../semanas/semana3.html">Semana 3</a>
+                            <a href="../semanas/semana4.html">Semana 4</a>
+                            <a href="../semanas/semana5.html">Semana 5</a>
+                            <a href="../semanas/semana6.html">Semana 6</a>
+                            <a href="../semanas/semana7.html">Semana 7</a>
+                            <a href="../semanas/semana8.html">Semana 8</a>
+                            <a href="../semanas/semana9.html">Semana 9</a>
+                            <a href="../semanas/semana10.html">Semana 10</a>
+                            <a href="../semanas/semana11.html">Semana 11</a>
+                            <a href="../semanas/semana12.html">Semana 12</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <h1>Módulo 4: SQL Server 2008. Tablas, Índices y Vistas</h1>
+        <main>
+            <div class="index-container">
+                <h1>Módulo 4: SQL Server 2008. Tablas, Índices y Vistas</h1>
 
-    <h2>4.1 Crear una nueva tabla/vista</h2>
-    <p>En SQL Server, las tablas son estructuras fundamentales que almacenan datos en filas y columnas. Las vistas son consultas almacenadas que presentan datos de una o más tablas de manera estructurada.</p>
+                <h2>4.1 Crear una nueva tabla/vista</h2>
+                <p>En SQL Server, las tablas son estructuras fundamentales que almacenan datos en filas y columnas. Las vistas son consultas almacenadas que presentan datos de una o más tablas de manera estructurada.</p>
 
-    <h3>4.1.1 Creación de índices</h3>
-    <p>Los índices son estructuras que mejoran la velocidad de las operaciones de consulta en una tabla. Un índice se puede crear en una o más columnas de una tabla. A continuación se muestra cómo crear un índice en SQL Server:</p>
-    <pre><code>CREATE INDEX idx_nombre ON NombreDeLaTabla (NombreColumna);</code></pre>
-    <p>Ejemplo de creación de un índice en la columna "Apellido" de una tabla llamada "Empleados":</p>
-    <pre><code>CREATE INDEX idx_apellido ON Empleados (Apellido);</code></pre>
-    <p>Los índices pueden ser de diferentes tipos, como índices únicos, índices compuestos y más. A continuación se presenta una tabla con los tipos de índices más comunes:</p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Tipo de Índice</th>
-                <th>Descripción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Índice Primario</td>
-                <td>Un índice que garantiza la unicidad de los valores en una columna y se utiliza para identificar de manera única cada fila en una tabla.</td>
-            </tr>
-            <tr>
-                <td>Índice Único</td>
-                <td>Un índice que asegura que todos los valores en una columna son únicos, pero permite valores nulos.</td>
-            </tr>
-            <tr>
-                <td>Índice Compuesto</td>
-                <td>Un índice que se crea en múltiples columnas de una tabla, mejorando la búsqueda en consultas que utilizan esas columnas.</td>
-            </tr>
-            <tr>
-                <td>Índice No Agrupado</td>
-                <td>Un índice que no afecta el orden físico de los datos en la tabla, permitiendo múltiples índices no agrupados en una tabla.</td>
-            </tr>
-        </tbody>
-    </table>
+                <h3>4.1.1 Creación de índices</h3>
+                <p>Los índices son estructuras que mejoran la velocidad de las operaciones de consulta en una tabla. Un índice se puede crear en una o más columnas de una tabla. A continuación se muestra cómo crear un índice en SQL Server:</p>
+                <pre><code>CREATE INDEX idx_nombre ON NombreDeLaTabla (NombreColumna);</code></pre>
+                <p>Ejemplo de creación de un índice en la columna "Apellido" de una tabla llamada "Empleados":</p>
+                <pre><code>CREATE INDEX idx_apellido ON Empleados (Apellido);</code></pre>
+                <p>Los índices pueden ser de diferentes tipos, como índices únicos, índices compuestos y más. A continuación se presenta una tabla con los tipos de índices más comunes:</p>
+                
+                <table class="properties-table">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Índice</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Índice Primario</td>
+                            <td>Un índice que garantiza la unicidad de los valores en una columna y se utiliza para identificar de manera única cada fila en una tabla.</td>
+                        </tr>
+                        <tr>
+                            <td>Índice Único</td>
+                            <td>Un índice que asegura que todos los valores en una columna son únicos, pero permite valores nulos.</td>
+                        </tr>
+                        <tr>
+                            <td>Índice Compuesto</td>
+                            <td>Un índice que se crea en múltiples columnas de una tabla, mejorando la búsqueda en consultas que utilizan esas columnas.</td>
+                        </tr>
+                        <tr>
+ <td>Índice No Agrupado</td>
+                            <td>Un índice que no afecta el orden físico de los datos en la tabla, permitiendo múltiples índices no agrupados en una tabla.</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-    <h3>4.1.2 Relaciones</h3>
-    <p>Las relaciones entre tablas se establecen mediante claves primarias y foráneas. Una clave primaria es un campo que identifica de manera única cada fila en una tabla, mientras que una clave foránea es un campo que crea una relación con la clave primaria de otra tabla.</p>
-    <p>Para crear una relación entre dos tablas, se puede utilizar el siguiente comando SQL:</p>
-    <pre><code>ALTER TABLE NombreDeLaTabla
+                <h3>4.1.2 Relaciones</h3>
+                <p>Las relaciones entre tablas se establecen mediante claves primarias y foráneas. Una clave primaria es un campo que identifica de manera única cada fila en una tabla, mientras que una clave foránea es un campo que crea una relación con la clave primaria de otra tabla.</p>
+                <p>Para crear una relación entre dos tablas, se puede utilizar el siguiente comando SQL:</p>
+                <pre><code>ALTER TABLE NombreDeLaTabla
 ADD CONSTRAINT fk_nombre FOREIGN KEY (ColumnaForanea)
 REFERENCES TablaReferencia (ColumnaPrimaria);</code></pre>
-    <p>Ejemplo de creación de una relación entre la tabla "Empleados" y la tabla "Departamentos":</p>
-    <pre><code>ALTER TABLE Empleados
+                <p>Ejemplo de creación de una relación entre la tabla "Empleados" y la tabla "Departamentos":</p>
+                <pre><code>ALTER TABLE Empleados
 ADD CONSTRAINT fk_departamento FOREIGN KEY (DepartamentoID)
-REFERENCES Departamentos (ID); ```html
-    </code></pre>
-    <p>En este ejemplo, la columna "DepartamentoID" en la tabla "Empleados" se relaciona con la columna "ID" en la tabla "Departamentos". Esto asegura que cada empleado esté asociado a un departamento existente.</p>
+REFERENCES Departamentos (ID);</code></pre>
+                <p>En este ejemplo, la columna "DepartamentoID" en la tabla "Empleados" se relaciona con la columna "ID" en la tabla "Departamentos". Esto asegura que cada empleado esté asociado a un departamento existente.</p>
 
-    <h3>4.1.3 Restricciones – CHECK</h3>
-    <p>Las restricciones CHECK se utilizan para limitar los valores que se pueden insertar en una columna. Permiten definir condiciones que deben cumplirse para que los datos sean válidos. A continuación se muestra cómo crear una restricción CHECK:</p>
-    <pre><code>ALTER TABLE NombreDeLaTabla
+                <h3>4.1.3 Restricciones – CHECK</h3>
+                <p>Las restricciones CHECK se utilizan para limitar los valores que se pueden insertar en una columna. Permiten definir condiciones que deben cumplirse para que los datos sean válidos. A continuación se muestra cómo crear una restricción CHECK:</p>
+                <pre><code>ALTER TABLE NombreDeLaTabla
 ADD CONSTRAINT chk_nombre CHECK (Condición);</code></pre>
-    <p>Ejemplo de una restricción CHECK que asegura que la edad de los empleados sea mayor o igual a 18:</p>
-    <pre><code>ALTER TABLE Empleados
+                <p>Ejemplo de una restricción CHECK que asegura que la edad de los empleados sea mayor o igual a 18:</p>
+                <pre><code>ALTER TABLE Empleados
 ADD CONSTRAINT chk_edad CHECK (Edad >= 18);</code></pre>
-    <p>Esta restricción garantiza que no se puedan insertar registros en la tabla "Empleados" con una edad menor a 18 años.</p>
+                <p>Esta restricción garantiza que no se puedan insertar registros en la tabla "Empleados" con una edad menor a 18 años.</p>
 
-    <h2>Ejemplo completo de creación de tabla, índice, relación y restricción</h2>
-    <p>A continuación se presenta un ejemplo completo que incluye la creación de una tabla, un índice, una relación y una restricción:</p>
-    <pre><code>CREATE TABLE Departamentos (
+                <h2>Ejemplo completo de creación de tabla, índice, relación y restricción</h2>
+                <p>A continuación se presenta un ejemplo completo que incluye la creación de una tabla, un índice, una relación y una restricción:</p>
+                <pre><code>CREATE TABLE Departamentos (
     ID INT PRIMARY KEY,
     Nombre NVARCHAR(50) NOT NULL
 );
@@ -119,8 +118,10 @@ CREATE TABLE Empleados (
 
 CREATE INDEX idx_apellido ON Empleados (Apellido);</code></pre>
 
-    <h2>Conclusión</h2>
-    <p>El Módulo 4 ha cubierto los aspectos fundamentales de la creación de tablas, índices y vistas en SQL Server 2008. Comprender cómo crear y gestionar estos elementos es esencial para el diseño y la optimización de bases de datos. Si tienes alguna pregunta o necesitas más información, no dudes en preguntar.</p>
-
+                <h2>Conclusión</h2>
+                <p>El Módulo 4 ha cubierto los aspectos fundamentales de la creación de tablas, índices y vistas en SQL Server 2008. Comprender cómo crear y gestionar estos elementos es esencial para el diseño y la optimización de bases de datos. Si tienes alguna pregunta o necesitas más información, no dudes en preguntar.</p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

@@ -4,115 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 7: Seguridad en SQL Server 2008</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        pre {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
 </head>
 <body>
+    <div class="page-container">
+        <header>
+            <div class="container">
+                <div class="left">
+                    <a href="../index.html">INICIO</a>
+                </div>
+                <div class="right">
+                    <a href="../libro/modulo1.html">Libro SQL Server</a>
+                    <a href="../misdatos.html">Mis datos</a>
+                    <a href="../curso.html">Curso</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Semanas</button>
+                        <div class="dropdown-content">
+                            <a href="../semanas/semana1.html">Semana 1</a>
+                            <a href="../semanas/semana2.html">Semana 2</a>
+                            <a href="../semanas/semana3.html">Semana 3</a>
+                            <a href="../semanas/semana4.html">Semana 4</a>
+                            <a href="../semanas/semana5.html">Semana 5</a>
+                            <a href="../semanas/semana6.html">Semana 6</a>
+                            <a href="../semanas/semana7.html">Semana 7</a>
+                            <a href="../semanas/semana8.html">Semana 8</a>
+                            <a href="../semanas/semana9.html">Semana 9</a>
+                            <a href="../semanas/semana10.html">Semana 10</a>
+                            <a href="../semanas/semana11.html">Semana 11</a>
+                            <a href="../semanas/semana12.html">Semana 12</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <h1>Módulo 7: Seguridad en SQL Server 2008</h1>
+        <main>
+            <div class="index-container">
+                <h1>Módulo 7: Seguridad en SQL Server 2008</h1>
 
-    <h2>7.1 Comprender los modos de seguridad</h2>
-    <p>SQL Server 2008 ofrece dos modos de seguridad: la autenticación de Windows y la autenticación de SQL Server. Cada uno tiene sus propias características y métodos de gestión de usuarios y permisos.</p>
+                <h2>7.1 Comprender los modos de seguridad</h2>
+                <p>SQL Server 2008 ofrece dos modos de seguridad: la autenticación de Windows y la autenticación de SQL Server. Cada uno tiene sus propias características y métodos de gestión de usuarios y permisos.</p>
 
-    <h3>7.1.1 Autenticación de Windows</h3>
-    <p>La autenticación de Windows utiliza las credenciales de inicio de sesión de Windows para acceder a SQL Server. Esto significa que los usuarios deben tener una cuenta de Windows válida y los permisos necesarios para conectarse a la instancia de SQL Server.</p>
-    <ul>
-        <li><strong>Ventajas:</strong>
-            <ul>
-                <li>Integración con Active Directory.</li>
-                <li>Mayor seguridad, ya que las contraseñas no se almacenan en SQL Server.</li>
-                <li>Facilidad de gestión de usuarios a través de políticas de seguridad de Windows.</li>
-            </ul>
-        </li>
-        <li><strong>Desventajas:</strong>
-            <ul>
-                <li>Requiere que los usuarios tengan cuentas de Windows.</li>
-                <li>Menos flexible en entornos donde se necesita acceso desde sistemas no Windows.</li>
-            </ul>
-        </li>
-    </ul>
+                <h3>7.1.1 Autenticación de Windows</h3>
+                <p>La autenticación de Windows utiliza las credenciales de inicio de sesión de Windows para acceder a SQL Server. Esto significa que los usuarios deben tener una cuenta de Windows válida y los permisos necesarios para conectarse a la instancia de SQL Server.</p>
+                <ul>
+                    <li><strong>Ventajas:</strong>
+                        <ul>
+                            <li>Integración con Active Directory.</li>
+                            <li>Mayor seguridad, ya que las contraseñas no se almacenan en SQL Server.</li>
+                            <li>Facilidad de gestión de usuarios a través de políticas de seguridad de Windows.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Desventajas:</strong>
+                        <ul>
+                            <li>Requiere que los usuarios tengan cuentas de Windows.</li>
+                            <li>Menos flexible en entornos donde se necesita acceso desde sistemas no Windows.</li>
+                        </ul>
+                    </li>
+                </ul>
 
-    <h3>7.1.2 Autenticación de SQL Server. Inicios de sesión</h3>
-    <p>La autenticación de SQL Server permite a los usuarios conectarse a la base de datos utilizando un nombre de usuario y una contraseña específicos de SQL Server. Esto es útil en entornos donde no se puede utilizar la autenticación de Windows.</p>
-    <ul>
-        <li><strong>Ventajas:</strong>
-            <ul>
-                <li>Permite el acceso a usuarios que no tienen cuentas de Windows.</li>
-                <li>Flexibilidad en la gestión de usuarios y contraseñas.</li>
-            </ul>
-        </li>
-        <li><strong>Desventajas:</strong>
-            <ul>
-                <li>Menor seguridad en comparación con la autenticación de Windows.</li>
-                <li>Las contraseñas deben ser gestionadas y almacenadas en SQL Server.</li>
-            </ul>
-        </li>
-    </ul>
-    <p>Para crear un inicio de sesión en SQL Server, se utiliza el siguiente comando:</p>
-    <pre><code>CREATE LOGIN NombreDeUsuario WITH PASSWORD = 'Contraseña';</code></pre>
+                <h3>7.1.2 Autenticación de SQL Server. Inicios de sesión</h3>
+                <p>La autenticación de SQL Server permite a los usuarios conectarse a la base de datos utilizando un nombre de usuario y una contraseña específicos de SQL Server. Esto es útil en entornos donde no se puede utilizar la autenticación de Windows.</p>
+                <ul>
+                    <li><strong>Ventajas:</strong>
+                        <ul>
+                            <li>Permite el acceso a usuarios que no tienen cuentas de Windows.</li>
+                            <li>Flexibilidad en la gestión de usuarios y contraseñas.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Desventajas:</strong>
+                        <ul>
+                            <li>Menor seguridad en comparación con la autenticación de Windows.</li>
+                            <li>Las contraseñas deben ser gestionadas y almacenadas en SQL Server.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Para crear un inicio de sesión en SQL Server, se utiliza el siguiente comando:</p>
+                <pre><code>CREATE LOGIN NombreDeUsuario WITH PASSWORD = 'Contraseña';</code></pre>
 
-    <h2>7.2 Seguridad a nivel de base de datos. Usuarios de base de datos</h2>
-    <p>Una vez que un inicio de sesión ha sido creado, se puede asignar a un usuario de base de datos. Los usuarios de base de datos son entidades que tienen permisos específicos dentro de una base de datos.</p>
-    <p>Para crear un usuario de base de datos asociado a un inicio de sesión, se utiliza el siguiente comando:</p>
-    <pre><code>USE NombreDeLaBaseDeDatos;
+                <h2>7.2 Seguridad a nivel de base de datos. Usuarios de base de datos</h2>
+                <p>Una vez que un inicio de sesión ha sido creado, se puede asignar a un usuario de base de datos. Los usuarios de base de datos son entidades que tienen permisos específicos dentro de una base de datos.</p>
+                <p>Para crear un usuario de base de datos asociado a un inicio de sesión, se utiliza el siguiente comando:</p>
+                <pre><code>USE NombreDeLaBaseDeDatos;
 CREATE USER NombreDeUsuario FOR LOGIN NombreDeUsuario;</code></pre>
-    <p>Los usuarios de base de datos pueden tener diferentes roles y permisos, que determinan lo que pueden hacer dentro de la base de datos. Algunos roles comunes son:</p>
-    <ul>
-        <li><strong>db_owner:</strong> Tiene control total sobre la base de datos.</li>
-        <li><strong>db_datareader:</strong> Permite leer todos los datos de todas las tablas.</li>
-        <li><strong>db_datawriter:</strong> Permite insertar, actualizar y eliminar datos en todas las tablas.</li>
-    </ul>
-    <p>Para asignar un rol a un usuario de base de datos, se utiliza el siguiente comando:</p>
-    <pre><code>EXEC sp_addrolemember 'db_datareader', 'NombreDeUsuario';</code></pre>
+                <p>Los usuarios de base de datos pueden tener diferentes roles y permisos, que determinan lo que pueden hacer dentro de la base de datos. Algunos roles comunes son:</p>
+                <ul>
+                    <li><strong>db_owner:</strong> Tiene control total sobre la base de datos.</li>
+                    <li><strong>db_datareader:</strong> Permite leer todos los datos de todas las tablas.</li>
+                    <li><strong>db_datawriter:</strong> Permite insertar, actualizar y eliminar datos en todas las tablas.</li>
+                </ul>
+                <p>Para asignar un rol a un usuario de base de datos, se utiliza el siguiente comando:</p>
+                <pre><code>EXEC sp_addrolemember 'db_datareader', 'NombreDeUsuario';</code></pre>
 
-    <h2>7.3 Credenciales</h2>
-    <p>Las credenciales en SQL Server son un objeto que contiene la información de autenticación necesaria para conectarse a un recurso externo, como un servidor de base de datos o un servicio web. Las credenciales se utilizan principalmente en situaciones donde se necesita acceder a recursos externos desde SQL Server.</p>
-    <p>Para crear una credencial, se utiliza el siguiente comando:</p>
-    <pre><code>CREATE CREDENTIAL NombreDeLaCredencial
+                <h2>7.3 Credenciales</h2>
+                <p>Las credenciales en SQL Server son un objeto que contiene la información de autenticación necesaria para conectarse a un recurso externo, como un servidor de base de datos o un servicio web. Las credenciales se utilizan principalmente en situaciones donde se necesita acceder a recursos externos desde SQL Server.</p>
+                <p>Para crear una credencial, se utiliza el siguiente comando:</p>
+                <pre><code>CREATE CREDENTIAL NombreDeLaCredencial
 WITH IDENTITY = 'NombreDeUsuario', SECRET = 'Contraseña';</code></pre>
-    <p>Una vez creada, la credencial se puede asociar a un usuario o a un trabajo de SQL Server Agent para realizar tareas que requieren autenticación externa.</p>
+                <p>Una vez creada, la credencial se puede asociar a un usuario o a un trabajo de SQL Server Agent para realizar tareas que requieren autenticación externa.</p>
 
-    <h2>7.4 Execute as</h2>
-    <p>El comando <code>EXECUTE AS</code> permite cambiar el contexto de ejecución de un bloque de código a otro usuario o inicio de sesión. Esto es útil para ejecutar procedimientos almacenados o funciones con los permisos de otro usuario, lo que puede ser necesario para realizar tareas específicas sin otorgar permisos adicionales al usuario original.</p>
-    <p>Para utilizar <code>EXECUTE AS</code>, se puede hacer de la siguiente manera:</p>
-    <pre><code>EXECUTE AS USER = 'NombreDeUsuario';</code></pre>
-    <p>Después de ejecutar el bloque de código, se puede volver al contexto original utilizando:</p>
-    <pre><code>REVERT;</code></pre>
-    <p>Esto permite una gestión más granular de los permisos y la seguridad en SQL Server.</p>
+                <h2>7.4 Execute as</h2>
+                <p>El comando <code>EXECUTE AS</code> permite cambiar el contexto de ejecución de un bloque de código a otro usuario o inicio de sesión. Esto es útil para ejecutar procedimientos almacenados o funciones con los permisos de otro usuario, lo que puede ser necesario para realizar tareas específicas sin otorgar permisos adicionales al usuario original.</p>
+                <p>Para utilizar <code>EXECUTE AS</code>, se puede hacer de la siguiente manera:</p>
+                <pre><code>EXECUTE AS USER = 'NombreDeUsuario';</code></pre>
+                <p>Después de ejecutar el bloque de código, se puede volver al contexto original utilizando:</p>
+                <pre><code>REVERT;</code></pre>
+                <p>Esto permite una gestión más granular de los permisos y la seguridad en SQL Server.</p>
 
-    <h2>Conclusión</h2>
-    <p>El Módulo 7 ha abordado los aspectos fundamentales de la seguridad en SQL Server 2008, incluyendo los modos de autenticación, la gestión de usuarios y roles, el uso de credenciales y el comando <code>EXECUTE AS</code>. Comprender y aplicar estos conceptos es esencial para proteger los datos y garantizar que solo los usuarios autorizados tengan acceso a la información sensible. Si tienes alguna pregunta o necesitas más información, no dudes en preguntar.</p>
-
+                <h2>Conclusión</h2>
+                <p>El Módulo 7 ha abordado los aspectos fundamentales de la seguridad en SQL Server 2008, incluyendo los modos de autenticación, la gestión de usuarios y roles, el uso de credenciales y el comando <code>EXECUTE AS</code>. Comprender y aplicar estos conceptos es esencial para proteger los datos y garantizar que solo los usuarios autorizados tengan acceso a la información sensible. Si tienes alguna pregunta o necesitas más información, no dudes en preguntar.</p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

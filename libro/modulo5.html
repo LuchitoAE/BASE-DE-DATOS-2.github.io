@@ -4,135 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 5: SQL</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        pre {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
 </head>
 <body>
+    <div class="page-container">
+        <header>
+            <div class="container">
+                <div class="left">
+                    <a href="../index.html">INICIO</a>
+                </div>
+                <div class="right">
+                    <a href="../libro/modulo1.html">Libro SQL Server</a>
+                    <a href="../misdatos.html">Mis datos</a>
+                    <a href="../curso.html">Curso</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Semanas</button>
+                        <div class="dropdown-content">
+                            <a href="../semanas/semana1.html">Semana 1</a>
+                            <a href="../semanas/semana2.html">Semana 2</a>
+                            <a href="../semanas/semana3.html">Semana 3</a>
+                            <a href="../semanas/semana4.html">Semana 4</a>
+                            <a href="../semanas/semana5.html">Semana 5</a>
+                            <a href="../semanas/semana6.html">Semana 6</a>
+                            <a href="../semanas/semana7.html">Semana 7</a>
+                            <a href="../semanas/semana8.html">Semana 8</a>
+                            <a href="../semanas/semana9.html">Semana 9</a>
+                            <a href="../semanas/semana10.html">Semana 10</a>
+                            <a href="../semanas/semana11.html">Semana 11</a>
+                            <a href="../semanas/semana12.html">Semana 12</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <h1>Módulo 5: SQL</h1>
+        <main>
+            <div class="index-container">
+                <h1>Módulo 5: SQL</h1>
 
-    <h2>5.1 Introducción SQL (Structured Query Language)</h2>
-    <p>SQL (Structured Query Language) es un lenguaje de programación utilizado para gestionar y manipular bases de datos relacionales. Permite realizar operaciones como la creación, modificación y consulta de datos en bases de datos.</p>
+                <h2>5.1 Introducción SQL (Structured Query Language)</h2>
+                <p>SQL (Structured Query Language) es un lenguaje de programación utilizado para gestionar y manipular bases de datos relacionales. Permite realizar operaciones como la creación, modificación y consulta de datos en bases de datos.</p>
 
-    <h2>5.2 DDL (Data Definition Language)</h2>
-    <p>DDL se refiere a las instrucciones SQL que se utilizan para definir y modificar la estructura de las bases de datos y sus objetos.</p>
+                <h2>5.2 DDL (Data Definition Language)</h2>
+                <p>DDL se refiere a las instrucciones SQL que se utilizan para definir y modificar la estructura de las bases de datos y sus objetos.</p>
 
-    <h3>5.2.1 CREATE TABLE</h3>
-    <p>El comando CREATE TABLE se utiliza para crear una nueva tabla en la base de datos.</p>
-    <pre><code>CREATE TABLE NombreDeLaTabla (
+                <h3>5.2.1 CREATE TABLE</h3>
+                <p>El comando CREATE TABLE se utiliza para crear una nueva tabla en la base de datos.</p>
+                <pre><code>CREATE TABLE NombreDeLaTabla (
     Columna1 TipoDeDato Restricciones,
     Columna2 TipoDeDato Restricciones,
     ...
 );</code></pre>
 
-    <h4>5.2.1.1 Restricciones</h4>
-    <p>Las restricciones se utilizan para limitar los tipos de datos que se pueden insertar en una tabla. Algunas de las restricciones más comunes son:</p>
-    <ul>
-        <li><strong>PRIMARY KEY:</strong> Asegura que los valores en la columna sean únicos y no nulos.</li>
-        <li><strong>FOREIGN KEY:</strong> Establece una relación entre dos tablas.</li>
-        <li><strong>UNIQUE:</strong> Asegura que todos los valores en la columna sean únicos.</li>
-        <li><strong>CHECK:</strong> Asegura que los valores en la columna cumplan con una condición específica.</li>
-        <li><strong>NOT NULL:</strong> Asegura que la columna no acepte valores nulos.</li>
-    </ul>
+                <h4>5.2.1.1 Restricciones</h4>
+                <p>Las restricciones se utilizan para limitar los tipos de datos que se pueden insertar en una tabla. Algunas de las restricciones más comunes son:</p>
+                <ul>
+                    <li><strong>PRIMARY KEY:</strong> Asegura que los valores en la columna sean únicos y no nulos.</li>
+                    <li><strong>FOREIGN KEY:</strong> Establece una relación entre dos tablas.</li>
+                    <li><strong>UNIQUE:</strong> Asegura que todos los valores en la columna sean únicos.</li>
+                    <li><strong>CHECK:</strong> Asegura que los valores en la columna cumplan con una condición específica.</li>
+                    <li><strong>NOT NULL:</strong> Asegura que la columna no acepte valores nulos.</li>
+                </ul>
 
-    <h4>5.2.1.2 Tipos de datos</h4>
-    <p>SQL Server admite varios tipos de datos, que se pueden clasificar en las siguientes categorías:</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Tipo de Dato</th>
-                <th>Descripción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>INT</td>
-                <td>Número entero.</td>
-            </tr>
-            <tr>
-                <td>VARCHAR(n)</td>
-                <td>Cadena de caracteres de longitud variable.</td>
-            </tr>
-            <tr>
-                <td>NVARCHAR(n)</td>
-                <td>Cadena de caracteres Unicode de longitud variable.</td>
-            </tr>
-            <tr>
-                <td>DATETIME</td>
-                <td>Fecha y hora.</td>
-            </tr>
-            <tr>
-                <td>DECIMAL(p,s)</td>
-                <td>Número decimal con precisión p y escala s.</td>
-            </tr>
-        </tbody>
-    </table>
+                <h4>5.2.1.2 Tipos de datos</h4>
+                <p>SQL Server admite varios tipos de datos, que se pueden clasificar en las siguientes categorías:</p>
+                <table class="properties-table">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Dato</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>INT</td>
+                            <td>Número entero.</td>
+                        </tr>
+                        <tr>
+                            <td>VARCHAR(n)</td>
+                            <td>Cadena de caracteres de longitud variable.</td>
+                        </tr>
+                        <tr>
+                            <td>NVARCHAR(n)</td>
+                            <td>Cadena de caracteres Unicode de longitud variable.</td>
+                        </tr>
+                        <tr>
+                            <td>DATETIME</td>
+                            <td>Fecha y hora.</td>
+                        </tr>
+                        <tr>
+                            <td>DECIMAL(p,s)</td>
+                            <td>Número decimal con precisión p y escala s.</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-    <h3>5.2.2 CREATE INDEX</h3>
-    <p>El comando CREATE INDEX se utiliza para crear un índice en una tabla, lo que mejora la velocidad de las consultas.</p>
-    <pre><code>CREATE INDEX NombreDelIndice ON NombreDeLaTabla (Columna1, Columna2);</code></pre>
+                <h3>5.2.2 CREATE INDEX</h3>
+                <p>El comando CREATE INDEX se utiliza para crear un índice en una tabla, lo que mejora la velocidad de las consultas.</p>
+                <pre><code>CREATE INDEX NombreDelIndice ON NombreDeLaTabla (Columna1, Columna2);</code></pre>
 
-    <h3>5.2.3 DROP INDEX</h3>
-    <p>El comando DROP INDEX se utiliza para eliminar un índice existente en una tabla.</p>
-    <pre><code>DROP INDEX NombreDelIndice ON NombreDeLaTabla;</code></pre>
+                <h3>5.2.3 DROP INDEX</h3>
+                <p>El comando DROP INDEX se utiliza para eliminar un índice existente en una tabla.</p>
+                <pre><code>DROP INDEX NombreDelIndice ON NombreDeLaTabla;</code></pre>
 
-    <h3>5.2.4 ALTER TABLE</h3>
-    <p>El comando ALTER TABLE se utiliza para modificar la estructura de una tabla existente, como agregar o eliminar columnas, o modificar restricciones.</p>
-    <pre><code>ALTER TABLE NombreDeLaTabla
+                <h3>5.2.4 ALTER TABLE</h3>
+                <p>El comando ALTER TABLE se utiliza para modificar la estructura de una tabla existente, como agregar o eliminar columnas, o modificar restricciones.</p>
+                <pre><code>ALTER TABLE NombreDeLaTabla
 ADD NuevaColumna TipoDeDato;</code></pre>
 
-    <h3>5.2.5 DROP TABLE</h3>
-    <p>El comando DROP TABLE se utiliza para eliminar una tabla y todos sus datos de la base de datos.</p>
-    <pre><code>DROP TABLE NombreDeLaTabla;</code></pre>
+                <h3>5.2.5 DROP TABLE</h3>
+                <p>El comando DROP TABLE se utiliza para eliminar una tabla y todos sus datos de la base de datos.</p>
+                <pre><code>DROP TABLE NombreDeLaTabla;</code></pre>
 
-    <h3>5.2.6 CREATE VIEW</h3>
-    <p>El comando CREATE VIEW se utiliza para crear una vista, que es una consulta almacenada que presenta datos de una o más tablas.</p>
-    <pre><code>CREATE VIEW NombreDeLaVista AS
+                <h3>5.2.6 CREATE VIEW</h3>
+                <p>El comando CREATE VIEW se utiliza para crear una vista, que es una consulta almacenada que presenta datos de una o más tablas.</p>
+                <pre><code>CREATE VIEW NombreDeLaVista AS
 SELECT Columna1, Columna2 FROM NombreDeLaTabla WHERE Condición;</code></pre>
 
-    <h3>5.2.7 ALTER VIEW</h3>
-    <p>El comando ALTER VIEW se utiliza para modificar una vista existente.</p>
-    <pre><code>ALTER VIEW NombreDeLaVista AS
+                <h3>5.2.7 ALTER VIEW</h3>
+                <p>El comando ALTER VIEW se utiliza para modificar una vista existente.</p>
+                <pre><code>ALTER VIEW NombreDeLaVista AS
 SELECT NuevaColumna1, NuevaColumna2 FROM NombreDeLaTabla WHERE NuevaCondición;</code></pre>
 
-    <h3>5.2.8 DROP VIEW</h3>
-    <p>El comando DROP VIEW se utiliza para eliminar una vista existente.</p>
-    <pre><code>DROP VIEW NombreDeLaVista;</code></pre>
+                <h3>5.2.8 DROP VIEW</h3>
+                <p>El comando DROP VIEW se utiliza para eliminar una vista existente.</p>
+                <pre><code>DROP VIEW NombreDeLaVista;</code></pre>
 
-    <h3>5.2.9 CREATE TRIGGER</h3>
-    <p>El comando CREATE TRIGGER se utiliza para crear un desencadenador (trigger) que se ejecuta automáticamente en respuesta a ciertos eventos en una tabla.</p>
-    <pre><code>CREATE TRIGGER NombreDelTrigger
+                <h3>5.2.9 CREATE TRIGGER</h3>
+                <p>El comando CREATE TRIGGER se utiliza para crear un desencadenador (trigger) que se ejecuta automáticamente en respuesta a ciertos eventos en una tabla.</p>
+                <pre><code>CREATE TRIGGER NombreDelTrigger
 ON NombreDeLaTabla
 AFTER INSERT
 AS
@@ -140,9 +140,9 @@ BEGIN
     -- Acciones a realizar
 END;</code></pre>
 
-    <h3>5.2.10 ALTER TRIGGER</h3>
-    <p>El comando ALTER TRIGGER se utiliza para modificar un desencadenador existente.</p>
-    <pre><code>ALTER TRIGGER NombreDelTrigger
+                <h3>5.2.10 ALTER TRIGGER</h3>
+                <p>El comando ALTER TRIGGER se utiliza para modificar un desencadenador existente.</p>
+                <pre><code>ALTER TRIGGER NombreDelTrigger
 ON NombreDeLaTabla
 AFTER UPDATE
 AS
@@ -150,41 +150,41 @@ BEGIN
     -- Nuevas acciones a realizar
 END;</code></pre>
 
-    <h3>5.2.11 DROP TRIGGER</h3>
-    <p>El comando DROP TRIGGER se utiliza para eliminar un desencadenador existente.</p>
-    <pre><code>DROP TRIGGER NombreDelTrigger;</code></pre>
+                <h3>5.2.11 DROP TRIGGER</h3>
+                <p>El comando DROP TRIGGER se utiliza para eliminar un desencadenador existente.</p>
+                <pre><code>DROP TRIGGER NombreDelTrigger;</code></pre>
 
-    <h2>5.3 DML (Data Manipulation Language)</h2>
-    <p>DML se refiere a las instrucciones SQL que se utilizan para manipular los datos dentro de las tablas.</p>
+                <h2>5.3 DML (Data Manipulation Language)</h2>
+                <p>DML se refiere a las instrucciones SQL que se utilizan para manipular los datos dentro de las tablas.</p>
 
-    <h3>5.3.1 SELECT</h3>
-    <p>El comando SELECT se utiliza para consultar datos de una o más tablas.</p>
-    <pre><code>SELECT Columna1, Columna2 FROM NombreDeLaTabla;</code></pre>
+                <h3>5.3.1 SELECT</h3>
+                <p>El comando SELECT se utiliza para consultar datos de una o más tablas.</p>
+                <pre><code>SELECT Columna1, Columna2 FROM NombreDeLaTabla;</code></pre>
 
-    <h4>5.3.1.1 Cláusula FROM</h4>
-    <p>La cláusula FROM especifica la tabla de la que se van a recuperar los datos.</p>
+                <h4>5.3.1.1 Cláusula FROM</h4>
+                <p>La cláusula FROM especifica la tabla de la que se van a recuperar los datos.</p>
 
-    <h4>5.3.1.2 GROUP BY - HAVING</h4>
-    <p>La cláusula GROUP BY se utiliza para agrupar filas que tienen valores idénticos en columnas especificadas. La cláusula HAVING se utiliza para filtrar grupos.</p>
-    <pre><code>SELECT Columna1, COUNT(*) FROM NombreDeLaTabla
+                <h4>5.3.1.2 GROUP BY - HAVING</h4>
+                <p>La cláusula GROUP BY se utiliza para agrupar filas que tienen valores idénticos en columnas especificadas. La cláusula HAVING se utiliza para filtrar grupos.</p>
+                <pre><code>SELECT Columna1, COUNT(*) FROM NombreDeLaTabla
 GROUP BY Columna1
 HAVING COUNT(*) > 1;</code></pre>
 
-    <h4>5.3.1.3 COMPUTE</h4>
-    <p>La cláusula COMPUTE se utiliza para calcular totales y subtotales en una consulta.</p>
-    <pre><code>SELECT Columna1, SUM(Columna2) AS Total
+                <h4>5.3.1.3 COMPUTE</h4>
+                <p>La cláusula COMPUTE se utiliza para calcular totales y subtotales en una consulta.</p>
+                <pre><code>SELECT Columna1, SUM(Columna2) AS Total
 FROM NombreDeLaTabla
 GROUP BY Columna1
 COMPUTE SUM(Columna2);</code></pre>
 
-    <h3>5.3.2 Funciones de agrupación: SUM, MAX, MIN, AVG, COUNT</h3>
-    <p>Estas funciones se utilizan para realizar cálculos sobre un conjunto de valores y devolver un único valor.</p>
-    <pre><code>SELECT SUM(Columna1 ) AS SumaTotal, MAX(Columna2) AS Maximo, MIN(Columna3) AS Minimo, AVG(Columna4) AS Promedio, COUNT(*) AS TotalFilas
+                <h3>5.3.2 Funciones de agrupación: SUM, MAX, MIN, AVG, COUNT</h3>
+                <p>Estas funciones se utilizan para realizar cálculos sobre un conjunto de valores y devolver un único valor.</p>
+                <pre><code>SELECT SUM(Columna1) AS SumaTotal, MAX(Columna2) AS Maximo, MIN(Columna3) AS Minimo, AVG(Columna4) AS Promedio, COUNT(*) AS TotalFilas
 FROM NombreDeLaTabla;</code></pre>
 
-    <h3>5.3.3 Funciones: CONVERT, GETDATE, DATEDIFF, DATEPART, SOUNDEX, SUBSTRING, LEFT Y RIGHT, UPPER, CHARINDEX, RTRIM Y LTRIM, LEN, REPLICATE, SPACE, REPLACE, STR, CHAR, ASCII</h3>
-    <p>Estas funciones permiten manipular y transformar datos en SQL. A continuación se presentan ejemplos de algunas de estas funciones:</p>
-    <pre><code>SELECT CONVERT(VARCHAR, GETDATE(), 103) AS FechaFormateada,
+                <h3>5.3.3 Funciones: CONVERT, GETDATE, DATEDIFF, DATEPART, SOUNDEX, SUBSTRING, LEFT Y RIGHT, UPPER, CHARINDEX, RTRIM Y LTRIM, LEN, REPLICATE, SPACE, REPLACE, STR, CHAR, ASCII</h3>
+                <p>Estas funciones permiten manipular y transformar datos en SQL. A continuación se presentan ejemplos de algunas de estas funciones:</p>
+                <pre><code>SELECT CONVERT(VARCHAR, GETDATE(), 103) AS FechaFormateada,
 DATEDIFF(DAY, '2023-01-01', GETDATE()) AS DiasDesde,
 DATEPART(YEAR, GETDATE()) AS AñoActual,
 SOUNDEX('texto') AS Sonido,
@@ -203,64 +203,66 @@ STR(123.45, 5, 2) AS ConvertirAString,
 CHAR(65) AS Caracter,
 ASCII('A') AS CodigoASCII;</code></pre>
 
-    <h3>5.3.4 Funciones de sistema: ISNULL, COALESCE, USER_ID, USER_NAME, DATALENGTH, COL_LENGTH, CONVERT</h3>
-    <p>Las funciones de sistema permiten obtener información sobre el entorno de la base de datos y manipular datos. Ejemplos:</p>
-    <pre><code>SELECT ISNULL(NombreColumna, 'Sin Nombre') AS Nombre,
+                <h3>5.3.4 Funciones de sistema: ISNULL, COALESCE, USER_ID, USER_NAME, DATALENGTH, COL_LENGTH, CONVERT</h3>
+                <p>Las funciones de sistema permiten obtener información sobre el entorno de la base de datos y manipular datos. Ejemplos:</p>
+                <pre><code>SELECT ISNULL(NombreColumna, 'Sin Nombre') AS Nombre,
 COALESCE(NombreColumna, 'Sin Nombre') AS NombreAlternativo,
 USER_ID() AS IDUsuario,
 USER_NAME() AS NombreUsuario,
 DATALENGTH(NombreColumna) AS LongitudDatos,
 COL_LENGTH('NombreDeLaTabla', 'NombreColumna') AS LongitudColumna;</code></pre>
 
-    <h4>5.3.4.1 Query designer</h4>
-    <p>El Query Designer es una herramienta visual en SQL Server que permite crear consultas de manera gráfica, facilitando la construcción de SELECT, JOIN, y otras operaciones sin necesidad de escribir el código manualmente.</p>
+                <h4>5.3.4.1 Query designer</h4>
+                <p>El Query Designer es una herramienta visual en SQL Server que permite crear consultas de manera gráfica, facilitando la construcción de SELECT, JOIN, y otras operaciones sin necesidad de escribir el código manualmente.</p>
 
-    <h3>5.3.5 Consultas avanzadas</h3>
-    <p>Las consultas avanzadas permiten realizar operaciones más complejas en SQL.</p>
+                <h3>5.3.5 Consultas avanzadas</h3>
+                <p>Las consultas avanzadas permiten realizar operaciones más complejas en SQL.</p>
 
-    <h4>5.3.5.1 Selecciones con conjuntos: UNION, INTERSECT, EXCEPT</h4>
-    <p>Estas operaciones permiten combinar resultados de múltiples consultas.</p>
-    <pre><code>SELECT Columna1 FROM Tabla1
+                <h4>5.3.5.1 Selecciones con conjuntos: UNION, INTERSECT, EXCEPT</h4>
+                <p>Estas operaciones permiten combinar resultados de múltiples consultas.</p>
+                <pre><code>SELECT Columna1 FROM Tabla1
 UNION
 SELECT Columna1 FROM Tabla2;</code></pre>
 
-    <h4>5.3.5.2 Selecciones con subconsultas</h4>
-    <p>Las subconsultas permiten anidar consultas dentro de otras consultas.</p>
-    <pre><code>SELECT Columna1 FROM Tabla1
+                <h4 >5.3.5.2 Selecciones con subconsultas</h4>
+                <p>Las subconsultas permiten anidar consultas dentro de otras consultas.</p>
+                <pre><code>SELECT Columna1 FROM Tabla1
 WHERE Columna2 IN (SELECT Columna2 FROM Tabla2 WHERE Condición);</code></pre>
 
-    <h4>5.3.5.3 Creación de una tabla temporal con una SELECT</h4>
-    <p>Se puede crear una tabla temporal utilizando el resultado de una consulta SELECT.</p>
-    <pre><code>SELECT * INTO #TablaTemporal FROM NombreDeLaTabla WHERE Condición;</code></pre>
+                <h4>5.3.5.3 Creación de una tabla temporal con una SELECT</h4>
+                <p>Se puede crear una tabla temporal utilizando el resultado de una consulta SELECT.</p>
+                <pre><code>SELECT * INTO #TablaTemporal FROM NombreDeLaTabla WHERE Condición;</code></pre>
 
-    <h3>5.3.6 INSERT</h3>
-    <p>El comando INSERT se utiliza para agregar nuevos registros a una tabla.</p>
-    <pre><code>INSERT INTO NombreDeLaTabla (Columna1, Columna2)
+                <h3>5.3.6 INSERT</h3>
+                <p>El comando INSERT se utiliza para agregar nuevos registros a una tabla.</p>
+                <pre><code>INSERT INTO NombreDeLaTabla (Columna1, Columna2)
 VALUES (Valor1, Valor2);</code></pre>
 
-    <h3>5.3.7 Bulk insert</h3>
-    <p>El comando BULK INSERT se utiliza para cargar grandes cantidades de datos desde un archivo a una tabla.</p>
-    <pre><code>BULK INSERT INTO NombreDeLaTabla
+                <h3>5.3.7 Bulk insert</h3>
+                <p>El comando BULK INSERT se utiliza para cargar grandes cantidades de datos desde un archivo a una tabla.</p>
+                <pre><code>BULK INSERT INTO NombreDeLaTabla
 FROM 'ruta/del/archivo.txt'
 WITH (FIELDTERMINATOR = ',', ROWTERMINATOR = '\n');</code></pre>
 
-    <h3>5.3.8 UPDATE</h3>
-    <p>El comando UPDATE se utiliza para modificar registros existentes en una tabla.</p>
-    <pre><code>UPDATE NombreDeLaTabla
+                <h3>5.3.8 UPDATE</h3>
+                <p>El comando UPDATE se utiliza para modificar registros existentes en una tabla.</p>
+                <pre><code>UPDATE NombreDeLaTabla
 SET Columna1 = ValorNuevo
 WHERE Condición;</code></pre>
 
-    <h3>5.3.9 DELETE</h3>
-    <p>El comando DELETE se utiliza para eliminar registros de una tabla.</p>
-    <pre><code>DELETE FROM NombreDeLaTabla
+                <h3>5.3.9 DELETE</h3>
+                <p>El comando DELETE se utiliza para eliminar registros de una tabla.</p>
+                <pre><code>DELETE FROM NombreDeLaTabla
 WHERE Condición;</code></pre>
 
-    <h4>5.3.9.1 TRUNCATE TABLE</h4>
-    <p>El comando TRUNCATE TABLE se utiliza para eliminar todos los registros de una tabla de manera rápida y eficiente, sin registrar la eliminación de cada fila individualmente.</p>
-    <pre><code>TRUNCATE TABLE NombreDeLaTabla;</code></pre>
+                <h4>5.3.9.1 TRUNCATE TABLE</h4>
+                <p>El comando TRUNCATE TABLE se utiliza para eliminar todos los registros de una tabla de manera rápida y eficiente, sin registrar la eliminación de cada fila individualmente.</p>
+                <pre><code>TRUNCATE TABLE NombreDeLaTabla;</code></pre>
 
-    <h2>Conclusión</h2>
-    <p>El Módulo 5 ha cubierto los aspectos fundamentales de SQL, incluyendo DDL y DML. Comprender cómo utilizar estos comandos es esencial para la gestión y manipulación de datos en bases de datos relacionales. Si tienes alguna pregunta o necesitas más información, no dudes en preguntar.</p>
-
+                <h2>Conclusión</h2>
+                <p>El Módulo 5 ha cubierto los aspectos fundamentales de SQL, incluyendo DDL y DML. Comprender cómo utilizar estos comandos es esencial para la gestión y manipulación de datos en bases de datos relacionales. Si tienes alguna pregunta o necesitas más información, no dudes en preguntar.</p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

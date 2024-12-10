@@ -54,6 +54,8 @@ header .container {
     background-color: #555;
     border: none;
     cursor: pointer;
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave */
 }
 
 /* Cambia el fondo al hacer hover */
@@ -85,6 +87,7 @@ header .container {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    transition: background-color 0.3s; /* Transición suave */
 }
 
 /* Cambia el fondo de los enlaces al hacer hover */
@@ -106,7 +109,7 @@ header .container {
     background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
     border-radius: 8px;
     padding: 20px 120px; /* Espacio interno */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra alrededor de la sección */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra alrededor de la sección */
     margin: 20px 0; /* Espacio entre secciones */
 }
 
@@ -114,6 +117,8 @@ header .container {
 .index-title {
     text-align: center; /* Centrar el título */
     color: #333; /* Color del texto */
+    font-size: 24px; /* Tamaño del título */
+    margin-bottom: 20px; /* Espacio inferior */
 }
 
 /* Estilo para los títulos de los módulos */
@@ -127,28 +132,30 @@ header .container {
     margin-left: 20px; /* Sangría para las listas */
 }
 
-/* Estilo para la tabla de versiones */
-.version-table {
+/* Estilo para las tablas */
+.properties-table, .version-table {
     width: 100%; /* Ancho completo */
     border-collapse: collapse; /* Colapsar bordes */
     margin-top: 20px; /* Espacio superior */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra alrededor de la tabla */
 }
 
 /* Estilo para las celdas de la tabla */
-.version-table th, .version-table td {
+.properties-table th, .properties-table td, .version-table th, .version-table td {
     border: 1px solid #ddd; /* Bordes de las celdas */
     padding: 12px; /* Espacio interno en las celdas */
     text-align: left; /* Alinear texto a la izquierda */
+    transition: background-color 0.3s; /* Transición suave */
 }
 
 /* Estilo para los encabezados de la tabla */
-.version-table th {
+.properties-table th, .version-table th {
     background-color: #4ca1af; /* Color de fondo de los encabezados */
     color: rgb(255, 255, 255); /* Color del texto de los encabezados */
 }
 
 /* Estilo para las filas de la tabla al pasar el mouse */
-.version-table tr:hover {
+.properties-table tr:hover, .version-table tr:hover {
     background-color: #d2d2d2; /* Color de fondo al hacer hover */
 }
 
@@ -161,4 +168,38 @@ p {
 /* Estilo para las listas */
 ul {
     margin-left: 20px; /* Sangría para las listas */
+}
+
+/* Estilo para los botones */
+button {
+    background-color: #4ca1af; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espacio interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Cambia el fondo del botón al hacer hover */
+button:hover {
+    background-color: #3b8b9a; /* Color de fondo al hacer hover */
+}
+
+/* Estilo para bloques de código */
+pre {
+    background-color: #f4f4f4; /* Fondo claro para el bloque de código */
+    border: 1px solid #ddd; /* Borde alrededor del bloque */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 15px; /* Espacio interno */
+    overflow-x: auto; /* Desplazamiento horizontal si es necesario */
+    margin: 20px 0; /* Espacio superior e inferior */
+    font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada */
+}
+
+/* Estilo para el texto dentro de los bloques de código */
+code {
+    background-color: #e8e8e8; /* Fondo ligeramente diferente para el texto de código */
+    padding: 2px 4px; /* Espacio interno */
+    border-radius: 3px; /* Bordes redondeados */
 }

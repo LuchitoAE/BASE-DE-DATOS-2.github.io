@@ -4,90 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 6: TRANSACT SQL. TRANSACCIONES</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        pre {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
 </head>
 <body>
+    <div class="page-container">
+        <header>
+            <div class="container">
+                <div class="left">
+                    <a href="../index.html">INICIO</a>
+                </div>
+                <div class="right">
+                    <a href="../libro/modulo1.html">Libro SQL Server</a>
+                    <a href="../misdatos.html">Mis datos</a>
+                    <a href="../curso.html">Curso</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Semanas</button>
+                        <div class="dropdown-content">
+                            <a href="../semanas/semana1.html">Semana 1</a>
+                            <a href="../semanas/semana2.html">Semana 2</a>
+                            <a href="../semanas/semana3.html">Semana 3</a>
+                            <a href="../semanas/semana4.html">Semana 4</a>
+                            <a href="../semanas/semana5.html">Semana 5</a>
+                            <a href="../semanas/semana6.html">Semana 6</a>
+                            <a href="../semanas/semana7.html">Semana 7</a>
+                            <a href="../semanas/semana8.html">Semana 8</a>
+                            <a href="../semanas/semana9.html">Semana 9</a>
+                            <a href="../semanas/semana10.html">Semana 10</a>
+                            <a href="../semanas/semana11.html">Semana 11</a>
+                            <a href="../semanas/semana12.html">Semana 12</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <h1>Módulo 6: TRANSACT SQL. TRANSACCIONES</h1>
+        <main>
+            <div class="index-container">
+                <h1>Módulo 6: TRANSACT SQL. TRANSACCIONES</h1>
 
-    <h2>6.1 TCL – Transaction Control Language</h2>
-    <p>TCL se refiere a las instrucciones SQL que se utilizan para gestionar las transacciones en una base de datos. Las transacciones son un conjunto de operaciones que se ejecutan como una única unidad de trabajo. Las principales instrucciones de TCL son:</p>
-    <ul>
-        <li><strong>COMMIT:</strong> Confirma todas las operaciones realizadas en la transacción.</li>
-        <li><strong>ROLLBACK:</strong> Revierte todas las operaciones realizadas en la transacción en caso de error.</li>
-        <li><strong>SAVEPOINT:</strong> Establece un punto de guardado dentro de una transacción, permitiendo un rollback parcial.</li>
-    </ul>
+                <h2>6.1 TCL – Transaction Control Language</h2>
+                <p>TCL se refiere a las instrucciones SQL que se utilizan para gestionar las transacciones en una base de datos. Las transacciones son un conjunto de operaciones que se ejecutan como una única unidad de trabajo. Las principales instrucciones de TCL son:</p>
+                <ul>
+                    <li><strong>COMMIT:</strong> Confirma todas las operaciones realizadas en la transacción.</li>
+                    <li><strong>ROLLBACK:</strong> Revierte todas las operaciones realizadas en la transacción en caso de error.</li>
+                    <li><strong>SAVEPOINT:</strong> Establece un punto de guardado dentro de una transacción, permitiendo un rollback parcial.</li>
+                </ul>
 
-    <h2>6.2 Elementos auxiliares</h2>
-    <p>Existen varios elementos auxiliares que se utilizan en Transact-SQL para facilitar la gestión de transacciones y la ejecución de comandos.</p>
+                <h2>6.2 Elementos auxiliares</h2>
+                <p>Existen varios elementos auxiliares que se utilizan en Transact-SQL para facilitar la gestión de transacciones y la ejecución de comandos.</p>
 
-    <h3>6.2.1 Comando USE</h3>
-    <p>El comando USE se utiliza para seleccionar la base de datos en la que se van a ejecutar las operaciones.</p>
-    <pre><code>USE NombreDeLaBaseDeDatos;</code></pre>
+                <h3>6.2.1 Comando USE</h3>
+                <p>El comando USE se utiliza para seleccionar la base de datos en la que se van a ejecutar las operaciones.</p>
+                <pre><code>USE NombreDeLaBaseDeDatos;</code></pre>
 
-    <h3>6.2.2 Variables</h3>
-    <p>Las variables en Transact-SQL se utilizan para almacenar datos temporales.</p>
+                <h3>6.2.2 Variables</h3>
+                <p>Las variables en Transact-SQL se utilizan para almacenar datos temporales.</p>
 
-    <h4>6.2.2.1 Variables definidas por el usuario</h4>
-    <p>Las variables definidas por el usuario se declaran utilizando la palabra clave DECLARE y se pueden asignar valores utilizando SET.</p>
-    <pre><code>DECLARE @Nombre NVARCHAR(50);
+                <h4>6.2.2.1 Variables definidas por el usuario</h4>
+                <p>Las variables definidas por el usuario se declaran utilizando la palabra clave DECLARE y se pueden asignar valores utilizando SET.</p>
+                <pre><code>DECLARE @Nombre NVARCHAR(50);
 SET @Nombre = 'Juan';</code></pre>
 
-    <h4>6.2.2.2 Variables de sistema</h4>
-    <p>Las variables de sistema son variables predefinidas que contienen información sobre el estado del servidor y la sesión actual. Por ejemplo, @@VERSION devuelve la versión de SQL Server.</p>
-    <pre><code>SELECT @@VERSION AS VersionSQLServer;</code></pre>
+                <h4>6.2.2.2 Variables de sistema</h4>
+                <p>Las variables de sistema son variables predefinidas que contienen información sobre el estado del servidor y la sesión actual. Por ejemplo, @@VERSION devuelve la versión de SQL Server.</p>
+                <pre><code>SELECT @@VERSION AS VersionSQLServer;</code></pre>
 
-    <h3>6.2.3 GO</h3>
-    <p>GO es un comando que se utiliza para indicar el final de un lote de instrucciones en Transact-SQL. No es una instrucción SQL, sino un comando de la herramienta de línea de comandos.</p>
-    <pre><code>SELECT * FROM NombreDeLaTabla;
+                <h3>6. 2.3 GO</h3>
+                <p>GO es un comando que se utiliza para indicar el final de un lote de instrucciones en Transact-SQL. No es una instrucción SQL, sino un comando de la herramienta de línea de comandos.</p>
+                <pre><code>SELECT * FROM NombreDeLaTabla;
 GO</code></pre>
 
-    <h3>6.2.4 EXECUTE</h3>
-    <p>El comando EXECUTE se utiliza para ejecutar procedimientos almacenados o comandos dinámicos.</p>
-    <pre><code>EXEC NombreDelProcedimiento @Parametro1, @Parametro2;</code></pre>
+                <h3>6.2.4 EXECUTE</h3>
+                <p>El comando EXECUTE se utiliza para ejecutar procedimientos almacenados o comandos dinámicos.</p>
+                <pre><code>EXEC NombreDelProcedimiento @Parametro1, @Parametro2;</code></pre>
 
-    <h3>6.2.5 PRINT</h3>
-    <p>El comando PRINT se utiliza para mostrar mensajes en la consola o en la salida de la consulta.</p>
-    <pre><code>PRINT 'Este es un mensaje de prueba';</code></pre>
+                <h3>6.2.5 PRINT</h3>
+                <p>El comando PRINT se utiliza para mostrar mensajes en la consola o en la salida de la consulta.</p>
+                <pre><code>PRINT 'Este es un mensaje de prueba';</code></pre>
 
-    <h2>6.3 Estructuras de control</h2>
-    <p>Las estructuras de control permiten controlar el flujo de ejecución de las instrucciones en Transact -SQL.</p>
+                <h2>6.3 Estructuras de control</h2>
+                <p>Las estructuras de control permiten controlar el flujo de ejecución de las instrucciones en Transact-SQL.</p>
 
-    <h3>6.3.1 IF...ELSE</h3>
-    <p>La estructura IF...ELSE se utiliza para ejecutar diferentes bloques de código según se cumpla o no una condición.</p>
-    <pre><code>IF (Condición)
+                <h3>6.3.1 IF...ELSE</h3>
+                <p>La estructura IF...ELSE se utiliza para ejecutar diferentes bloques de código según se cumpla o no una condición.</p>
+                <pre><code>IF (Condición)
 BEGIN
     -- Código a ejecutar si la condición es verdadera
 END
@@ -96,71 +96,71 @@ BEGIN
     -- Código a ejecutar si la condición es falsa
 END;</code></pre>
 
-    <h3>6.3.2 CASE</h3>
-    <p>La estructura CASE permite realizar múltiples comparaciones y ejecutar diferentes bloques de código según el resultado.</p>
-    <pre><code>SELECT 
+                <h3>6.3.2 CASE</h3>
+                <p>La estructura CASE permite realizar múltiples comparaciones y ejecutar diferentes bloques de código según el resultado.</p>
+                <pre><code>SELECT 
     CASE 
         WHEN Condición1 THEN 'Resultado1'
         WHEN Condición2 THEN 'Resultado2'
         ELSE 'ResultadoPorDefecto'
     END AS Resultado;</code></pre>
 
-    <h3>6.3.3 WHILE</h3>
-    <p>La estructura WHILE se utiliza para ejecutar un bloque de código repetidamente mientras se cumpla una condición.</p>
-    <pre><code>WHILE (Condición)
+                <h3>6.3.3 WHILE</h3>
+                <p>La estructura WHILE se utiliza para ejecutar un bloque de código repetidamente mientras se cumpla una condición.</p>
+                <pre><code>WHILE (Condición)
 BEGIN
     -- Código a ejecutar mientras la condición sea verdadera
 END;</code></pre>
 
-    <h3>6.3.4 GOTO</h3>
-    <p>El comando GOTO permite saltar a una etiqueta específica en el código, lo que puede ser útil para controlar el flujo de ejecución.</p>
-    <pre><code>GOTO Etiqueta;
+                <h3>6.3.4 GOTO</h3>
+                <p>El comando GOTO permite saltar a una etiqueta específica en el código, lo que puede ser útil para controlar el flujo de ejecución.</p>
+                <pre><code>GOTO Etiqueta;
 ...
 Etiqueta:
 -- Código a ejecutar después del salto;</code></pre>
 
-    <h2>6.4 Funciones y Procedimientos almacenados</h2>
-    <p>Las funciones y procedimientos almacenados son bloques de código que se pueden reutilizar en diferentes partes de la aplicación.</p>
+                <h2>6.4 Funciones y Procedimientos almacenados</h2>
+                <p>Las funciones y procedimientos almacenados son bloques de código que se pueden reutilizar en diferentes partes de la aplicación.</p>
 
-    <h3>6.4.1 Función</h3>
-    <p>Una función es un bloque de código que puede recibir parámetros y devolver un valor.</p>
+                <h3>6.4.1 Función</h3>
+                <p>Una función es un bloque de código que puede recibir parámetros y devolver un valor.</p>
 
-    <h4>6.4.1.1 Funciones definidas en el sistema</h4>
-    <p>SQL Server incluye varias funciones predefinidas que se pueden utilizar para realizar operaciones comunes.</p>
-    <pre><code>SELECT LEN('Texto de ejemplo') AS Longitud;</code></pre>
+                <h4>6.4.1.1 Funciones definidas en el sistema</h4>
+                <p>SQL Server incluye varias funciones predefinidas que se pueden utilizar para realizar operaciones comunes.</p>
+                <pre><code>SELECT LEN('Texto de ejemplo') AS Longitud;</code></pre>
 
-    <h3>6.4.2 Procedimiento</h3>
-    <p>Un procedimiento almacenado es un conjunto de instrucciones SQL que se pueden ejecutar como una unidad.</p>
+                <h3>6.4.2 Procedimiento</h3>
+                <p>Un procedimiento almacenado es un conjunto de instrucciones SQL que se pueden ejecutar como una unidad.</p>
 
-    <h4>6.4.2.1 Procedimientos definidos en el sistema</h4>
-    <p>SQL Server también incluye procedimientos almacenados predefinidos que realizan tareas específicas.</p>
-    <pre><code>EXEC sp_help 'NombreDeLaTabla';</code></pre>
+                <h4>6.4.2.1 Procedimientos definidos en el sistema</h4>
+                <p>SQL Server también incluye procedimientos almacenados predefinidos que realizan tareas específicas.</p>
+                <pre><code>EXEC sp_help 'NombreDeLaTabla';</code></pre>
 
-    <h2>6.5 Cursores de Transact-SQL</h2>
-    <p>Los cursores permiten recorrer filas de un conjunto de resultados de manera controlada.</p>
+                <h2>6.5 Cursores de Transact-SQL</h2>
+                <p>Los cursores permiten recorrer filas de un conjunto de resultados de manera controlada.</p>
 
-    <h3>6.5.1 Funciones FIRST, LAST, PRIOR, NEXT, RELATIVE, ABSOLUTE</h3>
-    <p>Estas funciones se utilizan para navegar a través de las filas de un cursor.</p>
-    <pre><code>FETCH NEXT FROM NombreDelCursor INTO @Variable;</code></pre>
+                <h3>6.5.1 Funciones FIRST, LAST, PRIOR, NEXT, RELATIVE, ABSOLUTE</h3>
+                <p>Estas funciones se utilizan para navegar a través de las filas de un cursor.</p>
+                <pre><code>FETCH NEXT FROM NombreDelCursor INTO @Variable;</code></pre>
 
-    <h3>6.5.2 Tipos de cursores</h3>
-    <p>Existen varios tipos de cursores, como cursores estáticos, dinámicos, y de solo lectura, cada uno con diferentes características y usos.</p>
+                <h3>6.5.2 Tipos de cursores</h3>
+                <p>Existen varios tipos de cursores, como cursores estáticos, dinámicos, y de solo lectura, cada uno con diferentes características y usos.</p>
 
-    <h2>6.6 Try/catch</h2>
-    <p>La estructura TRY/CATCH se utiliza para manejar errores en Transact-SQL. Permite ejecutar un bloque de código y capturar errores que ocurran durante su ejecución.</p>
-    <pre><code>BEGIN TRY
+                <h2>6.6 Try/catch</h2>
+                <p>La estructura TRY/CATCH se utiliza para manejar errores en Transact-SQL. Permite ejecutar un bloque de código y capturar errores que ocurran durante su ejecución.</p>
+                <pre><code>BEGIN TRY
     -- Código que puede generar un error
 END TRY
 BEGIN CATCH
     -- Código para manejar el error
 END CATCH;</code></pre>
 
-    <h2>6.7 Trigger/Disparador/Desencadenador</h2>
-    <p>Los desencadenadores son procedimientos que se ejecutan automáticamente en respuesta a ciertos eventos en una tabla.</p>
+                <h2>6.7 Trigger/Disparador/Desencadenador</h2>
+                <p>Los desencadenadores son procedimientos que se ejecutan automáticamente en respuesta a ciertos eventos en una tabla.</p>
 
-    <h3>6.7.1 Desencadenadores DML</h3>
-    <p>Los desencadenadores DML se activan en respuesta a operaciones de modificación de datos (INSERT, UPDATE, DELETE).</p>
-    <pre><code>CREATE TRIGGER NombreDelTrigger
+                <h3>6.7.1 Desencadenadores DML</h3>
+                <p>Los desencadenadores DML se activan en respuesta a operaciones de modificación de datos (INSERT, UPDATE, DELETE).</p>
+                <pre><code>CREATE TRIGGER NombreDelTrigger
 ON NombreDeLaTabla
 AFTER INSERT
 AS
@@ -168,10 +168,9 @@ BEGIN
     -- Acciones a realizar después de una inserción
 END;</code></pre>
 
-    ```html
-    <h3>6.7.2 Desencadenadores DDL</h3>
-    <p>Los desencadenadores DDL se activan en respuesta a cambios en la estructura de la base de datos, como la creación o eliminación de tablas.</p>
-    <pre><code>CREATE TRIGGER NombreDelTrigger
+                <h3>6.7.2 Desencadenadores DDL</h3>
+                <p>Los desencadenadores DDL se activan en respuesta a cambios en la estructura de la base de datos, como la creación o eliminación de tablas.</p>
+                <pre><code>CREATE TRIGGER NombreDelTrigger
 ON NombreDeLaBaseDeDatos
 FOR CREATE_TABLE
 AS
@@ -179,9 +178,9 @@ BEGIN
     -- Acciones a realizar después de crear una tabla
 END;</code></pre>
 
-    <h3>6.7.3 Desencadenadores logon</h3>
-    <p>Los desencadenadores logon se ejecutan cuando un usuario inicia sesión en SQL Server. Se pueden utilizar para auditar o restringir el acceso.</p>
-    <pre><code>CREATE TRIGGER NombreDelTrigger
+                <h3>6.7.3 Desencadenadores logon</h3>
+                <p>Los desencadenadores logon se ejecutan cuando un usuario inicia sesión en SQL Server. Se pueden utilizar para auditar o restringir el acceso.</p>
+                <pre><code>CREATE TRIGGER NombreDelTrigger
 ON ALL SERVER
 FOR LOGON
 AS
@@ -189,8 +188,10 @@ BEGIN
     -- Acciones a realizar al iniciar sesión
 END;</code></pre>
 
-    <h2>Conclusión</h2>
-    <p>El Módulo 6 ha cubierto los aspectos fundamentales de Transact-SQL y las transacciones, incluyendo el control de transacciones, estructuras de control, funciones y procedimientos almacenados, cursores, manejo de errores y desencadenadores. Comprender cómo utilizar estas herramientas es esencial para la gestión efectiva de bases de datos en SQL Server. Si tienes alguna pregunta o necesitas más información, no dudes en preguntar.</p>
-
+                <h2>Conclusión</h2>
+                <p>El Módulo 6 ha cubierto los aspectos fundamentales de Transact-SQL y las transacciones, incluyendo el control de transacciones, estructuras de control, funciones y procedimientos almacenados, cursores, manejo de errores y desencadenadores. Comprender cómo utilizar estas herramientas es esencial para la gestión efectiva de bases de datos en SQL Server. Si tienes alguna pregunta o necesitas más información, no dudes en preguntar.</p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
