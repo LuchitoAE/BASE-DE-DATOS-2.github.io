@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="examenfinal.css"> <!-- Enlace al archivo CSS externo -->
+</head>
+<body>
+    <div class="page-container"> <!-- Contenedor que centrará el contenido -->
+        
+        <header>
+            <div class="container"> <!-- Contenedor de flexbox para los elementos del encabezado -->
+                <div class="left">
+                    <a href="index.html">INICIO</a> <!-- Enlace a la página de inicio -->
+                </div>
+                <div class="right">
+                    <a href="examenfinal.html">Examen Final</a>
+                    <a href="libro/modulo1.html">Libro SQL server</a>
+                    <a href="misdatos.html">Mis datos</a> <!-- Enlace a la página de datos -->
+                    <a href="curso.html">Curso</a> <!-- Enlace a la página del curso -->
+                    <div class="dropdown"> <!-- Menú desplegable -->
+                        <button class="dropbtn">Semanas</button> <!-- Botón del menú desplegable -->
+                        <div class="dropdown-content"> <!-- Opciones dentro del menú desplegable -->
+                            <a href="semanas/semana1.html">Semana 1</a>
+                            <a href="semanas/semana2.html">Semana 2</a>
+                            <a href="semanas/semana3.html">Semana 3</a>
+                            <a href="semanas/semana4.html">Semana 4</a>
+                            <a href="semanas/semana5.html">Semana 5</a>
+                            <a href="semanas/semana6.html">Semana 6</a>
+                            <a href="semanas/semana7.html">Semana 7</a>
+                            <a href="semanas/semana8.html">Semana 8</a>
+                            <a href="semanas/semana9.html">Semana 9</a>
+                            <a href="semanas/semana10.html">Semana 10</a>
+                            <a href="semanas/semana11.html">Semana 11</a>
+                            <a href="semanas/semana12.html">Semana 12</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="guide-container">
+            <section class="content-section">
+                <div class="text-block">
+                    <h1>Examen Final - Base de Datos II</h1>
+                    <h3>Universidad Peruana Los Andes</h3>
+                    <p>Facultad de Ingeniería</p>
+                    <p>Escuela Profesional de Ingeniería de Sistemas y Computación</p>
+                    <p><strong>Apellidos y Nombres:</strong> AQUINO ESPINOZA Luis Walter<span class="underline"></span></p>
+                    <p><strong>Código:</strong> P00914K<span class="underline"></span> <strong>Ciclo:</strong> 5to<span class="underline"></span></p>
+                    <h2>Enunciado 01:</h2>
+                    <p>De acuerdo con la base de datos desarrollada en Microsoft SQL Server, responda las siguientes preguntas:</p>
+                    <ol>
+                        <li><b>Explique qué problema soluciona su base de datos.</b>
+                            <p>La base de datos bikeStores se encarga de resolver los desafíos asociados a la gestión de una tienda de bicicletas, permitiendo llevar un control detallado de productos, clientes, pedidos, inventarios y otros elementos clave para el funcionamiento del negocio. Facilita la administración y visualización de información sobre productos, marcas, categorías, clientes, ventas y empleados, lo que mejora la eficiencia de las operaciones y permite tomar decisiones más informadas.</p>
+                        </li>
+                    
+                        <li><b>Implemente un Script para crear una vista utilizando tres tablas.</b>
+                            <p>A continuación, creamos una vista que combina la información de las tablas `orders`, `order_items`, y `products`:</p>
+                            <pre>
+                                CREATE VIEW OrderDetails AS
+                                SELECT o.order_id, o.order_date, o.customer_id, oi.product_id, p.product_name, oi.quantity, oi.list_price, (oi.quantity * oi.list_price) AS total_price
+                                FROM orders o
+                                JOIN order_items oi ON o.order_id = oi.order_id
+                                JOIN products p ON oi.product_id = p.product_id;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Implemente un Script para crear un procedimiento almacenado para modificar el ingreso de datos en forma secuencial.</b>
+                            <p>Este procedimiento almacenado permite ingresar productos en orden secuencial, asegurando que la información se registre correctamente.</p>
+                            <pre>
+                                CREATE PROCEDURE InsertProductSequentially
+                                @product_name VARCHAR(255), @brand_id INT, @category_id INT, @model_year SMALLINT, @list_price DECIMAL(10, 2)
+                                AS
+                                BEGIN
+                                    DECLARE @new_product_id INT;
+                                    INSERT INTO products (product_name, brand_id, category_id, model_year, list_price)
+                                    VALUES (@product_name, @brand_id, @category_id, @model_year, @list_price);
+                                    SET @new_product_id = SCOPE_IDENTITY();
+                                    SELECT @new_product_id AS NewProductID;
+                                END;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Implemente un Script para crear un disparador para verificar el control de datos (Ejemplo: que la nota ingresada esté entre 0 y 20).</b>
+                            <p>Este disparador controla que las cantidades de productos en las órdenes no sean negativas.</p>
+                            <pre>
+                                CREATE TRIGGER CheckNegativeQuantity
+                                ON order_items
+                                FOR INSERT, UPDATE
+                                AS
+                                BEGIN
+                                    IF EXISTS (SELECT * FROM inserted WHERE quantity < 0)
+                                    BEGIN
+                                        RAISERROR('La cantidad no puede ser negativa.', 16, 1);
+                                        ROLLBACK TRANSACTION;
+                                    END
+                                END;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando Script, cree 03 usuarios con nombres de sus compañeros y uno suyo.</b>
+                            <p>A continuación, se crean los usuarios para sus compañeros y uno propio:</p>
+                            <pre>
+                                CREATE LOGIN user1 WITH PASSWORD = 'password1';
+                                CREATE USER user1 FOR LOGIN user1;
+                                CREATE LOGIN user2 WITH PASSWORD = 'password2';
+                                CREATE USER user2 FOR LOGIN user2;
+                                CREATE LOGIN user3 WITH PASSWORD = 'password3';
+                                CREATE USER user3 FOR LOGIN user3;
+                                CREATE LOGIN luis WITH PASSWORD = 'mipassword';
+                                CREATE USER luis FOR LOGIN luis;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, copie la base de datos (creada anteriormente) y compártala en cada uno de los usuarios.</b>
+                            <p>Este script crea una copia de la base de datos `bikeStores` y la asigna a los usuarios creados:</p>
+                            <pre>
+                                BACKUP DATABASE bikeStores TO DISK = 'C:\backup\bikeStores.bak';
+                                RESTORE DATABASE bikeStores_Copy FROM DISK = 'C:\backup\bikeStores.bak';
+                                ALTER DATABASE bikeStores_Copy SET TRUSTWORTHY ON;
+                                EXEC sp_adduser 'user1', 'user1', 'db_datareader';
+                                EXEC sp_adduser 'user2', 'user2', 'db_datareader';
+                                EXEC sp_adduser 'user3', 'user3', 'db_datareader';
+                                EXEC sp_adduser 'luis', 'luis', 'db_datareader';
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, genere una copia de seguridad de la base de datos y compártala a cada uno de los usuarios.</b>
+                            <p>Este script genera una copia de seguridad de la base de datos `bikeStores` y la comparte con los usuarios:</p>
+                            <pre>
+                                BACKUP DATABASE bikeStores TO DISK = 'C:\backup\bikeStores.bak';
+                                -- Aquí puedes dar acceso a los usuarios a la carpeta de backups si es necesario.
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, encripte una de las tablas para que no se puedan ver los datos.</b>
+                            <p>Encriptamos la tabla `products` para evitar el acceso sin autorización:</p>
+                            <pre>
+                                CREATE DATABASE ENCRYPTION KEY;
+                                ALTER DATABASE bikeStores
+                                SET ENCRYPTION ON;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, aplique la seguridad a nivel de columna, restringiendo el acceso a la columna DNI de la tabla empleado en el usuario con nombre de su compañero.</b>
+                            <p>Restringimos el acceso a la columna `DNI` en la tabla `staffs`:</p>
+                            <pre>
+                                CREATE COLUMN MASTER KEY CMK_Staff
+                                WITH (KEY_STORE_PROVIDER_NAME = N'MyKeyStore', KEY_PATH = N'KeyPath');
+                                CREATE COLUMN ENCRYPTION KEY CEK_Staff
+                                WITH VALUES (COLUMN_MASTER_KEY = CMK_Staff, ALGORITHM = 'AES_256');
+                                ALTER TABLE staffs
+                                ALTER COLUMN dni ADD ENCRYPTION (COLUMN_ENCRYPTION_KEY = CEK_Staff);
+                            </pre>
+                        </li>
+
+                        <li><b>Utilizando un script, implemente seguridad a nivel de columna restringiendo el acceso a una de las columnas de una tabla.</b>
+                            <p>En este caso, restringimos el acceso a la columna `salary` de la tabla `employees` para un usuario específico:</p>
+                            <pre>
+                                CREATE LOGIN restrictedUser WITH PASSWORD = 'restrictedPassword';
+                                CREATE USER restrictedUser FOR LOGIN restrictedUser;
+                                DENY SELECT ON employees(salary) TO restrictedUser;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, realice el cifrado transparente de datos (TDE) para una de las tablas.</b>
+                            <p>Aplicamos el cifrado transparente de datos (TDE) a la base de datos `bikeStores`:</p>
+                            <pre>
+                                CREATE DATABASE ENCRYPTION KEY;
+                                ALTER DATABASE bikeStores
+                                SET ENCRYPTION ON;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, configure el usuario con el nombre de su compañero para otorgar permisos de SELECT, INSERT, UPDATE y DELETE en la base de datos.</b>
+                            <p>Este script otorga los permisos adecuados al usuario `user1`:</p>
+                            <pre>
+                                GRANT SELECT, INSERT, UPDATE, DELETE ON DATABASE::bikeStores TO user1;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, configure la auditoría para el seguimiento y registro de acciones en la base de datos.</b>
+                            <p>Configuramos la auditoría para registrar todas las acciones realizadas en la base de datos:</p>
+                            <pre>
+                                CREATE SERVER AUDIT BikeStores_Audit
+                                TO FILE (FILEPATH = 'C:\audit\');
+                                CREATE SERVER AUDIT SPECIFICATION BikeStores_Audit_Spec
+                                FOR SERVER AUDIT BikeStores_Audit
+                                ADD (DATABASE_OBJECT_PERMISSION_CHANGE_GROUP);
+                                ALTER SERVER AUDIT BikeStores_Audit WITH (STATE = ON);
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, configure la memoria y el disco duro.</b>
+                            <p>Este script ajusta la memoria y el uso de disco para la base de datos:</p>
+                            <pre>
+                                ALTER SERVER CONFIGURATION
+                                SET MAXDOP = 4;  -- Ajusta la cantidad de núcleos de CPU
+                                ALTER DATABASE bikeStores
+                                SET AUTO_SHRINK ON;
+                                ALTER DATABASE bikeStores
+                                SET AUTO_CLOSE OFF;
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, genere una copia de seguridad de la base de datos.</b>
+                            <p>Generamos una copia de seguridad de la base de datos `bikeStores`:</p>
+                            <pre>
+                                BACKUP DATABASE bikeStores TO DISK = 'C:\backup\bikeStores_backup.bak';
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, genere la restauración de la base de datos.</b>
+                            <p>Este script restaura la base de datos desde una copia de seguridad:</p>
+                            <pre>
+                                RESTORE DATABASE bikeStores FROM DISK = 'C:\backup\bikeStores_backup.bak';
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, cree un espejo de la base de datos.</b>
+                            <p>Este script crea un espejo de la base de datos `bikeStores`:</p>
+                            <pre>
+                                ALTER DATABASE bikeStores SET PARTNER = 'TCP://mirrorServer:5022';
+                            </pre>
+                        </li>
+                    
+                        <li><b>Utilizando un script, realice la replicación de bases de datos.</b>
+                            <p>Este script configura la replicación de bases de datos entre un servidor principal y un servidor secundario:</p>
+                            <pre>
+                                EXEC sp_addpublication @publication = 'bikeStoresPublication', @publisher = 'primaryServer', @publication_type = 'transactional';
+                                EXEC sp_addarticle @publication = 'bikeStoresPublication', @article = 'products', @source_object = 'products';
+                                EXEC sp_addsubscription @publication = 'bikeStoresPublication', @subscriber = 'secondaryServer', @subscription_type = 'push';
+                            </pre>
+                        </li>
+                    
+                        <li><b>Explique qué es Always On Availability Groups.</b>
+                            <p>Always On Availability Groups es una funcionalidad de SQL Server diseñada para asegurar alta disponibilidad y recuperación ante desastres. Esta característica permite configurar un conjunto de bases de datos replicadas entre varios servidores, asegurando que las aplicaciones sigan funcionando sin interrupciones, incluso si alguno de los servidores experimenta un fallo de hardware o software. El conmutador automático entre bases de datos secundarias garantiza que siempre haya disponibilidad.</p>
+                        </li>
+                    
+                        <li><b>Explique qué es Log Shipping.</b>
+                            <p>Log Shipping es un método de recuperación ante desastres que permite transferir los registros de transacciones de una base de datos primaria a una secundaria. Estos registros se aplican de manera periódica en la base de datos secundaria, asegurando que se mantenga una copia casi idéntica de la base de datos original. En caso de que el servidor primario falle, el servidor secundario puede convertirse en el principal, asegurando la continuidad del servicio.</p>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+        
+    </div> <!-- Fin del contenedor global -->
+</body>
+</html>
