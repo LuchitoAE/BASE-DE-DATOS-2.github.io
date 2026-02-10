@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encriptación en SQL Server</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Global Design System -->
     <link rel="stylesheet" href="semana11.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
+    <link rel="stylesheet" href="styles.css"> <!-- Week-specific styles -->
 </head>
+
 <body>
     <div class="page-container"> <!-- Contenedor general para centrar la página -->
         <header>
@@ -39,13 +42,15 @@
                 </div>
             </div>
         </header>
-        
+
         <main> <!-- Contenido principal de la semana -->
             <div class="content-section">
                 <div class="text-block">
                     <h1>Encriptación en SQL Server</h1>
                     <p>
-                        La encriptación es un proceso fundamental para proteger la información sensible en bases de datos. SQL Server ofrece varias opciones para encriptar datos, asegurando que solo los usuarios autorizados puedan acceder a la información.
+                        La encriptación es un proceso fundamental para proteger la información sensible en bases de
+                        datos. SQL Server ofrece varias opciones para encriptar datos, asegurando que solo los usuarios
+                        autorizados puedan acceder a la información.
                     </p>
                 </div>
             </div>
@@ -66,19 +71,23 @@
                         <tbody>
                             <tr>
                                 <td>Transparent Data Encryption (TDE)</td>
-                                <td>Encripta los archivos de datos y de registro de la base de datos para proteger los datos en reposo.</td>
+                                <td>Encripta los archivos de datos y de registro de la base de datos para proteger los
+                                    datos en reposo.</td>
                             </tr>
                             <tr>
                                 <td>Column Encryption</td>
-                                <td>Permite encriptar datos en columnas específicas de una tabla, protegiendo información sensible como números de tarjetas de crédito.</td>
+                                <td>Permite encriptar datos en columnas específicas de una tabla, protegiendo
+                                    información sensible como números de tarjetas de crédito.</td>
                             </tr>
                             <tr>
                                 <td>Always Encrypted</td>
-                                <td>Permite que los datos se encripten en el cliente y se desencripten en el cliente, asegurando que los datos nunca se expongan en texto claro en el servidor.</td>
+                                <td>Permite que los datos se encripten en el cliente y se desencripten en el cliente,
+                                    asegurando que los datos nunca se expongan en texto claro en el servidor.</td>
                             </tr>
                             <tr>
                                 <td>Dynamic Data Masking</td>
-                                <td>Oculta datos sensibles en resultados de consultas, permitiendo que los usuarios vean solo una versión enmascarada de los datos.</td>
+                                <td>Oculta datos sensibles en resultados de consultas, permitiendo que los usuarios vean
+                                    solo una versión enmascarada de los datos.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -105,6 +114,15 @@ VALUES (1, 'Juan Pérez', ENCRYPTBYKEY(KEY_GUID('MiClave'), '1234-5678-9012-3456
                 </div>
             </div>
         </main>
-    </div> <!-- Fin del contenedor general -->
+
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2026 Luis Walter Aquino Espinoza. Todos los derechos reservados.</p>
+                <p>Política de Privacidad | Términos de Servicio</p>
+            </div>
+        </footer>
+    </div>
+    <script src="../theme.js"></script>
 </body>
+
 </html>

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semana 3</title> <!-- Cambia X por el número de la semana -->
-    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
+    <title>Semana 3</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Global Design System -->
+    <link rel="stylesheet" href="styles.css"> <!-- Week-specific styles -->
     <link rel="stylesheet" href="semana3.css">
 </head>
+
 <body>
     <div class="page-container"> <!-- Contenedor general para centrar la página -->
         <header>
@@ -39,7 +42,7 @@
                 </div>
             </div>
         </header>
-        
+
         <main> <!-- Contenido principal de la semana -->
             <div class="content-section">
                 <div class="text-block">
@@ -50,42 +53,72 @@
                         <li><strong>Entidades:</strong>
                             <ul>
                                 <li><strong>Marca:</strong> Identificador (clave primaria), Nombre</li>
-                                <li><strong>Modelo:</strong> Identificador (clave primaria), Nombre, Marca_ID (clave foránea)</li>
-                                <li><strong>Versión:</strong> Identificador (clave primaria), Nombre de versión, Potencia, Precio base, Tipo de combustible, Modelo_ID (clave foránea)</li>
+                                <li><strong>Modelo:</strong> Identificador (clave primaria), Nombre, Marca_ID (clave
+                                    foránea)</li>
+                                <li><strong>Versión:</strong> Identificador (clave primaria), Nombre de versión,
+                                    Potencia, Precio base, Tipo de combustible, Modelo_ID (clave foránea)</li>
                                 <li><strong>Extra:</strong> Identificador (clave primaria), Nombre, Descripción</li>
-                                <li><strong>Cliente:</strong> NIF (clave primaria), Nombre, Apellidos, Dirección, Teléfono</li>
-                                <li><strong>Vendedor:</strong> NIF (clave primaria), Nombre, Apellidos, Dirección, Teléfono</li>
-                                <li><strong>Coche Usado:</strong> Matrícula (clave primaria), Marca, Modelo, Precio de tasación, Fecha de cesión, Cliente_NIF (clave foránea)</li>
-                                <li><strong>Venta:</strong> ID de venta (clave primaria), Fecha de venta, Matrícula del nuevo vehículo, Cliente_NIF (clave foránea), Vendedor_NIF (clave foránea), Modelo_ID (clave foránea)</li>
+                                <li><strong>Cliente:</strong> NIF (clave primaria), Nombre, Apellidos, Dirección,
+                                    Teléfono</li>
+                                <li><strong>Vendedor:</strong> NIF (clave primaria), Nombre, Apellidos, Dirección,
+                                    Teléfono</li>
+                                <li><strong>Coche Usado:</strong> Matrícula (clave primaria), Marca, Modelo, Precio de
+                                    tasación, Fecha de cesión, Cliente_NIF (clave foránea)</li>
+                                <li><strong>Venta:</strong> ID de venta (clave primaria), Fecha de venta, Matrícula del
+                                    nuevo vehículo, Cliente_NIF (clave foránea), Vendedor_NIF (clave foránea), Modelo_ID
+                                    (clave foránea)</li>
                             </ul>
                         </li>
                     </ul>
                     <ul>
                         <li><strong>Relaciones y Cardinalidades:</strong>
                             <ul>
-                                <li><strong>Marca - Modelo:</strong> Una marca puede tener muchos modelos, pero un modelo solo puede pertenecer a una marca. <br> Cardinalidad: Marca (1) ----> Modelo (N)</li>
-                                <li><strong>Modelo - Versión:</strong> Un modelo puede tener muchas versiones, pero una versión solo puede pertenecer a un modelo. <br> Cardinalidad: Modelo (1) ----> Versión (N)</li>
-                                <li><strong>Versión - Extra:</strong> Una versión puede tener varios extras, y un extra puede ser utilizado en varias versiones. <br> Cardinalidad: Versión (N) ----> Extra (N)</li>
-                                <li><strong>Cliente - Coche Usado:</strong> Un cliente puede ceder muchos coches usados, pero un coche usado solo puede ser cedido por un cliente. <br> Cardinalidad: Cliente (1) ----> Coche Usado (N)</li>
-                                <li><strong>Cliente - Venta:</strong> Un cliente puede tener muchas ventas, pero cada venta corresponde a un solo cliente. <br> Cardinalidad: Cliente (1) ----> Venta (N)</li>
-                                <li><strong>Vendedor - Venta:</strong> Un vendedor puede realizar muchas ventas, pero cada venta corresponde a un solo vendedor. <br> Cardinalidad: Vendedor (1) ----> Venta (N)</li>
-                                <li><strong>Modelo - Venta:</strong> Un modelo puede ser vendido en muchas ventas, pero cada venta corresponde a un solo modelo. <br> Cardinalidad: Modelo (1) ----> Venta (N)</li>
+                                <li><strong>Marca - Modelo:</strong> Una marca puede tener muchos modelos, pero un
+                                    modelo solo puede pertenecer a una marca. <br> Cardinalidad: Marca (1) ----> Modelo
+                                    (N)</li>
+                                <li><strong>Modelo - Versión:</strong> Un modelo puede tener muchas versiones, pero una
+                                    versión solo puede pertenecer a un modelo. <br> Cardinalidad: Modelo (1) ---->
+                                    Versión (N)</li>
+                                <li><strong>Versión - Extra:</strong> Una versión puede tener varios extras, y un extra
+                                    puede ser utilizado en varias versiones. <br> Cardinalidad: Versión (N) ----> Extra
+                                    (N)</li>
+                                <li><strong>Cliente - Coche Usado:</strong> Un cliente puede ceder muchos coches usados,
+                                    pero un coche usado solo puede ser cedido por un cliente. <br> Cardinalidad: Cliente
+                                    (1) ----> Coche Usado (N)</li>
+                                <li><strong>Cliente - Venta:</strong> Un cliente puede tener muchas ventas, pero cada
+                                    venta corresponde a un solo cliente. <br> Cardinalidad: Cliente (1) ----> Venta (N)
+                                </li>
+                                <li><strong>Vendedor - Venta:</strong> Un vendedor puede realizar muchas ventas, pero
+                                    cada venta corresponde a un solo vendedor. <br> Cardinalidad: Vendedor (1) ---->
+                                    Venta (N)</li>
+                                <li><strong>Modelo - Venta:</strong> Un modelo puede ser vendido en muchas ventas, pero
+                                    cada venta corresponde a un solo modelo. <br> Cardinalidad: Modelo (1) ----> Venta
+                                    (N)</li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-        
+
                 <div class="image-block">
                     <img src="../imagenes/Enunciado 2-diagramaER.png" alt="Descripción de la imagen de la semana X">
                 </div>
                 <div class="descargar-o-ver">
                     <a href="../descargables/Enunciado 2 - ER.sql" download="archivo.sql">Descargar archivo .sql</a>
                     <br>
-                    <a href="https://github.com/LuchitoAE/BASE-DE-DATOS-2.github.io/blob/e3a103e5ced9ed44cc329c030e840b07884e55e7/descargables/Enunciado%202%20-%20ER.sql" target="_blank">Ver archivo .sql</a>
+                    <a href="https://github.com/LuchitoAE/BASE-DE-DATOS-2.github.io/blob/e3a103e5ced9ed44cc329c030e840b07884e55e7/descargables/Enunciado%202%20-%20ER.sql"
+                        target="_blank">Ver archivo .sql</a>
                 </div>
             </div>
         </main>
-        
-    </div> <!-- Fin del contenedor general -->
+
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2026 Luis Walter Aquino Espinoza. Todos los derechos reservados.</p>
+                <p>Política de Privacidad | Términos de Servicio</p>
+            </div>
+        </footer>
+    </div>
+    <script src="../theme.js"></script>
 </body>
+
 </html>

@@ -1,131 +1,395 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Memoria</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 50px;
-        }
-        .game-container {
-            display: grid;
-            grid-template-columns: repeat(4, 100px);
-            gap: 10px;
-            justify-content: center;
-            margin: 0 auto;
-        }
-        .card {
-            width: 100px;
-            height: 100px;
-            background-color: #007BFF;
-            color: white;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 5px;
-            user-select: none;
-        }
-        .card.flipped {
-            background-color: #28A745;
-        }
-        .message {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-    </style>
+    <title>Semana 9 - Optimización y Rendimiento</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Global Design System -->
+    <link rel="stylesheet" href="styles.css"> <!-- Week-specific styles -->
 </head>
+
 <body>
-    <h1>JUEGO DE MEMORIA</h1>
-    <div class="game-container" id="gameContainer"></div>
-    <div class="message" id="message"></div>
-    <button onclick="resetGame()">Reiniciar Juego</button>
+    <div class="page-container">
+        <header>
+            <div class="container">
+                <div class="left">
+                    <a href="../index.html">INICIO</a>
+                </div>
+                <div class="right">
+                    <a href="../examenfinal.html">Examen Final</a>
+                    <a href="../libro/modulo1.html">Libro SQL server</a>
+                    <a href="../misdatos.html">Mis datos</a>
+                    <a href="../curso.html">Curso</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Semanas</button>
+                        <div class="dropdown-content">
+                            <a href="../semanas/semana1.html">Semana 1</a>
+                            <a href="../semanas/semana2.html">Semana 2</a>
+                            <a href="../semanas/semana3.html">Semana 3</a>
+                            <a href="../semanas/semana4.html">Semana 4</a>
+                            <a href="../semanas/semana5.html">Semana 5</a>
+                            <a href="../semanas/semana6.html">Semana 6</a>
+                            <a href="../semanas/semana7.html">Semana 7</a>
+                            <a href="../semanas/semana8.html">Semana 8</a>
+                            <a href="../semanas/semana9.html">Semana 9</a>
+                            <a href="../semanas/semana10.html">Semana 10</a>
+                            <a href="../semanas/semana11.html">Semana 11</a>
+                            <a href="../semanas/semana12.html">Semana 12</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <script>
-        const cardValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-        let cards = [...cardValues, ...cardValues]; // Duplicar valores para pares
-        let firstCard = null;
-        let secondCard = null;
-        let lockBoard = false;
-        let matchedPairs = 0;
+        <main>
+            <div class="content-section">
+                <div class="text-block">
+                    <h1>Semana 9: Optimización y Rendimiento en SQL Server</h1>
+                    <h2>🚀 Introducción a la Optimización</h2>
+                    <p>
+                        La optimización de consultas es fundamental para garantizar que una base de datos funcione de
+                        manera eficiente.
+                        Una consulta mal optimizada puede ralentizar drásticamente una aplicación, especialmente cuando
+                        los datos crecen.
+                    </p>
+                    <p>
+                        En esta semana aprenderemos técnicas y herramientas para:
+                    </p>
+                    <ul>
+                        <li>Identificar cuellos de botella en el rendimiento</li>
+                        <li>Optimizar consultas SQL</li>
+                        <li>Utilizar índices de manera efectiva</li>
+                        <li>Interpretar planes de ejecución</li>
+                        <li>Monitorear y analizar el rendimiento</li>
+                    </ul>
+                </div>
+            </div>
 
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>📊 Índices: La Clave del Rendimiento</h2>
 
-        function createBoard() {
-            const gameContainer = document.getElementById('gameContainer');
-            gameContainer.innerHTML = '';
-            shuffle(cards).forEach(value => {
-                const card = document.createElement('div');
-                card.classList.add('card');
-                card.setAttribute('data-value', value);
-                card.addEventListener('click', flipCard);
-                gameContainer.appendChild(card);
-            });
-        }
+                    <h3>¿Qué son los Índices?</h3>
+                    <p>
+                        Los índices son estructuras de datos que mejoran la velocidad de recuperación de datos de una
+                        tabla.
+                        Funcionan de manera similar al índice de un libro: en lugar de leer todo el libro para encontrar
+                        un tema,
+                        consultas el índice para saltar directamente a la página correcta.
+                    </p>
 
-        function flipCard() {
-            if (lockBoard) return;
-            if (this.classList.contains('flipped')) return;
+                    <h3>Tipos de Índices</h3>
+                    <ul>
+                        <li><strong>Clustered Index:</strong> Ordena físicamente los datos en la tabla (solo uno por
+                            tabla)</li>
+                        <li><strong>Non-Clustered Index:</strong> Crea una estructura separada con punteros a los datos
+                        </li>
+                        <li><strong>Unique Index:</strong> Garantiza que no haya valores duplicados</li>
+                        <li><strong>Filtered Index:</strong> Índice sobre un subconjunto de filas</li>
+                        <li><strong>Columnstore Index:</strong> Optimizado para consultas analíticas</li>
+                    </ul>
 
-            this.classList.add('flipped');
-            this.textContent = this.getAttribute('data-value');
+                    <h3>Crear Índices</h3>
+                    <pre>-- Índice no agrupado simple
+CREATE INDEX IX_Products_CategoryID 
+ON products(category_id);
 
-            if (!firstCard) {
-                firstCard = this;
-            } else {
-                secondCard = this;
-                lockBoard = true;
+-- Índice compuesto (múltiples columnas)
+CREATE INDEX IX_Orders_CustomerDate 
+ON orders(customer_id, order_date);
 
-                checkForMatch();
-            }
-        }
+-- Índice único
+CREATE UNIQUE INDEX IX_Customers_Email 
+ON customers(email);
 
-        function checkForMatch() {
-            if (firstCard.getAttribute('data-value') === secondCard.getAttribute('data-value')) {
-                matchedPairs++;
-                resetTurn();
-                if (matchedPairs === cardValues.length) {
-                    document.getElementById('message').textContent = '¡Felicidades! Has encontrado todos los pares.';
-                }
-            } else {
-                setTimeout(() => {
-                    firstCard.classList.remove('flipped');
-                    firstCard.textContent = '';
-                    secondCard.classList.remove('flipped');
-                    secondCard.textContent = '';
-                    resetTurn();
-                }, 1000);
-            }
-        }
+-- Índice filtrado (solo productos activos)
+CREATE INDEX IX_Products_Active 
+ON products(product_name, list_price)
+WHERE is_active = 1;
 
-        function resetTurn() {
-            [firstCard, secondCard] = [null, null];
-            lockBoard = false;
-        }
+-- Índice con columnas incluidas
+CREATE INDEX IX_Products_CategoryBrand 
+ON products(category_id, brand_id)
+INCLUDE (product_name, list_price);</pre>
+                </div>
+            </div>
 
-        function resetGame() {
-            matchedPairs = 0;
-            firstCard = null;
-            secondCard = null;
-            lockBoard = false;
-            document.getElementById('message').textContent = '';
-            cards = [...cardValues, ...cardValues]; // Reiniciar cartas
-            createBoard();
-        }
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>📈 Planes de Ejecución</h2>
+                    <p>
+                        Los planes de ejecución muestran cómo SQL Server ejecuta una consulta. Son esenciales para
+                        identificar problemas de rendimiento.
+                    </p>
 
-        // Iniciar el juego al cargar la página
-        resetGame();
-    </script>
+                    <h3>Obtener un Plan de Ejecución</h3>
+                    <pre>-- Activar plan de ejecución estimado
+SET SHOWPLAN_ALL ON;
+GO
+
+-- Tu consulta aquí
+SELECT p.product_name, c.category_name
+FROM products p
+INNER JOIN categories c ON p.category_id = c.category_id;
+
+SET SHOWPLAN_ALL OFF;
+GO
+
+-- O usar este método más común
+SET STATISTICS IO ON;
+SET STATISTICS TIME ON;
+
+SELECT * FROM products WHERE category_id = 5;
+
+SET STATISTICS IO OFF;
+SET STATISTICS TIME OFF;</pre>
+
+                    <h3>Elementos Clave en el Plan</h3>
+                    <ul>
+                        <li><strong>Table Scan:</strong> Lee toda la tabla (❌ generalmente malo)</li>
+                        <li><strong>Index Scan:</strong> Lee todo el índice (⚠️ puede ser costoso)</li>
+                        <li><strong>Index Seek:</strong> Busca específicamente en el índice (✅ excelente)</li>
+                        <li><strong>Key Lookup:</strong> Búsqueda adicional para obtener columnas no indexadas (⚠️ puede
+                            ser costoso)</li>
+                        <li><strong>Nested Loops:</strong> Método de unión para conjuntos pequeños</li>
+                        <li><strong>Hash Match:</strong> Método de unión para conjuntos grandes</li>
+                        <li><strong>Merge Join:</strong> Eficiente cuando ambas tablas están ordenadas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>⚡ Optimización de Consultas</h2>
+
+                    <h3>1. Evitar SELECT *</h3>
+                    <pre>-- ❌ MAL - Trae todas las columnas
+SELECT * FROM products;
+
+-- ✅ BIEN - Solo las columnas necesarias
+SELECT product_id, product_name, list_price 
+FROM products;</pre>
+
+                    <h3>2. Usar WHERE en lugar de HAVING cuando sea posible</h3>
+                    <pre>-- ❌ MAL - HAVING filtra después de agrupar
+SELECT category_id, COUNT(*) 
+FROM products
+GROUP BY category_id
+HAVING category_id = 1;
+
+-- ✅ BIEN - WHERE filtra antes de agrupar
+SELECT category_id, COUNT(*) 
+FROM products
+WHERE category_id = 1
+GROUP BY category_id;</pre>
+
+                    <h3>3. Evitar Funciones en WHERE sobre columnas indexadas</h3>
+                    <pre>-- ❌ MAL - No puede usar el índice
+SELECT * FROM orders
+WHERE YEAR(order_date) = 2026;
+
+-- ✅ BIEN - Puede usar índice en order_date
+SELECT * FROM orders
+WHERE order_date >= '2026-01-01' 
+  AND order_date < '2027-01-01';</pre>
+
+                    <h3>4. Usar EXISTS en lugar de IN con subconsultas</h3>
+                    <pre>-- ❌ MENOS EFICIENTE
+SELECT * FROM customers
+WHERE customer_id IN (
+    SELECT customer_id FROM orders
+    WHERE order_date > '2026-01-01'
+);
+
+-- ✅ MÁS EFICIENTE
+SELECT * FROM customers c
+WHERE EXISTS (
+    SELECT 1 FROM orders o
+    WHERE o.customer_id = c.customer_id
+      AND o.order_date > '2026-01-01'
+);</pre>
+
+                    <h3>5. Evitar OR, usar UNION cuando sea apropiado</h3>
+                    <pre>-- ❌ MAL - OR puede impedir uso de índices
+SELECT * FROM products
+WHERE category_id = 1 OR brand_id = 5;
+
+-- ✅ MEJOR - Si es apropiado para tu caso
+SELECT * FROM products WHERE category_id = 1
+UNION
+SELECT * FROM products WHERE brand_id = 5;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>📊 Estadísticas de SQL Server</h2>
+                    <p>
+                        SQL Server utiliza estadísticas para crear planes de ejecución óptimos.
+                        Las estadísticas desactualizadas pueden causar planes de ejecución ineficientes.
+                    </p>
+
+                    <h3>Actualizar Estadísticas</h3>
+                    <pre>-- Actualizar estadísticas de una tabla
+UPDATE STATISTICS products;
+
+-- Actualizar estadísticas de un índice específico
+UPDATE STATISTICS products IX_Products_CategoryID;
+
+-- Actualizar todas las estadísticas de la base de datos
+EXEC sp_updatestats;
+
+-- Ver estadísticas de una tabla
+DBCC SHOW_STATISTICS('products', 'IX_Products_CategoryID');</pre>
+
+                    <h3>Reconstruir Índices</h3>
+                    <pre>-- Reconstruir un índice específico
+ALTER INDEX IX_Products_CategoryID ON products REBUILD;
+
+-- Reconstruir todos los índices de una tabla
+ALTER INDEX ALL ON products REBUILD;
+
+-- Reorganizar (menos intensivo que rebuild)
+ALTER INDEX IX_Products_CategoryID ON products REORGANIZE;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>🔍 Herramientas de Monitoreo</h2>
+
+                    <h3>1. DMVs (Dynamic Management Views)</h3>
+                    <p>Vistas del sistema que proporcionan información sobre el rendimiento:</p>
+                    <pre>-- Consultas más costosas
+SELECT TOP 10
+    qs.execution_count,
+    qs.total_elapsed_time / 1000000 AS total_elapsed_time_seconds,
+    qs.total_worker_time / 1000000 AS total_cpu_time_seconds,
+    SUBSTRING(qt.text, (qs.statement_start_offset/2)+1, 
+        ((CASE qs.statement_end_offset
+            WHEN -1 THEN DATALENGTH(qt.text)
+            ELSE qs.statement_end_offset
+        END - qs.statement_start_offset)/2) + 1) AS query_text
+FROM sys.dm_exec_query_stats qs
+CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) qt
+ORDER BY qs.total_elapsed_time DESC;
+
+-- Índices faltantes sugeridos
+SELECT 
+    migs.avg_user_impact,
+    migs.user_seeks,
+    mid.statement,
+    mid.equality_columns,
+    mid.inequality_columns,
+    mid.included_columns
+FROM sys.dm_db_missing_index_group_stats migs
+JOIN sys.dm_db_missing_index_groups mig 
+    ON migs.group_handle = mig.index_group_handle
+JOIN sys.dm_db_missing_index_details mid 
+    ON mig.index_handle = mid.index_handle
+ORDER BY migs.avg_user_impact DESC;</pre>
+
+                    <h3>2. Query Store</h3>
+                    <p>Funcionalidad que registra el historial de consultas y planes de ejecución:</p>
+                    <pre>-- Habilitar Query Store
+ALTER DATABASE BikeStores 
+SET QUERY_STORE = ON;
+
+-- Configurar Query Store
+ALTER DATABASE BikeStores 
+SET QUERY_STORE (
+    OPERATION_MODE = READ_WRITE,
+    DATA_FLUSH_INTERVAL_SECONDS = 900,
+    MAX_STORAGE_SIZE_MB = 1000
+);</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>💡 Best Practices de Rendimiento</h2>
+
+                    <h3>Diseño de Base de Datos</h3>
+                    <ul>
+                        <li>✔️ Normalizar apropiadamente (3NF generalmente)</li>
+                        <li>✔️ Considerar desnormalización estratégica para reporting</li>
+                        <li>✔️ Usar tipos de datos apropiados (más pequeños cuando sea posible)</li>
+                        <li>✔️ Implementar particionamiento para tablas muy grandes</li>
+                    </ul>
+
+                    <h3>Índices</h3>
+                    <ul>
+                        <li>✔️ Crear índices en columnas frecuentemente usadas en WHERE, JOIN, ORDER BY</li>
+                        <li>✔️ No sobre-indexar (cada índice tiene costo en INSERT/UPDATE/DELETE)</li>
+                        <li>✔️ Considerar índices compuestos para consultas comunes</li>
+                        <li>✔️ Mantener estadísticas actualizadas</li>
+                        <li>✔️ Monitorear fragmentación de índices</li>
+                    </ul>
+
+                    <h3>Consultas</h3>
+                    <ul>
+                        <li>✔️ Limitar resultados con TOP o paginación</li>
+                        <li>✔️ Evitar cursores cuando sea posible (usar operaciones set-based)</li>
+                        <li>✔️ Usar procedimientos almacenados para consultas frecuentes</li>
+                        <li>✔️ Implementar caché en la capa de aplicación</li>
+                        <li>✔️ Usar transacciones apropiadamente</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>📝 Ejercicios Prácticos</h2>
+
+                    <h3>Ejercicio 1: Análisis de Plan de Ejecución</h3>
+                    <p>
+                        Ejecuta la siguiente consulta y analiza su plan de ejecución. Identifica oportunidades de
+                        optimización:
+                    </p>
+                    <pre>SELECT c.first_name, c.last_name, COUNT(o.order_id) as total_orders
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+WHERE c.city = 'New York'
+GROUP BY c.first_name, c.last_name
+ORDER BY total_orders DESC;</pre>
+
+                    <h3>Ejercicio 2: Crear Índices Óptimos</h3>
+                    <p>
+                        Para la siguiente consulta frecuente en tu sistema, diseña índices óptimos:
+                    </p>
+                    <pre>SELECT p.product_name, p.list_price, b.brand_name, c.category_name
+FROM products p
+INNER JOIN brands b ON p.brand_id = b.brand_id
+INNER JOIN categories c ON p.category_id = c.category_id
+WHERE p.list_price > 1000
+  AND c.category_name = 'Mountain Bikes'
+ORDER BY p.list_price DESC;</pre>
+
+                    <h3>Ejercicio 3: Optimización de Consulta</h3>
+                    <p>
+                        Optimiza esta consulta que está causando problemas de rendimiento:
+                    </p>
+                    <pre>SELECT * FROM orders
+WHERE MONTH(order_date) = 3
+  AND YEAR(order_date) = 2026
+  AND customer_id IN (
+      SELECT customer_id FROM customers WHERE city LIKE '%New%'
+  )
+ORDER BY order_date DESC;</pre>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2026 Luis Walter Aquino Espinoza. Todos los derechos reservados.</p>
+                <p>Política de Privacidad | Términos de Servicio</p>
+            </div>
+        </footer>
+    </div>
+    <script src="../theme.js"></script>
 </body>
+
 </html>

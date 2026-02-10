@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semana 7</title> <!-- Cambia X por el número de la semana -->
-    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
+    <title>Semana 7 - Procedimientos Almacenados Avanzados</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Global Design System -->
+    <link rel="stylesheet" href="styles.css"> <!-- Week-specific styles -->
 </head>
+
 <body>
-    <div class="page-container"> <!-- Contenedor general para centrar la página -->
+    <div class="page-container">
         <header>
             <div class="container">
                 <div class="left">
@@ -15,7 +18,7 @@
                 </div>
                 <div class="right">
                     <a href="../examenfinal.html">Examen Final</a>
-                    <a href="../libro/modulo1.html">Libro SQL Server</a>
+                    <a href="../libro/modulo1.html">Libro SQL server</a>
                     <a href="../misdatos.html">Mis datos</a>
                     <a href="../curso.html">Curso</a>
                     <div class="dropdown">
@@ -38,38 +41,271 @@
                 </div>
             </div>
         </header>
-        
-        <main> <!-- Contenido principal de la semana -->
+
+        <main>
             <div class="content-section">
                 <div class="text-block">
+                    <h1>Semana 7: Procedimientos Almacenados Avanzados</h1>
+                    <h2>📚 Introducción</h2>
                     <p>
-                        <!-- Texto de ejemplo para la semana X -->
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
+                        Los procedimientos almacenados son uno de los componentes más poderosos de SQL Server. Son
+                        conjuntos de instrucciones T-SQL
+                        precompiladas que se almacenan en la base de datos y pueden ser ejecutadas repetidamente.
+                        Ofrecen múltiples ventajas:
                     </p>
-                </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 1.png" alt="Descripción de la imagen de la semana X">
+                    <ul>
+                        <li><strong>Rendimiento:</strong> Se compilan una sola vez y se reutilizan, mejorando el
+                            rendimiento</li>
+                        <li><strong>Seguridad:</strong> Encapsulan la lógica y controlan el acceso a datos</li>
+                        <li><strong>Mantenibilidad:</strong> Centralizan la lógica de negocio</li>
+                        <li><strong>Reducción de tráfico:</strong> Envían solo el nombre del procedimiento en lugar de
+                            múltiples consultas</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Repite más bloques de texto e imagen si es necesario -->
             <div class="content-section">
                 <div class="text-block">
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
-                </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 2.png" alt="Descripción de la segunda imagen de la semana X">
+                    <h2>🔧 Creación de Procedimientos Almacenados</h2>
+                    <h3>Sintaxis Básica</h3>
+                    <pre>CREATE PROCEDURE nombre_procedimiento
+    @parametro1 tipo_dato,
+    @parametro2 tipo_dato
+AS
+BEGIN
+    -- Instrucciones T-SQL
+    SELECT * FROM tabla WHERE columna = @parametro1;
+END;</pre>
+
+                    <h3>Ejemplo Práctico: Procedimiento Simple</h3>
+                    <p>Crear un procedimiento que liste productos por categoría:</p>
+                    <pre>CREATE PROCEDURE sp_ListarProductosPorCategoria
+    @categoria_id INT
+AS
+BEGIN
+    SELECT 
+        p.product_id,
+        p.product_name,
+        p.list_price,
+        c.category_name
+    FROM products p
+    INNER JOIN categories c ON p.category_id = c.category_id
+    WHERE p.category_id = @categoria_id
+    ORDER BY p.product_name;
+END;
+
+-- Ejecutar el procedimiento
+EXEC sp_ListarProductosPorCategoria @categoria_id = 1;</pre>
                 </div>
             </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>🎯 Parámetros de Entrada y Salida</h2>
+
+                    <h3>Parámetros de Entrada</h3>
+                    <p>Los parámetros de entrada permiten pasar valores al procedimiento:</p>
+                    <pre>CREATE PROCEDURE sp_BuscarCliente
+    @nombre VARCHAR(100),
+    @apellido VARCHAR(100) = NULL  -- Parámetro opcional
+AS
+BEGIN
+    SELECT * FROM customers
+    WHERE first_name LIKE '%' + @nombre + '%'
+        AND (@apellido IS NULL OR last_name LIKE '%' + @apellido + '%');
+END;
+
+-- Uso
+EXEC sp_BuscarCliente @nombre = 'John';
+EXEC sp_BuscarCliente @nombre = 'John', @apellido = 'Doe';</pre>
+
+                    <h3>Parámetros de Salida (OUTPUT)</h3>
+                    <p>Los parámetros OUTPUT permiten devolver valores desde el procedimiento:</p>
+                    <pre>CREATE PROCEDURE sp_ContarProductos
+    @categoria_id INT,
+    @total INT OUTPUT
+AS
+BEGIN
+    SELECT @total = COUNT(*)
+    FROM products
+    WHERE category_id = @categoria_id;
+END;
+
+-- Uso
+DECLARE @cantidad INT;
+EXEC sp_ContarProductos @categoria_id = 1, @total = @cantidad OUTPUT;
+SELECT @cantidad AS 'Total de Productos';</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>⚠️ Manejo de Errores con TRY/CATCH</h2>
+                    <p>
+                        El manejo robusto de errores es esencial en procedimientos almacenados. SQL Server proporciona
+                        bloques TRY/CATCH para capturar y manejar errores de forma controlada.
+                    </p>
+
+                    <h3>Estructura TRY/CATCH</h3>
+                    <pre>CREATE PROCEDURE sp_InsertarProducto
+    @nombre VARCHAR(255),
+    @marca_id INT,
+    @categoria_id INT,
+    @precio DECIMAL(10,2),
+    @resultado VARCHAR(100) OUTPUT
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Validaciones
+        IF @precio <= 0
+        BEGIN
+            RAISERROR('El precio debe ser mayor que cero', 16, 1);
+        END
+        
+        -- Insertar producto
+        INSERT INTO products (product_name, brand_id, category_id, list_price)
+        VALUES (@nombre, @marca_id, @categoria_id, @precio);
+        
+        COMMIT TRANSACTION;
+        SET @resultado = 'Producto insertado correctamente';
+        
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+        
+        SET @resultado = 'Error: ' + ERROR_MESSAGE();
+        
+        -- Información detallada del error
+        SELECT 
+            ERROR_NUMBER() AS ErrorNumber,
+            ERROR_SEVERITY() AS ErrorSeverity,
+            ERROR_STATE() AS ErrorState,
+            ERROR_PROCEDURE() AS ErrorProcedure,
+            ERROR_LINE() AS ErrorLine,
+            ERROR_MESSAGE() AS ErrorMessage;
+    END CATCH
+END;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>🔄 Transacciones en Procedimientos</h2>
+                    <p>
+                        Las transacciones garantizan que un conjunto de operaciones se ejecuten completamente o no se
+                        ejecuten en absoluto,
+                        manteniendo la integridad de los datos.
+                    </p>
+
+                    <pre>CREATE PROCEDURE sp_ProcesarPedido
+    @cliente_id INT,
+    @producto_id INT,
+    @cantidad INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Verificar stock disponible
+        DECLARE @stock_actual INT;
+        SELECT @stock_actual = quantity
+        FROM stocks
+        WHERE product_id = @producto_id;
+        
+        IF @stock_actual < @cantidad
+        BEGIN
+            RAISERROR('Stock insuficiente', 16, 1);
+        END
+        
+        -- Crear pedido
+        INSERT INTO orders (customer_id, order_date, order_status)
+        VALUES (@cliente_id, GETDATE(), 1);
+        
+        DECLARE @order_id INT = SCOPE_IDENTITY();
+        
+        -- Insertar detalle de pedido
+        INSERT INTO order_items (order_id, product_id, quantity, list_price)
+        SELECT @order_id, @producto_id, @cantidad, list_price
+        FROM products
+        WHERE product_id = @producto_id;
+        
+        -- Actualizar stock
+        UPDATE stocks
+        SET quantity = quantity - @cantidad
+        WHERE product_id = @producto_id;
+        
+        COMMIT TRANSACTION;
+        
+        SELECT 'Pedido procesado exitosamente' AS Mensaje, @order_id AS OrderID;
+        
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+        
+        THROW;  -- Re-lanzar el error
+    END CATCH
+END;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>💡 Best Practices</h2>
+                    <ul>
+                        <li><strong>Nombrar apropiadamente:</strong> Usar prefijos como <code>sp_</code> o
+                            <code>usp_</code>
+                        </li>
+                        <li><strong>SET NOCOUNT ON:</strong> Evitar mensajes innecesarios de filas afectadas</li>
+                        <li><strong>Usar transacciones:</strong> Para operaciones que modifiquen múltiples tablas</li>
+                        <li><strong>Validar parámetros:</strong> Siempre validar entradas antes de procesar</li>
+                        <li><strong>Documentar:</strong> Incluir comentarios explicativos en el código</li>
+                        <li><strong>Evitar SELECT *:</strong> Especificar columnas explícitamente</li>
+                        <li><strong>Manejo de errores:</strong> Siempre implementar TRY/CATCH en procedimientos críticos
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>📝 Ejercicios Prácticos</h2>
+
+                    <h3>Ejercicio 1: Procedimiento con Múltiples Parámetros</h3>
+                    <p>
+                        Crear un procedimiento almacenado que actualice el precio de un producto y registre el cambio en
+                        una tabla de auditoría.
+                    </p>
+
+                    <h3>Ejercicio 2: Procedimiento con OUTPUT</h3>
+                    <p>
+                        Crear un procedimiento que calcule el total de ventas de un cliente específico y devuelva
+                        tanto el total como el número de pedidos realizados usando parámetros OUTPUT.
+                    </p>
+
+                    <h3>Ejercicio 3: Manejo de Errores</h3>
+                    <p>
+                        Crear un procedimiento que elimine un cliente, pero solo si no tiene pedidos asociados.
+                        Debe incluir manejo completo de errores con TRY/CATCH.
+                    </p>
+                </div>
+            </div>
+
         </main>
-    </div> <!-- Fin del contenedor general -->
+
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2026 Luis Walter Aquino Espinoza. Todos los derechos reservados.</p>
+                <p>Política de Privacidad | Términos de Servicio</p>
+            </div>
+        </footer>
+    </div>
+    <script src="../theme.js"></script>
 </body>
+
 </html>

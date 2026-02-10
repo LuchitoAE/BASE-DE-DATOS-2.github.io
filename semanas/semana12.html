@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semana 12</title> <!-- Cambia X por el número de la semana -->
-    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
+    <title>Semana 12</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Global Design System -->
+    <link rel="stylesheet" href="styles.css"> <!-- Week-specific styles -->
 </head>
+
 <body>
     <div class="page-container"> <!-- Contenedor general para centrar la página -->
         <header>
@@ -38,16 +41,18 @@
                 </div>
             </div>
         </header>
-        
+
         <main> <!-- Contenido principal de la administración de base de datos -->
             <section class="content-section">
                 <div class="text-block">
                     <h1>Administración de Base de Datos</h1>
                     <h2>Enunciado 01:</h2>
-                    <p>De acuerdo con la base de datos implementada (mínimo 100 registros), utilice los DBMS Microsoft SQL Server/MySQL, o un servidor de la nube como Microsoft Azure o Google FireBase. Explique qué problema soluciona su base de datos y responda las siguientes preguntas:</p>
+                    <p>De acuerdo con la base de datos implementada (mínimo 100 registros), utilice los DBMS Microsoft
+                        SQL Server/MySQL, o un servidor de la nube como Microsoft Azure o Google FireBase. Explique qué
+                        problema soluciona su base de datos y responda las siguientes preguntas:</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>1) Crear una vista utilizando tres tablas</h2>
@@ -66,10 +71,11 @@
         JOIN 
             Productos p ON v.VentaID % p.ProductoID = 0; -- Simulación de relación
         GO</code></pre>
-                    <p>Se combina datos de las tablas Ventas, Clientes y Productos para tener una vista detallada de las ventas.</p>
+                    <p>Se combina datos de las tablas Ventas, Clientes y Productos para tener una vista detallada de las
+                        ventas.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>2) Procedimiento almacenado para insertar datos</h2>
@@ -94,7 +100,7 @@
                     <p>Inserta una venta y actualiza el stock del producto vendido.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>3) Procedimiento almacenado para eliminar datos</h2>
@@ -109,7 +115,7 @@
                     <p>Elimina un cliente y todas sus ventas asociadas.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>4) Procedimiento almacenado para actualizar datos</h2>
@@ -127,7 +133,7 @@
                     <p>Actualiza el precio y stock de un producto.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>5) Procedimiento almacenado para cálculos matemáticos</h2>
@@ -140,7 +146,7 @@
                     <p>Calcula el total de todas las ventas.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>6) Disparador para ingresar un registro automáticamente</h2>
@@ -157,8 +163,8 @@
                     <p>Imprime un mensaje cuando se agrega un nuevo producto.</p>
                 </div>
             </section>
-            
-        <section class="content-section">
+
+            <section class="content-section">
                 <div class="text-block">
                     <h2>7) Disparador para eliminar un registro automáticamente</h2>
                     <pre><code>CREATE TRIGGER EliminarCliente
@@ -172,7 +178,7 @@
                     <p>Elimina automáticamente las ventas asociadas a un cliente eliminado.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>8) Disparador para actualizar un registro automáticamente</h2>
@@ -191,10 +197,11 @@
             WHERE dv.VentaID = @VentaID;
         END
         GO</code></pre>
-                    <p>Se actualiza el stock en la tabla Productos restando la cantidad vendida que se encuentra en la tabla DetalleVentas.</p>
+                    <p>Se actualiza el stock en la tabla Productos restando la cantidad vendida que se encuentra en la
+                        tabla DetalleVentas.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>9) Disparador para verificar el control de datos</h2>
@@ -213,10 +220,11 @@
             END
         END
         GO</code></pre>
-                    <p>Este disparador asegura que si un registro con un total negativo o cero se inserta en la tabla Ventas, la inserción será deshecha automáticamente.</p>
+                    <p>Este disparador asegura que si un registro con un total negativo o cero se inserta en la tabla
+                        Ventas, la inserción será deshecha automáticamente.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>10) Crear usuarios</h2>
@@ -226,7 +234,7 @@
         CREATE LOGIN luis WITH PASSWORD = 'luis';</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>11) Copiar la base de datos y compartir con usuarios</h2>
@@ -236,7 +244,7 @@
         EXEC sp_adduser 'luis';</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>12) Generar copia de seguridad de la base de datos</h2>
@@ -245,7 +253,7 @@
         WITH FORMAT, NAME = 'Copia de Seguridad de la base de datos ventas';</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>13) Encriptar una de las tablas</h2>
@@ -262,10 +270,12 @@
             Telefono = EncryptByKey(Key_GUID('ClaveSimetricaClientes'), CAST(Telefono AS NVARCHAR(15))),
             Correo = EncryptByKey(Key_GUID('ClaveSimetricaClientes'), CAST(Correo AS NVARCHAR(100)));
         CLOSE SYMMETRIC KEY ClaveSimetricaClientes;</code></pre>
-                    <p>En SQL Server no se puede encriptar tablas, se puede encriptar columnas, o toda la base de datos, para encriptar toda la tabla se encriptara todas las columnas para así cumplir con el punto número 13.</p>
+                    <p>En SQL Server no se puede encriptar tablas, se puede encriptar columnas, o toda la base de datos,
+                        para encriptar toda la tabla se encriptara todas las columnas para así cumplir con el punto
+                        número 13.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>14) Seguridad a nivel de columna</h2>
@@ -275,14 +285,14 @@
                     <p>Se crea un rol con permisos limitados y se restringe el acceso a la columna ClienteID.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>15) Restringir acceso a una columna de una tabla</h2>
                     <pre><code>DENY SELECT ON Productos(Precio) TO RoleLimitado;</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>16) Cifrado transparente de datos (TDE)</h2>
@@ -290,10 +300,11 @@
         WITH ALGORITHM = AES_256
         ENCRYPTION BY SERVER CERTIFICATE CertificadoVentas;
         ALTER DATABASE ventas SET ENCRYPTION ON;</code></pre>
-                    <p>No se puede aplicar el TDE en SQL Server Edición Express, las versiones que permiten usar TDE son las Enterprise y Developer.</p>
+                    <p>No se puede aplicar el TDE en SQL Server Edición Express, las versiones que permiten usar TDE son
+                        las Enterprise y Developer.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>17) Configurar permisos de usuario</h2>
@@ -303,7 +314,7 @@
         GRANT SELECT, INSERT, UPDATE, DELETE ON DetalleVentas TO luis;</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>18) Validación y filtración de entradas del usuario</h2>
@@ -320,7 +331,7 @@
         END;</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>19) Verificación de formatos esperados</h2>
@@ -342,7 +353,7 @@
         END;</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>20) Configurar auditoría</h2>
@@ -356,7 +367,7 @@
         ALTER DATABASE AUDIT SPECIFICATION AuditDBVentas WITH (STATE = ON);</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>21) Configuración de memoria y disco duro</h2>
@@ -369,7 +380,7 @@
         MODIFY FILE (NAME = ventas, SIZE = 10MB, MAXSIZE = 1GB, FILEGROWTH = 10MB);</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>22) Generar copia de seguridad de la base de datos</h2>
@@ -378,7 +389,7 @@
         WITH FORMAT, NAME = 'ventasBackup02';</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>23) Programar backups automatizados de la base de datos</h2>
@@ -397,7 +408,7 @@
         EXEC sp_add_jobserver @job_name = 'BackupAutomatizadoVentas';</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>24) Restauración de la base de datos</h2>
@@ -406,7 +417,7 @@
         WITH REPLACE;</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>25) Crear un espejo de la base de datos</h2>
@@ -436,7 +447,7 @@
         SET WITNESS = 'TCP://<ServidorTestigo>:5023';</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>26) Enviar datos a la base de datos espejo creada</h2>
@@ -456,7 +467,7 @@
         SELECT * FROM Clientes;</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>27) Dar permiso a un usuario por un determinado tiempo</h2>
@@ -465,7 +476,7 @@
         REVOKE SELECT ON Clientes FROM luis;</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>28) Realizar la replicación de bases de datos</h2>
@@ -494,21 +505,32 @@
             @subscription_type = 'push';</code></pre>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>29) Explicación de Always On Availability Groups</h2>
-                    <p>Es una solución que permite que múltiples réplicas de la base de datos estén disponibles en servidores secundarios para failover automático o manual.</p>
+                    <p>Es una solución que permite que múltiples réplicas de la base de datos estén disponibles en
+                        servidores secundarios para failover automático o manual.</p>
                 </div>
             </section>
-        
+
             <section class="content-section">
                 <div class="text-block">
                     <h2>30) Explicación de Log Shipping</h2>
-                    <p>Es una técnica que copia registros de transacciones (logs) de una base de datos principal a una base secundaria para recuperación en caso de fallos.</p>
+                    <p>Es una técnica que copia registros de transacciones (logs) de una base de datos principal a una
+                        base secundaria para recuperación en caso de fallos.</p>
                 </div>
             </section>
         </main>
-    </div> <!-- Fin del contenedor general -->
+
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2026 Luis Walter Aquino Espinoza. Todos los derechos reservados.</p>
+                <p>Política de Privacidad | Términos de Servicio</p>
+            </div>
+        </footer>
+    </div>
+    <script src="../theme.js"></script>
 </body>
+
 </html>

@@ -1,155 +1,159 @@
-/* Estilo general para todo el body */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #2c3e50, #4ca1af, #fbc2eb); /* Degradado de gris azulado a azul claro, luego a rosa suave */
-    background-attachment: fixed; /* Para que el fondo se quede fijo al hacer scroll */
-    background-size: cover; /* Para que cubra toda la página */
-}
+/* ==========================================
+   SEMANAS - MODERN DESIGN EXTENSION
+   Extends the global design system for week pages
+   Note: Pages now load ../styles.css directly in HTML
+   ========================================== */
 
-/* Contenedor que limita el ancho de la página */
-.page-container {
-    max-width: 1200px; /* Ancho máximo de la página */
-    margin: 0 auto; /* Centramos la página */
-    padding: 0 20px; /* Márgenes internos */
-}
+/* Additional styles specific to week pages */
 
-/* Encabezado */
-header {
-    background-color: #333;
-    padding: 20px 0;
-    padding-left: 10px;
-    padding-right: 30px;
-    position: relative;
-}
-
-/* Contenedor dentro del encabezado */
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.left a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-}
-
-.right {
-    display: flex;
-    gap: 20px;
-}
-
-.right a, .dropbtn {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-    background-color: #555;
-    border: none;
-    cursor: pointer;
-}
-
-.right a:hover, .dropbtn:hover {
-    background-color: #777;
-}
-
-.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    max-height: 200px; /* Limita la altura del dropdown */
-    overflow-y: auto; /* Agrega un scroll vertical */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    right: 0; /* Alinear el desplegable a la derecha */
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-/* Mostrar el contenido del menú desplegable al hacer hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #777;
-}
-
-/* Estilo para el contenido de las semanas */
-main {
-    margin: 40px 0;
-    background-color: #e9e9e9; /* Fondo blanco para el contenido principal */
-    padding: 20px 60px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para elevar un poco el contenido */
-    border-radius: 8px; /* Bordes redondeados */
-}
-
-/* Bloques de contenido */
+/* Content sections for weeks */
 .content-section {
-    margin-bottom: 40px;
-    text-align: center; /* Centramos el texto y la imagen horizontalmente */
-    background-color: #f8f9fa; /* Fondo claro para facilitar la lectura */
-    padding-top: 0px; /* Espaciado interno */
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 40px;
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para dar un efecto de elevación */
+    margin-bottom: var(--spacing-2xl);
 }
 
+.text-block h2 {
+    color: var(--text-primary);
+    border-bottom: 3px solid var(--accent-primary);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    display: inline-block;
+}
 
-/* Estilo del bloque de texto */
-.text-block {
-    margin-bottom: 20px;
-    font-size: 15px;
+.text-block h3 {
+    color: var(--accent-secondary);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.text-block ul,
+.text-block ol {
+    background: var(--bg-secondary);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--accent-primary);
+}
+
+.text-block ul li,
+.text-block ol li {
+    margin-bottom: var(--spacing-md);
     line-height: 1.8;
-    color: #333;
-    text-align: justify; /* Justifica el texto */
-    width: 95%;
 }
 
-/* Estilo del bloque de imagen con recuadro */
+.image-block {
+    margin: var(--spacing-2xl) 0;
+}
+
 .image-block img {
-    max-width: 70%; /* La imagen ocupará todo el ancho posible dentro de su contenedor */
+    max-width: 90%;
     height: auto;
     display: block;
-    margin: 0 auto; /* Centra la imagen horizontalmente */
-    border: 2px solid #333; /* Recuadro de 2px con color oscuro */
-    padding: 10px; /* Espacio entre la imagen y el borde */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar un efecto de elevación */
-    border-radius: 8px; /* Bordes redondeados para el recuadro */
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-slow);
 }
 
-
-/* Centrado vertical */
-.content-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.image-block img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
 }
 
-/* Fondo general de la página */
-body {
-    background-color: #e9ecef; /* Fondo claro para todo el body */
+/* Code blocks with syntax highlighting effect */
+.text-block pre {
+    position: relative;
+    margin: var(--spacing-xl) 0;
 }
 
+.text-block pre::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
 
+/* Tables for week content */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-xl) 0;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+thead {
+    background: var(--accent-gradient);
+    color: var(--text-light);
+}
+
+th,
+td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+}
+
+tbody tr:hover {
+    background: var(--bg-tertiary);
+}
+
+/* Quote blocks */
+blockquote {
+    border-left: 4px solid var(--accent-primary);
+    padding-left: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    font-style: italic;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: var(--spacing-lg);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* Info boxes */
+.info-box,
+.warning-box,
+.success-box {
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-xl) 0;
+    border-left: 4px solid;
+}
+
+.info-box {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: var(--accent-primary);
+}
+
+.warning-box {
+    background: rgba(255, 193, 7, 0.1);
+    border-color: #ffc107;
+}
+
+.success-box {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: #4caf50;
+}
+
+/* Responsive adjustments for weeks */
+@media (max-width: 768px) {
+    .image-block img {
+        max-width: 100%;
+    }
+
+    .text-block ul,
+    .text-block ol {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}

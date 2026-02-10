@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semana 8</title> <!-- Cambia X por el número de la semana -->
-    <link rel="stylesheet" href="styles.css"> <!-- Estilo CSS compartido -->
+    <title>Semana 8 - Triggers</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Global Design System -->
+    <link rel="stylesheet" href="styles.css"> <!-- Week-specific styles -->
 </head>
+
 <body>
-    <div class="page-container"> <!-- Contenedor general para centrar la página -->
+    <div class="page-container">
         <header>
             <div class="container">
                 <div class="left">
@@ -15,7 +18,7 @@
                 </div>
                 <div class="right">
                     <a href="../examenfinal.html">Examen Final</a>
-                    <a href="../libro/modulo1.html">Libro SQL Server</a>
+                    <a href="../libro/modulo1.html">Libro SQL server</a>
                     <a href="../misdatos.html">Mis datos</a>
                     <a href="../curso.html">Curso</a>
                     <div class="dropdown">
@@ -38,38 +41,351 @@
                 </div>
             </div>
         </header>
-        
-        <main> <!-- Contenido principal de la semana -->
+
+        <main>
             <div class="content-section">
                 <div class="text-block">
+                    <h1>Semana 8: Triggers y Automatización en SQL Server</h1>
+                    <h2>🎯 ¿Qué son los Triggers?</h2>
                     <p>
-                        <!-- Texto de ejemplo para la semana X -->
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
+                        Los <strong>triggers</strong> (disparadores o desencadenadores) son procedimientos almacenados
+                        especiales que se ejecutan
+                        automáticamente cuando ocurre un evento específico en la base de datos. Son herramientas
+                        poderosas para:
                     </p>
-                </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 1.png" alt="Descripción de la imagen de la semana X">
+                    <ul>
+                        <li><strong>Mantener integridad referencial:</strong> Más allá de las restricciones FK</li>
+                        <li><strong>Auditoría:</strong> Registrar cambios en los datos</li>
+                        <li><strong>Validación compleja:</strong> Reglas de negocio avanzadas</li>
+                        <li><strong>Sincronización:</strong> Actualizar datos relacionados automáticamente</li>
+                        <li><strong>Prevención:</strong> Impedir ciertas operaciones bajo condiciones específicas</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Repite más bloques de texto e imagen si es necesario -->
             <div class="content-section">
                 <div class="text-block">
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem quidem blanditiis officiis, facere incidunt cum similique accusantium dicta numquam eveniet fugit labore eligendi praesentium nemo voluptates iusto ex voluptate.
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta doloremque facilis vero ipsam ducimus quas cum, assumenda atque! Saepe nam iure minima id voluptates ducimus cum eligendi facere vitae enim.
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis explicabo ad deleniti consectetur molestias maiores, laboriosam natus officiis. Esse, praesentium debitis dolores eum quidem alias velit maiores eaque error tempora!
-                    </p>
-                </div>
-                
-                <div class="image-block">
-                    <img src="../imagenes/Pregunta 2.png" alt="Descripción de la segunda imagen de la semana X">
+                    <h2>📋 Tipos de Triggers</h2>
+
+                    <h3>1. Triggers DML (Data Manipulation Language)</h3>
+                    <p>Se activan cuando se ejecutan operaciones INSERT, UPDATE o DELETE en una tabla.</p>
+                    <ul>
+                        <li><strong>AFTER:</strong> Se ejecuta después de la operación DML</li>
+                        <li><strong>INSTEAD OF:</strong> Se ejecuta en lugar de la operación DML</li>
+                    </ul>
+
+                    <h3>2. Triggers DDL (Data Definition Language)</h3>
+                    <p>Se activan cuando se ejecutan operaciones CREATE, ALTER, DROP en objetos de la base de datos.</p>
+
+                    <h3>3. Triggers LOGON</h3>
+                    <p>Se activan cuando un usuario inicia sesión en SQL Server.</p>
                 </div>
             </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>🔨 Triggers DML - AFTER</h2>
+
+                    <h3>Sintaxis Básica</h3>
+                    <pre>CREATE TRIGGER nombre_trigger
+ON nombre_tabla
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+    -- Código del trigger
+END;</pre>
+
+                    <h3>Tablas Especiales: INSERTED y DELETED</h3>
+                    <p>
+                        SQL Server proporciona dos tablas especiales en el contexto de los triggers:
+                    </p>
+                    <ul>
+                        <li><strong>INSERTED:</strong> Contiene las nuevas filas (INSERT) o los valores actualizados
+                            (UPDATE)</li>
+                        <li><strong>DELETED:</strong> Contiene las filas eliminadas (DELETE) o los valores antiguos
+                            (UPDATE)</li>
+                    </ul>
+
+                    <h3>Ejemplo 1: Auditoría de Cambios en Productos</h3>
+                    <pre>-- Primero crear tabla de auditoría
+CREATE TABLE product_audit (
+    audit_id INT IDENTITY PRIMARY KEY,
+    product_id INT,
+    action_type VARCHAR(10),
+    old_price DECIMAL(10,2),
+    new_price DECIMAL(10,2),
+    changed_by VARCHAR(100),
+    changed_date DATETIME DEFAULT GETDATE()
+);
+
+-- Crear trigger de auditoría
+CREATE TRIGGER tr_product_price_audit
+ON products
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- Solo registrar si cambió el precio
+    IF UPDATE(list_price)
+    BEGIN
+        INSERT INTO product_audit (
+            product_id, 
+            action_type, 
+            old_price, 
+            new_price, 
+            changed_by
+        )
+        SELECT 
+            i.product_id,
+            'UPDATE',
+            d.list_price,
+            i.list_price,
+            SYSTEM_USER
+        FROM inserted i
+        INNER JOIN deleted d ON i.product_id = d.product_id
+        WHERE i.list_price <> d.list_price;
+    END
+END;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>🛡️ Triggers INSTEAD OF</h2>
+                    <p>
+                        Los triggers INSTEAD OF se ejecutan <strong>en lugar de</strong> la operación DML original.
+                        Son útiles para implementar lógica personalizada o para hacer vistas actualizables.
+                    </p>
+
+                    <h3>Ejemplo 2: Elimina ción Lógica (Soft Delete)</h3>
+                    <pre>-- Agregar columna para soft delete
+ALTER TABLE customers
+ADD is_active BIT DEFAULT 1;
+
+-- Crear trigger para soft delete
+CREATE TRIGGER tr_customers_soft_delete
+ON customers
+INSTEAD OF DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    UPDATE customers
+    SET is_active = 0
+    WHERE customer_id IN (SELECT customer_id FROM deleted);
+    
+    -- Registrar en log
+    INSERT INTO deletion_log (table_name, record_id, deleted_by, deleted_date)
+    SELECT 
+        'customers',
+        customer_id,
+        SYSTEM_USER,
+        GETDATE()
+    FROM deleted;
+    
+    PRINT 'Registros marcados como inactivos';
+END;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>🔍 Ejemplo Completo: Sistema de Inventario</h2>
+                    <p>
+                        Un caso de uso common es actualizar automáticamente el inventario cuando se procesa un pedido:
+                    </p>
+
+                    <pre>-- Trigger para actualizar stock cuando se inserta un pedido
+CREATE TRIGGER tr_update_stock_on_order
+ON order_items
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    BEGIN TRY
+        -- Actualizar stock
+        UPDATE s
+        SET s.quantity = s.quantity - i.quantity
+        FROM stocks s
+        INNER JOIN inserted i ON s.product_id = i.product_id;
+        
+        -- Verificar stock negativo (alerta)
+        IF EXISTS (
+            SELECT 1 
+            FROM stocks s
+            INNER JOIN inserted i ON s.product_id = i.product_id
+            WHERE s.quantity < 0
+        )
+        BEGIN
+            -- Registrar alerta
+            INSERT INTO stock_alerts (product_id, alert_message, alert_date)
+            SELECT 
+                product_id,
+                'Stock negativo detectado',
+                GETDATE()
+            FROM stocks
+            WHERE quantity < 0;
+            
+            RAISERROR('¡Advertencia! Algunos productos tienen stock negativo', 10, 1);
+        END
+        
+    END TRY
+    BEGIN CATCH
+        -- Manejar error
+        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+        RAISERROR(@ErrorMessage, 16, 1);
+        ROLLBACK TRANSACTION;
+    END CATCH
+END;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>⚙️ Triggers DDL</h2>
+                    <p>
+                        Los triggers DDL se utilizan para auditar o prevenir cambios en la estructura de la base de
+                        datos.
+                    </p>
+
+                    <h3>Ejemplo 3: Auditoría de Cambios en Estructura</h3>
+                    <pre>-- Crear tabla de auditoría DDL
+CREATE TABLE ddl_audit (
+    audit_id INT IDENTITY PRIMARY KEY,
+    event_type VARCHAR(100),
+    object_name VARCHAR(100),
+    database_name VARCHAR(100),
+    executed_by VARCHAR(100),
+    execution_date DATETIME,
+    tsql_command VARCHAR(MAX)
+);
+
+-- Crear trigger DDL
+CREATE TRIGGER tr_ddl_audit
+ON DATABASE
+FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    DECLARE @data XML = EVENTDATA();
+    
+    INSERT INTO ddl_audit (
+        event_type,
+        object_name,
+        database_name,
+        executed_by,
+        execution_date,
+        tsql_command
+    )
+    VALUES (
+        @data.value('(/EVENT_INSTANCE/EventType)[1]', 'VARCHAR(100)'),
+        @data.value('(/EVENT_INSTANCE/ObjectName)[1]', 'VARCHAR(100)'),
+        @data.value('(/EVENT_INSTANCE/DatabaseName)[1]', 'VARCHAR(100)'),
+        @data.value('(/EVENT_INSTANCE/LoginName)[1]', 'VARCHAR(100)'),
+        GETDATE(),
+        @data.value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'VARCHAR(MAX)')
+    );
+END;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>⚠️ Consideraciones Importantes</h2>
+
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>✅ Automatización de tareas repetitivas</li>
+                        <li>✅ Garantizan consistencia de datos</li>
+                        <li>✅ Auditoría automática y transparente</li>
+                        <li>✅ Implementan reglas de negocio complejas</li>
+                    </ul>
+
+                    <h3>Desventajas y Precauciones</h3>
+                    <ul>
+                        <li>⚠️ <strong>Performance:</strong> Pueden ralentizar operaciones si son muy complejos</li>
+                        <li>⚠️ <strong>Depuración:</strong> Pueden ser difíciles de debuggear</li>
+                        <li>⚠️ <strong>Triggers recursivos:</strong> Pueden causar loops infinitos</li>
+                        <li>⚠️ <strong>Ocultan lógica:</strong> La lógica de negocio no es visible en la aplicación</li>
+                    </ul>
+
+                    <h3>Best Practices</h3>
+                    <ul>
+                        <li>✔️ Mantener los triggers simples y rápidos</li>
+                        <li>✔️ Usar SET NOCOUNT ON al inicio</li>
+                        <li>✔️ Manejar múltiples filas (no asumir solo una fila en INSERTED/DELETED)</li>
+                        <li>✔️ Implementar manejo de errores con TRY/CATCH</li>
+                        <li>✔️ Documentar claramente qué hace cada trigger</li>
+                        <li>✔️ Evitar triggers que llamen a procedimientos largos</li>
+                        <li>✔️ Considerar alternativas (constraints, valores predeterminados)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>🔧 Administración de Triggers</h2>
+
+                    <h3>Ver Triggers Existentes</h3>
+                    <pre>-- Ver todos los triggers de una tabla
+SELECT * FROM sys.triggers
+WHERE parent_id = OBJECT_ID('nombre_tabla');
+
+-- Ver definición de un trigger
+EXEC sp_helptext 'nombre_trigger';</pre>
+
+                    <h3>Deshabilitar/Habilitar Triggers</h3>
+                    <pre>-- Deshabilitar un trigger
+DISABLE TRIGGER nombre_trigger ON nombre_tabla;
+
+-- Habilitar un trigger
+ENABLE TRIGGER nombre_trigger ON nombre_tabla;
+
+-- Deshabilitar todos los triggers de una tabla
+DISABLE TRIGGER ALL ON nombre_tabla;</pre>
+
+                    <h3>Eliminar un Trigger</h3>
+                    <pre>DROP TRIGGER nombre_trigger;</pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="text-block">
+                    <h2>📝 Ejercicios Prácticos</h2>
+
+                    <h3>Ejercicio 1: Trigger de Validación</h3>
+                    <p>
+                        Crear un trigger que impida eliminar una categoría si tiene productos asociados.
+                    </p>
+
+                    <h3>Ejercicio 2: Trigger de Sincronización</h3>
+                    <p>
+                        Crear un trigger que actualice automáticamente la fecha de última modificación
+                        de un cliente cuando se modifica alguno de sus pedidos.
+                    </p>
+
+                    <h3>Ejercicio 3: Trigger de Auditoría Completa</h3>
+                    <p>
+                        Implementar un sistema completo de auditoría que registre todas las operaciones
+                        (INSERT, UPDATE, DELETE) en la tabla de empleados, incluyendo quién hizo el cambio
+                        y qué valores cambiaron.
+                    </p>
+                </div>
+            </div>
+
         </main>
-    </div> <!-- Fin del contenedor general -->
+
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2026 Luis Walter Aquino Espinoza. Todos los derechos reservados.</p>
+                <p>Política de Privacidad | Términos de Servicio</p>
+            </div>
+        </footer>
+    </div>
+    <script src="../theme.js"></script>
 </body>
+
 </html>
