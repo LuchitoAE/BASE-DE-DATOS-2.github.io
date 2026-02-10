@@ -1,0 +1,159 @@
+/* ==========================================
+   SEMANAS - MODERN DESIGN EXTENSION
+   Extends the global design system for week pages
+   Note: Pages now load ../styles.css directly in HTML
+   ========================================== */
+
+/* Additional styles specific to week pages */
+
+/* Content sections for weeks */
+.content-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.text-block h2 {
+    color: var(--text-primary);
+    border-bottom: 3px solid var(--accent-primary);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    display: inline-block;
+}
+
+.text-block h3 {
+    color: var(--accent-secondary);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.text-block ul,
+.text-block ol {
+    background: var(--bg-secondary);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--accent-primary);
+}
+
+.text-block ul li,
+.text-block ol li {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+}
+
+.image-block {
+    margin: var(--spacing-2xl) 0;
+}
+
+.image-block img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-slow);
+}
+
+.image-block img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+}
+
+/* Code blocks with syntax highlighting effect */
+.text-block pre {
+    position: relative;
+    margin: var(--spacing-xl) 0;
+}
+
+.text-block pre::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+/* Tables for week content */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-xl) 0;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+thead {
+    background: var(--accent-gradient);
+    color: var(--text-light);
+}
+
+th,
+td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+}
+
+tbody tr:hover {
+    background: var(--bg-tertiary);
+}
+
+/* Quote blocks */
+blockquote {
+    border-left: 4px solid var(--accent-primary);
+    padding-left: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    font-style: italic;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: var(--spacing-lg);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* Info boxes */
+.info-box,
+.warning-box,
+.success-box {
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-xl) 0;
+    border-left: 4px solid;
+}
+
+.info-box {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: var(--accent-primary);
+}
+
+.warning-box {
+    background: rgba(255, 193, 7, 0.1);
+    border-color: #ffc107;
+}
+
+.success-box {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: #4caf50;
+}
+
+/* Responsive adjustments for weeks */
+@media (max-width: 768px) {
+    .image-block img {
+        max-width: 100%;
+    }
+
+    .text-block ul,
+    .text-block ol {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}
