@@ -49,7 +49,7 @@
                     <pre><code>SELECT * FROM Persona;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 1.png" alt="Imagen de resultado de Consulta 1">
+                    <img src="../assets/images/semana 05 - consultas/consulta 1.png" alt="Imagen de resultado de Consulta 1">
                 </div>
             </section>
 
@@ -59,7 +59,7 @@
                     <pre><code>SELECT dni, apellidos, funcion FROM Persona;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 2.png" alt="Imagen de resultado de Consulta 2">
+                    <img src="../assets/images/semana 05 - consultas/consulta 2.png" alt="Imagen de resultado de Consulta 2">
                 </div>
             </section>
 
@@ -69,7 +69,7 @@
                     <pre><code>SELECT apellidos FROM Persona WHERE localidad = 'Lima';</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 4.png" alt="Imagen de resultado de Consulta 3">
+                    <img src="../assets/images/semana 05 - consultas/consulta 4.png" alt="Imagen de resultado de Consulta 3">
                 </div>
             </section>
 
@@ -79,7 +79,7 @@
                     <pre><code>SELECT apellidos FROM Persona WHERE localidad IN ('Lima', 'Huancayo');</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 9.png" alt="Imagen de resultado de Consulta 3">
+                    <img src="../assets/images/semana 05 - consultas/consulta 9.png" alt="Imagen de resultado de Consulta 3">
                 </div>
             </section>
 
@@ -90,7 +90,7 @@
                     <pre><code>SELECT * FROM Persona WHERE localidad = 'Lima' AND salario > 1500;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 5.png" alt="Imagen de resultado de Consulta 3">
+                    <img src="../assets/images/semana 05 - consultas/consulta 5.png" alt="Imagen de resultado de Consulta 3">
                 </div>
             </section>
 
@@ -101,7 +101,7 @@
                     <pre><code>SELECT * FROM Persona WHERE localidad = 'Huancayo' AND salario > 1500 AND funcion = 'director';</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 6.png" alt="Imagen de resultado de Consulta 3">
+                    <img src="../assets/images/semana 05 - consultas/consulta 6.png" alt="Imagen de resultado de Consulta 3">
                 </div>
             </section>
 
@@ -112,7 +112,7 @@
                     <pre><code>SELECT * FROM Persona WHERE funcion = 'Medico' ORDER BY apellidos DESC;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 7.png" alt="Imagen de resultado de Consulta 3">
+                    <img src="../assets/images/semana 05 - consultas/consulta 7.png" alt="Imagen de resultado de Consulta 3">
                 </div>
             </section>
 
@@ -123,7 +123,7 @@
                     <pre><code>SELECT DISTINCT localidad FROM Persona;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 8.png" alt="Imagen de resultado de Consulta 3">
+                    <img src="../assets/images/semana 05 - consultas/consulta 8.png" alt="Imagen de resultado de Consulta 3">
                 </div>
             </section>
 
@@ -134,7 +134,7 @@
                     <pre><code>SELECT * FROM Persona WHERE salario > 1500 AND funcion = 'Medico' ORDER BY salario DESC;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 9.png" alt="Imagen de resultado de Consulta 3">
+                    <img src="../assets/images/semana 05 - consultas/consulta 9.png" alt="Imagen de resultado de Consulta 3">
                 </div>
             </section>
 
@@ -144,7 +144,7 @@
                     <pre><code>SELECT * FROM Persona WHERE apellidos LIKE 'M%';</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 10.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 10.png"
                         alt="Imagen de resultado de Consulta 3">
                 </div>
             </section>
@@ -156,7 +156,7 @@
                     <pre><code>SELECT * FROM Persona WHERE apellidos LIKE '%M%' AND funcion = 'Conserje';</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 11.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 11.png"
                         alt="Imagen de resultado de Consulta 11">
                 </div>
             </section>
@@ -167,7 +167,7 @@
                     <pre><code>SELECT * FROM Persona WHERE salario BETWEEN 1500 AND 2000;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 12.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 12.png"
                         alt="Imagen de resultado de Consulta 12">
                 </div>
             </section>
@@ -178,7 +178,7 @@
                     <pre><code>SELECT * FROM Persona WHERE funcion IN ('Medico', 'director');</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 13.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 13.png"
                         alt="Imagen de resultado de Consulta 13">
                 </div>
             </section>
@@ -190,7 +190,7 @@
                     <pre><code>SELECT * FROM Persona WHERE funcion NOT IN ('Conserje') AND salario > 1500 ORDER BY apellidos DESC;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 14.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 14.png"
                         alt="Imagen de resultado de Consulta 14">
                 </div>
             </section>
@@ -202,7 +202,7 @@
                     <pre><code>SELECT * FROM Persona WHERE localidad IN ('Lima', 'Huancayo') AND CodigoHospital = 1;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 15.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 15.png"
                         alt="Imagen de resultado de Consulta 15">
                 </div>
             </section>
@@ -214,7 +214,7 @@
                     <pre><code>SELECT UPPER(apellidos) FROM Persona WHERE CodigoHospital = 1;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 16.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 16.png"
                         alt="Imagen de resultado de Consulta 16">
                 </div>
             </section>
@@ -225,7 +225,7 @@
                     <pre><code>SELECT apellidos, LEN(apellidos) AS longitud FROM Persona;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 17.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 17.png"
                         alt="Imagen de resultado de Consulta 17">
                 </div>
             </section>
@@ -237,7 +237,7 @@
                     <pre><code>SELECT LOWER(apellidos) AS apellidos, LOWER(localidad) AS localidad FROM Persona WHERE CodigoHospital <> 1;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 18.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 18.png"
                         alt="Imagen de resultado de Consulta 18">
                 </div>
             </section>
@@ -249,7 +249,7 @@
                     <pre><code>SELECT * FROM Persona WHERE CodigoHospital IN (1, 2) AND salario > 1500;</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 19.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 19.png"
                         alt="Imagen de resultado de Consulta 19">
                 </div>
             </section>
@@ -261,7 +261,7 @@
                     <pre><code>SELECT * FROM Persona WHERE CodigoHospital <> 2 AND localidad = 'Lima';</code></pre>
                 </div>
                 <div class="image-block">
-                    <img src="../imagenes/semana 05 - consultas/consulta 20.png"
+                    <img src="../assets/images/semana 05 - consultas/consulta 20.png"
                         alt="Imagen de resultado de Consulta 20">
                 </div>
             </section>

@@ -7,7 +7,7 @@
     <title>Semana 6</title>
     <link rel="stylesheet" href="../assets/css/global.css"> <!-- Global Design System -->
     <link rel="stylesheet" href="../assets/css/sections/semanas.css"> <!-- Week-specific styles -->
-    <link rel="stylesheet" href="semana6.css">
+    <link rel="stylesheet" href="../assets/css/pages/semana6.css">
 </head>
 
 <body>
@@ -60,238 +60,238 @@
                 <div class="step">
                     <h3>1. Lista el primer apellido de todos los empleados</h3>
                     <pre><code>SELECT apePaterno FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/1.png" alt="pregunta 1">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/1.png" alt="pregunta 1">
                 </div>
 
                 <div class="step">
                     <h3>2. Lista el primer apellido de los empleados eliminando los apellidos que estén repetidos</h3>
                     <pre><code>SELECT DISTINCT apePaterno FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/2.png" alt="pregunta 2">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/2.png" alt="pregunta 2">
                 </div>
 
                 <div class="step">
                     <h3>3. Lista todas las columnas de la tabla empleado</h3>
                     <pre><code>SELECT * FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/3.png" alt="pregunta 3">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/3.png" alt="pregunta 3">
                 </div>
 
                 <div class="step">
                     <h3>4. Lista el nombre y los apellidos de todos los empleados</h3>
                     <pre><code>SELECT nombre, apePaterno, apeMaterno FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/4.png" alt="pregunta 4">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/4.png" alt="pregunta 4">
                 </div>
 
                 <div class="step">
                     <h3>5. Lista el código de los departamentos de los empleados que aparecen en la tabla empleado</h3>
                     <pre><code>SELECT codigo_departamento FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/5.png" alt="pregunta 5">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/5.png" alt="pregunta 5">
                 </div>
 
                 <div class="step">
                     <h3>6. Lista el código de los departamentos de los empleados eliminando los códigos que estén
                         repetidos</h3>
                     <pre><code>SELECT DISTINCT codigo_departamento FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/6.png" alt="pregunta 6">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/6.png" alt="pregunta 6">
                 </div>
 
                 <div class="step">
                     <h3>7. Lista el nombre y apellidos de los empleados en una única columna</h3>
                     <pre><code>SELECT CONCAT(nombre, ' ', apePaterno, ' ', apeMaterno) AS NombreCompleto FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/7.png" alt="pregunta 7">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/7.png" alt="pregunta 7">
                 </div>
 
                 <div class="step">
                     <h3>8. Lista el nombre y apellidos de los empleados en una única columna, convirtiendo todos los
                         caracteres en mayúscula</h3>
                     <pre><code>SELECT UPPER(CONCAT(nombre, ' ', apePaterno, ' ', apeMaterno)) AS NombreCompleto FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/8.png" alt="pregunta 8">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/8.png" alt="pregunta 8">
                 </div>
 
                 <div class="step">
                     <h3>9. Lista el nombre y apellidos de los empleados en una única columna, convirtiendo todos los
                         caracteres en minúscula</h3>
                     <pre><code>SELECT LOWER(CONCAT(nombre, ' ', apePaterno, ' ', apeMaterno)) AS NombreCompleto FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/9.png" alt="pregunta 9">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/9.png" alt="pregunta 9">
                 </div>
 
                 <div class="step">
                     <h3>10. Lista el código de los empleados junto al nif, pero el nif deberá aparecer en dos columnas,
                         una mostrará únicamente los dígitos del nif y la otra la letra</h3>
                     <pre><code>SELECT codigo, LEFT(dni, LEN(dni)-1) AS DigitosNIF, RIGHT(dni, 1) AS LetraNIF FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/10.png" alt="pregunta 10">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/10.png" alt="pregunta 10">
                 </div>
 
                 <div class="step">
                     <h3>11. Lista el nombre de cada departamento y el valor del presupuesto actual del que dispone</h3>
                     <pre><code>SELECT nombre, (presupuesto - gastos) AS PresupuestoActual FROM departamento;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/11.png" alt="pregunta 11">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/11.png" alt="pregunta 11">
                 </div>
 
                 <div class="step">
                     <h3>12. Lista el nombre de los departamentos y el valor del presupuesto actual ordenado de forma
                         ascendente</h3>
                     <pre><code>SELECT nombre, (presupuesto - gastos) AS PresupuestoActual FROM departamento ORDER BY PresupuestoActual ASC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/12.png" alt="pregunta 12">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/12.png" alt="pregunta 12">
                 </div>
 
                 <div class="step">
                     <h3>13. Lista el nombre de todos los departamentos ordenados de forma ascendente</h3>
                     <pre><code>SELECT nombre FROM departamento ORDER BY nombre ASC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/13.png" alt="pregunta 13">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/13.png" alt="pregunta 13">
                 </div>
 
                 <div class="step">
                     <h3>14. Lista el nombre de todos los departamentos ordenados de forma descendente</h3>
                     <pre><code>SELECT nombre FROM departamento ORDER BY nombre DESC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/14.png" alt="pregunta 14">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/14.png" alt="pregunta 14">
                 </div>
 
                 <div class="step">
                     <h3>15. Lista los apellidos y el nombre de todos los empleados, ordenados de forma alfabética</h3>
                     <pre><code>SELECT apePaterno, apeMaterno, nombre FROM empleado ORDER BY apePaterno, apeMaterno, nombre;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/15.png" alt="pregunta 15">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/15.png" alt="pregunta 15">
                 </div>
 
                 <div class="step">
                     <h3>16. Devuelve una lista con el nombre y el presupuesto de los 3 departamentos que tienen mayor
                         presupuesto</h3>
                     <pre><code>SELECT TOP 3 nombre, presupuesto FROM departamento ORDER BY presupuesto DESC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/16.png" alt="pregunta 16">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/16.png" alt="pregunta 16">
                 </div>
 
                 <div class="step">
                     <h3>17. Devuelve una lista con el nombre y el presupuesto de los 3 departamentos que tienen menor
                         presupuesto</h3>
                     <pre><code>SELECT TOP 3 nombre, presupuesto FROM departamento ORDER BY presupuesto ASC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/17.png" alt="pregunta 17">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/17.png" alt="pregunta 17">
                 </div>
 
                 <div class="step">
                     <h3>18. Devuelve una lista con el nombre y el gasto, de los 2 departamentos que tienen mayor gasto
                     </h3>
                     <pre><code>SELECT TOP 2 nombre, gastos FROM departamento ORDER BY gastos DESC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/18.png" alt="pregunta 18">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/18.png" alt="pregunta 18">
                 </div>
 
                 <div class="step">
                     <h3>19. Devuelve una lista con el nombre y el gasto, de los 2 departamentos que tienen menor gasto
                     </h3>
                     <pre><code>SELECT TOP 2 nombre, gastos FROM departamento ORDER BY gastos ASC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/19.png" alt="pregunta 19">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/19.png" alt="pregunta 19">
                 </div>
 
                 <div class="step">
                     <h3>20. Devuelve una lista con 5 filas a partir de la tercera fila de la tabla empleado</h3>
                     <pre><code>SELECT * FROM empleado ORDER BY codigo OFFSET 2 ROWS FETCH NEXT 5 ROWS ONLY;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/20.png" alt="pregunta 20">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/20.png" alt="pregunta 20">
                 </div>
 
                 <div class="step">
                     <h3>21. Devuelve una lista con el nombre de los departamentos y el presupuesto de aquellos que
                         tienen un presupuesto mayor o igual a 150000 euros</h3>
                     <pre><code>SELECT nombre, presupuesto FROM departamento WHERE presupuesto >= 150000;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/21.png" alt="pregunta 21">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/21.png" alt="pregunta 21">
                 </div>
 
                 <div class="step">
                     <h3>22. Devuelve una lista con el nombre de los departamentos y el gasto de aquellos que tienen
                         menos de 5000 euros de gastos</h3>
                     <pre><code>SELECT nombre, gastos FROM departamento WHERE gastos < 5000;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/22.png" alt="pregunta 22">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/22.png" alt="pregunta 22">
                 </div>
 
                 <div class="step">
                     <h3>23. Devuelve una lista con el nombre de los departamentos y el presupuesto de aquellos que
                         tienen un presupuesto entre 100000 y 200000 euros, sin utilizar el operador BETWEEN</h3>
                     <pre><code>SELECT nombre, presupuesto FROM departamento WHERE presupuesto >= 100000 AND presupuesto <= 200000;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/23.png" alt="pregunta 23">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/23.png" alt="pregunta 23">
                 </div>
 
                 <div class="step">
                     <h3>24. Devuelve una lista con el nombre de los departamentos que no tienen un presupuesto entre
                         100000 y 200000 euros, sin utilizar el operador BETWEEN</h3>
                     <pre><code>SELECT nombre, presupuesto FROM departamento WHERE presupuesto < 100000 OR presupuesto > 200000;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/24.png" alt="pregunta 24">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/24.png" alt="pregunta 24">
                 </div>
 
                 <div class="step">
                     <h3>25. Devuelve una lista con el nombre de los departamentos que tienen un presupuesto entre 100000
                         y 200000 euros, utilizando el operador BETWEEN</h3>
                     <pre><code>SELECT nombre, presupuesto FROM departamento WHERE presupuesto BETWEEN 100000 AND 200000;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/25.png" alt="pregunta 25">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/25.png" alt="pregunta 25">
                 </div>
 
                 <div class="step">
                     <h3>26. Devuelve una lista con el nombre de los departamentos que no tienen un presupuesto entre
                         100000 y 200000 euros, utilizando el operador BETWEEN</h3>
                     <pre><code>SELECT nombre, presupuesto FROM departamento WHERE presupuesto NOT BETWEEN 100000 AND 200000;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/26.png" alt="pregunta 26">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/26.png" alt="pregunta 26">
                 </div>
 
                 <div class="step">
                     <h3>27. Devuelve una lista con el nombre de los departamentos, gastos y presupuesto, de aquellos
                         departamentos donde los gastos sean mayores que el presupuesto del que disponen.</h3>
                     <pre><code>SELECT nombre, gastos, presupuesto FROM departamento WHERE gastos > presupuesto;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/27.png" alt="pregunta 27">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/27.png" alt="pregunta 27">
                 </div>
 
                 <div class="step">
                     <h3>28. Devuelve una lista con el nombre de los departamentos, gastos y presupuesto, de aquellos
                         departamentos donde los gastos sean menores que el presupuesto del que disponen.</h3>
                     <pre><code>SELECT nombre, gastos, presupuesto FROM departamento WHERE gastos < presupuesto;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/28.png" alt="pregunta 28">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/28.png" alt="pregunta 28">
                 </div>
 
                 <div class="step">
                     <h3>29. Devuelve una lista con el nombre de los departamentos, gastos y presupuesto, de aquellos
                         departamentos donde los gastos sean iguales al presupuesto del que disponen.</h3>
                     <pre><code>SELECT nombre, gastos, presupuesto FROM departamento WHERE gastos = presupuesto;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/29.png" alt="pregunta 29">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/29.png" alt="pregunta 29">
                 </div>
 
                 <div class="step">
                     <h3>30. Lista todos los datos de los empleados cuyo segundo apellido (apeMaterno) sea NULL.</h3>
                     <pre><code>SELECT * FROM empleado WHERE apeMaterno IS NULL;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/30.png" alt="pregunta 30">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/30.png" alt="pregunta 30">
                 </div>
 
                 <div class="step">
                     <h3>31. Lista todos los datos de los empleados cuyo segundo apellido (apeMaterno) no sea NULL.</h3>
                     <pre><code>SELECT * FROM empleado WHERE apeMaterno IS NOT NULL;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/31.png" alt="pregunta 31">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/31.png" alt="pregunta 31">
                 </div>
 
                 <div class="step">
                     <h3>32. Lista todos los datos de los empleados cuyo segundo apellido (apeMaterno) sea López.</h3>
                     <pre><code>SELECT * FROM empleado WHERE apeMaterno = 'López';</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/32.png" alt="pregunta 32">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/32.png" alt="pregunta 32">
                 </div>
 
                 <div class="step">
                     <h3>33. Lista todos los datos de los empleados cuyo segundo apellido (apeMaterno) sea Díaz o Moreno,
                         sin utilizar el operador IN.</h3>
                     <pre><code>SELECT * FROM empleado WHERE apeMaterno = 'Díaz' OR apeMaterno = 'Moreno';</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/33.png" alt="pregunta 33">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/33.png" alt="pregunta 33">
                 </div>
 
                 <div class="step">
                     <h3>34. Lista todos los datos de los empleados cuyo segundo apellido (apeMaterno) sea Díaz o Moreno,
                         utilizando el operador IN.</h3>
                     <pre><code>SELECT * FROM empleado WHERE apeMaterno IN ('Díaz', 'Moreno');</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/34.png" alt="pregunta 34">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/34.png" alt="pregunta 34">
                 </div>
 
                 <div class="step">
                     <h3>35. Lista los nombres, apellidos y DNI de los empleados que trabajan en el departamento 3.</h3>
                     <pre><code>SELECT nombre, apePaterno, apeMaterno, dni FROM empleado WHERE codigo_departamento = 3;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/35.png" alt="pregunta 35">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/35.png" alt="pregunta 35">
                 </div>
 
                 <div class="step">
                     <h3>36. Lista los nombres, apellidos y DNI de los empleados que trabajan en los departamentos 2, 4 o
                         5.</h3>
                     <pre><code>SELECT nombre, apePaterno, apeMaterno, dni FROM empleado WHERE codigo_departamento IN (2, 4, 5);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas/36.png" alt="pregunta 36">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas/36.png" alt="pregunta 36">
                 </div>
             </div>
 
@@ -303,7 +303,7 @@
                         trabajan. Este listado también debe incluir los empleados que no tienen ningún departamento
                         asociado</h3>
                     <pre><code>SELECT CONCAT(e.nombre, ' ', e.apePaterno, ' ', e.apeMaterno) AS NombreCompleto, d.nombre AS Departamento, d.presupuesto, d.gastos FROM empleado e LEFT JOIN departamento d ON e.codigo_departamento = d.codigo;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/1.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/1.png"
                         alt="pregunta 1">
                 </div>
 
@@ -311,7 +311,7 @@
                     <h3>2. Devuelve un listado donde sólo aparezcan aquellos empleados que no tienen ningún departamento
                         asociado</h3>
                     <pre><code>SELECT CONCAT(e.nombre, ' ', e.apePaterno, ' ', e.apeMaterno) AS NombreCompleto FROM empleado e LEFT JOIN departamento d ON e.codigo_departamento = d.codigo WHERE e.codigo_departamento IS NULL;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/2.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/2.png"
                         alt="pregunta 2">
                 </div>
 
@@ -319,7 +319,7 @@
                     <h3>3. Devuelve un listado donde sólo aparezcan aquellos departamentos que no tienen ningún empleado
                         asociado</h3>
                     <pre><code>SELECT d.nombre AS Departamento FROM departamento d LEFT JOIN empleado e ON d.codigo = e.codigo_departamento WHERE e.codigo_departamento IS NULL;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/3.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/3.png"
                         alt="pregunta 3">
                 </div>
 
@@ -329,7 +329,7 @@
                         departamentos que no tienen ningún empleado asociado. Ordene el listado alfabéticamente por el
                         nombre del departamento</h3>
                     <pre><code>SELECT CONCAT(e.nombre, ' ', e.apePaterno, ' ', e.apeMaterno) AS NombreCompleto, d.nombre AS Departamento, d.presupuesto, d.gastos FROM empleado e FULL OUTER JOIN departamento d ON e.codigo_departamento = d.codigo ORDER BY d.nombre;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/4.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/4.png"
                         alt="pregunta 4">
                 </div>
 
@@ -338,7 +338,7 @@
                         departamentos que no tienen ningún empleado asociado. Ordene el listado alfabéticamente por el
                         nombre del departamento</h3>
                     <pre><code>SELECT CONCAT(e.nombre, ' ', e.apePaterno, ' ', e.apeMaterno) AS NombreCompleto, d.nombre AS Departamento FROM empleado e FULL OUTER JOIN departamento d ON e.codigo_departamento = d.codigo WHERE e.codigo_departamento IS NULL OR d.codigo IS NULL ORDER BY d.nombre;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/5.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición externa)/5.png"
                         alt="pregunta 5">
                 </div>
             </div>
@@ -350,7 +350,7 @@
                     <h3>1. Listado con los empleados (nombre completo) y el nombre del departamento donde trabaja cada
                         uno</h3>
                     <pre><code>SELECT CONCAT(empleado.nombre, ' ', empleado.apePaterno, ' ', empleado.apeMaterno) AS NombreCompleto, departamento.nombre AS Departamento FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/1.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/1.png"
                         alt="pregunta 1">
                 </div>
 
@@ -358,7 +358,7 @@
                     <h3>2. Listado con los empleados (nombre completo) y los datos de los departamentos donde trabaja
                         cada uno, ordenado por departamento y luego por apellidos y nombre</h3>
                     <pre><code>SELECT CONCAT(empleado.apePaterno, ' ', empleado.apeMaterno, ' ', empleado.nombre) AS NombreCompleto, departamento.nombre AS Departamento FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo ORDER BY departamento.nombre ASC, empleado.apePaterno ASC, empleado.apeMaterno ASC, empleado.nombre ASC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/2.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/2.png"
                         alt="pregunta 2">
                 </div>
 
@@ -366,7 +366,7 @@
                     <h3>3. Listado con el código y el nombre del departamento, solamente de aquellos departamentos que
                         tienen empleados</h3>
                     <pre><code>SELECT DISTINCT departamento.codigo, departamento.nombre FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/3.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/3.png"
                         alt="pregunta 3">
                 </div>
 
@@ -374,21 +374,21 @@
                     <h3>4. Listado con el código, el nombre del departamento y el valor del presupuesto actual, de
                         aquellos departamentos que tienen empleados</h3>
                     <pre><code>SELECT departamento.codigo, departamento.nombre, (departamento.presupuesto - departamento.gastos) AS PresupuestoActual FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/4.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/4.png"
                         alt="pregunta 4">
                 </div>
 
                 <div class="step">
                     <h3>5. Nombre del departamento donde trabaja el empleado que tiene el nif '3883298M'</h3>
                     <pre><code>SELECT departamento.nombre AS Departamento FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo WHERE empleado.dni = '3883298M';</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/5.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/5.png"
                         alt="pregunta 5">
                 </div>
 
                 <div class="step">
                     <h3>6. Nombre del departamento donde trabaja el empleado 'Pepe Ruiz Santana'</h3>
                     <pre><code>SELECT departamento.nombre AS Departamento FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo WHERE empleado.nombre = 'Pepe' AND empleado.apePaterno = 'Ruiz' AND empleado.apeMaterno = 'Santana';</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/6.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/6.png"
                         alt="pregunta 6">
                 </div>
 
@@ -396,7 +396,7 @@
                     <h3>7. Listado de los empleados (nombre completo) que trabajan en el departamento de 'I+D', ordenado
                         alfabéticamente</h3>
                     <pre><code>SELECT CONCAT(empleado.nombre, ' ', empleado.apePaterno, ' ', empleado.apeMaterno) AS NombreCompleto FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo WHERE departamento.nombre = 'I+D' ORDER BY empleado.apePaterno ASC, empleado.apeMaterno ASC, empleado.nombre ASC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/7.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/7.png"
                         alt="pregunta 7">
                 </div>
 
@@ -404,7 +404,7 @@
                     <h3>8. Listado de los empleados (nombre completo) que trabajan en los departamentos de 'Sistemas',
                         'Contabilidad' o 'I+D', ordenado alfabéticamente</h3>
                     <pre><code>SELECT CONCAT(empleado.nombre, ' ', empleado.apePaterno, ' ', empleado.apeMaterno) AS NombreCompleto FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo WHERE departamento.nombre IN ('Sistemas', 'Contabilidad', 'I+D') ORDER BY empleado.apePaterno ASC, empleado.apeMaterno ASC, empleado.nombre ASC;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/8.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/8.png"
                         alt="pregunta 8">
                 </div>
 
@@ -412,7 +412,7 @@
                     <h3>9. Lista con el nombre de los empleados (nombre completo) que tienen los departamentos que no
                         tienen un presupuesto entre 100000 y 200000 euros</h3>
                     <pre><code>SELECT CONCAT(empleado.nombre, ' ', empleado.apePaterno, ' ', empleado.apeMaterno) AS NombreCompleto FROM empleado JOIN departamento ON empleado.codigo_departamento = departamento.codigo WHERE departamento.presupuesto NOT BETWEEN 100000 AND 200000;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/9.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/9.png"
                         alt="pregunta 9">
                 </div>
 
@@ -421,7 +421,7 @@
                         segundo apellido sea NULL. Ten en cuenta que no debe mostrar nombres de departamentos que estén
                         repetidos</h3>
                     <pre><code>SELECT DISTINCT d.nombre AS Departamento FROM empleado e JOIN departamento d ON e.codigo_departamento = d.codigo WHERE e.apeMaterno IS NULL;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/10.png"
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas multitablas (composición interna)/10.png"
                         alt="pregunta 10">
                 </div>
             </div>
@@ -432,64 +432,64 @@
                 <div class="step">
                     <h3>1. Calcula la suma del presupuesto de todos los departamentos</h3>
                     <pre><code>SELECT SUM(presupuesto) AS total_presupuesto FROM departamento;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/1.png" alt="pregunta 1">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/1.png" alt="pregunta 1">
                 </div>
 
                 <div class="step">
                     <h3>2. Calcula la media del presupuesto de todos los departamentos</h3>
                     <pre><code>SELECT AVG(presupuesto) AS promedio_presupuesto FROM departamento;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/2.png" alt="pregunta 2">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/2.png" alt="pregunta 2">
                 </div>
 
                 <div class="step">
                     <h3>3. Calcula el valor mínimo del presupuesto de todos los departamentos</h3>
                     <pre><code>SELECT MIN(presupuesto) AS min_presupuesto FROM departamento;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/3.png" alt="pregunta 3">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/3.png" alt="pregunta 3">
                 </div>
 
                 <div class="step">
                     <h3>4. Calcula el nombre del departamento y el presupuesto que tiene asignado, del departamento con
                         menor presupuesto</h3>
                     <pre><code>SELECT nombre, presupuesto FROM departamento WHERE presupuesto = (SELECT MIN(presupuesto) FROM departamento);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/4.png" alt="pregunta 4">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/4.png" alt="pregunta 4">
                 </div>
 
                 <div class="step">
                     <h3>5. Calcula el valor máximo del presupuesto de todos los departamentos</h3>
                     <pre><code>SELECT MAX(presupuesto) AS max_presupuesto FROM departamento;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/5.png" alt="pregunta 5">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/5.png" alt="pregunta 5">
                 </div>
 
                 <div class="step">
                     <h3>6. Calcula el nombre del departamento y el presupuesto que tiene asignado, del departamento con
                         mayor presupuesto</h3>
                     <pre><code>SELECT nombre, presupuesto FROM departamento WHERE presupuesto = (SELECT MAX(presupuesto) FROM departamento);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/6.png" alt="pregunta 6">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/6.png" alt="pregunta 6">
                 </div>
 
                 <div class="step">
                     <h3>7. Calcula el número total de empleados que hay en la tabla empleado</h3>
                     <pre><code>SELECT COUNT(*) AS total_empleados FROM empleado;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/7.png" alt="pregunta 7">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/7.png" alt="pregunta 7">
                 </div>
 
                 <div class="step">
                     <h3>8. Calcula el número de empleados que no tienen NULL en su segundo apellido</h3>
                     <pre><code>SELECT COUNT(*) AS total_empleados_sin_null_apeMaterno FROM empleado WHERE apeMaterno IS NOT NULL;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/8.png" alt="pregunta 8">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/8.png" alt="pregunta 8">
                 </div>
 
                 <div class="step">
                     <h3>9. Calcula el número de empleados que hay en cada departamento. Devuelve dos columnas: el nombre
                         del departamento y el número de empleados</h3>
                     <pre><code>SELECT d.nombre, COUNT(e.codigo) AS total_empleados FROM departamento d LEFT JOIN empleado e ON d.codigo = e.codigo_departamento GROUP BY d.nombre;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/9.png" alt="pregunta 9">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/9.png" alt="pregunta 9">
                 </div>
 
                 <div class="step">
                     <h3>10. Calcula el nombre de los departamentos que tienen más de 2 empleados</h3>
                     <pre><code>SELECT d.nombre FROM departamento d LEFT JOIN empleado e ON d.codigo = e.codigo_departamento GROUP BY d.nombre HAVING COUNT(e.codigo) > 2;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/10.png" alt="pregunta 10">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/10.png" alt="pregunta 10">
                 </div>
 
                 <div class="step">
@@ -500,7 +500,7 @@
                         FROM departamento d
                         LEFT JOIN empleado e ON d.codigo = e.codigo_departamento
                         WHERE e.codigo IS NULL GROUP BY d.nombre;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/11.png" alt="pregunta 11">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/11.png" alt="pregunta 11">
                 </div>
 
                 <div class="step">
@@ -515,7 +515,7 @@
                         ON d.codigo = e.codigo_departamento
                         WHERE d.presupuesto > 200000 GROUP
                         BY d.nombre;</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Consultas resumen/12.png" alt="pregunta 12">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Consultas resumen/12.png" alt="pregunta 12">
                 </div>
             </div>
 
@@ -534,21 +534,21 @@
                         FROM empleado e, departamento d
                         WHERE e.codigo_departamento = d.codigo
                         AND d.nombre = 'Sistemas';</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/1.png" alt="pregunta 1">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/1.png" alt="pregunta 1">
                 </div>
 
                 <div class="step">
                     <h3>2. Devuelve el nombre del departamento con mayor presupuesto y la cantidad que tiene asignada
                     </h3>
                     <pre><code>SELECT d.nombre AS Departamento, d.presupuesto FROM departamento d WHERE d.presupuesto = (SELECT MAX(presupuesto) FROM departamento);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/2.png" alt="pregunta 2">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/2.png" alt="pregunta 2">
                 </div>
 
                 <div class="step">
                     <h3>3. Devuelve el nombre del departamento con menor presupuesto y la cantidad que tiene asignada
                     </h3>
                     <pre><code>SELECT d.nombre AS Departamento, d.presupuesto FROM departamento d WHERE d.presupuesto = (SELECT MIN(presupuesto) FROM departamento);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/3.png" alt="pregunta 3">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/3.png" alt="pregunta 3">
                 </div>
 
                 <!-- SUBCONSULTAS CON ALL Y ANY -->
@@ -558,28 +558,28 @@
                     <h3>1. Devuelve el nombre del departamento con mayor presupuesto y la cantidad que tiene asignada.
                         Sin hacer uso de MAX, ORDER BY ni LIMIT</h3>
                     <pre><code>SELECT d.nombre AS Departamento, d.presupuesto FROM departamento d WHERE d.presupuesto >= ALL (SELECT presupuesto FROM departamento);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/4.png" alt="pregunta 4">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/4.png" alt="pregunta 4">
                 </div>
 
                 <div class="step">
                     <h3>2. Devuelve el nombre del departamento con menor presupuesto y la cantidad que tiene asignada.
                         Sin hacer uso de MIN, ORDER BY ni LIMIT</h3>
                     <pre><code>SELECT d.nombre AS Departamento, d.presupuesto FROM departamento d WHERE d.presupuesto <= ALL (SELECT presupuesto FROM departamento);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/5.png" alt="pregunta 5">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/5.png" alt="pregunta 5">
                 </div>
 
                 <div class="step">
                     <h3>3. Devuelve los nombres de los departamentos que tienen empleados asociados. (Utilizando ALL o
                         ANY)</h3>
                     <pre><code>SELECT DISTINCT d.nombre AS Departamento FROM departamento d WHERE d.codigo = ANY (SELECT e.codigo_departamento FROM empleado e);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/6.png" alt="pregunta 6">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/6.png" alt="pregunta 6">
                 </div>
 
                 <div class="step">
                     <h3>4. Devuelve los nombres de los departamentos que no tienen empleados asociados. (Utilizando ALL
                         o ANY)</h3>
                     <pre><code>SELECT DISTINCT d.nombre AS Departamento FROM departamento d WHERE d.codigo != ALL (SELECT e.codigo_departamento FROM empleado e);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/7.png" alt="pregunta 7">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/7.png" alt="pregunta 7">
                 </div>
 
                 <!-- SUBCONSULTAS CON IN Y NOT IN -->
@@ -589,14 +589,14 @@
                     <h3>1. Devuelve los nombres de los departamentos que tienen empleados asociados. (Utilizando IN o
                         NOT IN)</h3>
                     <pre><code>SELECT DISTINCT d.nombre AS Departamento FROM departamento d WHERE d.codigo IN (SELECT e.codigo_departamento FROM empleado e);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/8.png" alt="pregunta 8">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/8.png" alt="pregunta 8">
                 </div>
 
                 <div class="step">
                     <h3>2. Devuelve los nombres de los departamentos que no tienen empleados asociados. (Utilizando IN o
                         NOT IN)</h3>
                     <pre><code>SELECT DISTINCT d.nombre AS Departamento FROM departamento d WHERE d.codigo NOT IN (SELECT e.codigo_departamento FROM empleado e);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/9.png" alt="pregunta 9">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/9.png" alt="pregunta 9">
                 </div>
 
                 <!-- SUBCONSULTAS CON EXISTS Y NOT EXISTS -->
@@ -606,14 +606,14 @@
                     <h3>1. Devuelve los nombres de los departamentos que tienen empleados asociados. (Utilizando EXISTS
                         o NOT EXISTS)</h3>
                     <pre><code>SELECT DISTINCT d.nombre AS Departamento FROM departamento d WHERE EXISTS (SELECT 1 FROM empleado e WHERE e.codigo_departamento = d.codigo);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/10.png" alt="pregunta 10">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/10.png" alt="pregunta 10">
                 </div>
 
                 <div class="step">
                     <h3>2. Devuelve los nombres de los departamentos que no tienen empleados asociados. (Utilizando
                         EXISTS o NOT EXISTS)</h3>
                     <pre><code>SELECT DISTINCT d.nombre AS Departamento FROM departamento d WHERE NOT EXISTS (SELECT 1 FROM empleado e WHERE e.codigo_departamento = d.codigo);</code></pre>
-                    <img src="../imagenes/semana 6 consultas avanzadas/Subconsultas/11.png" alt="pregunta 11">
+                    <img src="../assets/images/semana 6 consultas avanzadas/Subconsultas/11.png" alt="pregunta 11">
                 </div>
 
             </div>
